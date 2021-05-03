@@ -7,6 +7,7 @@ package supermarketsimulatorgui;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -19,27 +20,31 @@ public class BodyPanel extends JPanel
     
     public BodyPanel() 
     {
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0,20));
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         
         ImageIcon shelvesImage = new ImageIcon("./resources/shelves.png");
         Image image = shelvesImage.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(650, 400,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(650, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         shelvesImage = new ImageIcon(newimg);
         
         isleLabel = new JLabel("ISLE 1 - DRINKS");
-        isleLabel.setFont(new Font("Open Sans", Font.PLAIN, 30));
+        isleLabel.setBorder(new EmptyBorder(10, 0, 0, 0));
+        isleLabel.setFont(new Font("Avenir", Font.PLAIN, 30));
+        isleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         shelves = new JLabel(shelvesImage);
+        shelves.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         this.setOpaque(false);
-        this.addSpace(this);
+        this.addSpace(this,30);
         this.add(isleLabel);
-        this.addSpace(this);
+        this.addSpace(this,30);
         this.add(shelves);
+        this.addSpace(this,70);
     }
 
-    public void addSpace(JPanel panel)
+    public void addSpace(JPanel panel, int space)
     {
-        panel.add(Box.createRigidArea(new Dimension(0, 100)));
+        panel.add(Box.createRigidArea(new Dimension(0, space)));
     }
 }

@@ -27,22 +27,27 @@ public class HeaderPanel extends JPanel {
         leftIsleButton = createNewButton(new ImageIcon("./resources/left.png"));
         rightIsleButton = createNewButton(new ImageIcon("./resources/right.png"));
         checkoutButton = createNewButton(resizeComponent("./resources/checkout.png",100,40));
+        checkoutButton.setActionCommand("checkout");
+        checkoutButton.addActionListener(new ComponentListener());
         
         budgetLabel = new JLabel("$00.00");
-        budgetLabel.setForeground(Color.green);
+        budgetLabel.setForeground(Color.getHSBColor(0.336f, .228f, .6f));
         setLabelSize(budgetLabel);
         
         cartLabel = new JLabel("$00.00");
-        cartLabel.setForeground(Color.red);
+        cartLabel.setForeground(Color.getHSBColor(1.0f, 1.0f, .6f));
         setLabelSize(cartLabel);
         
+        addSpace(this,10);
         this.add(leftIsleButton);
-        addSpace(this);
+        addSpace(this,80);
         this.add(budgetLabel);
         this.add(checkoutButton);
         this.add(cartLabel);
-        addSpace(this);
+        addSpace(this,80);
         this.add(rightIsleButton);
+        addSpace(this,10);
+        
         this.setOpaque(false);
     }
     
@@ -52,22 +57,28 @@ public class HeaderPanel extends JPanel {
         tempButton.setBorderPainted(false);
         tempButton.setFocusPainted(false);
         tempButton.setContentAreaFilled(false);
+        int width = image.getIconWidth();
+        int height = image.getIconHeight();
+        tempButton.setMinimumSize(new Dimension(width,height));
+        tempButton.setMaximumSize(new Dimension(width,height));
+        tempButton.setPreferredSize(new Dimension(width,height));
         
         return tempButton;
     }
     
-    public void addSpace(JPanel panel)
+    public void addSpace(JPanel panel, int xSpace)
     {
-        panel.add(Box.createRigidArea(new Dimension(20, 0)));
+        panel.add(Box.createRigidArea(new Dimension(xSpace, 0)));
     }
     
     public void setLabelSize(JLabel label)
     {
         label.setOpaque(true);
+        label.setMinimumSize(new Dimension(80,30));
         label.setMaximumSize(new Dimension(80,30));
         label.setPreferredSize(new Dimension(80,30));
         label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setFont(new Font("Open Sans", Font.PLAIN, 12));
+        label.setFont(new Font("Avenir", Font.PLAIN, 12));
     }
     
     public ImageIcon resizeComponent(String imgURL, int width, int height)
