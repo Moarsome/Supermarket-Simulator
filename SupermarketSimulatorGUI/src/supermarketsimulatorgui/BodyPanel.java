@@ -24,7 +24,7 @@ public class BodyPanel extends JPanel
         
         ImageIcon shelvesImage = new ImageIcon("./resources/shelves.png");
         Image image = shelvesImage.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(650, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(600, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         shelvesImage = new ImageIcon(newimg);
         
         isleLabel = new JLabel("ISLE 1 - DRINKS");
@@ -46,5 +46,10 @@ public class BodyPanel extends JPanel
     public void addSpace(JPanel panel, int space)
     {
         panel.add(Box.createRigidArea(new Dimension(0, space)));
+    }
+    
+    public void setIsleLabel(String newText)
+    {
+        this.isleLabel.setText(newText);
     }
 }

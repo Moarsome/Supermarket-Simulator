@@ -14,17 +14,14 @@ import javax.swing.*;
  * @author kyliec
  */
 public class SupermarketFrame extends JFrame{
-    static JFrame frame;
-    static JPanel headerPanel;
-    static JPanel bodyPanel;
-    static JPanel footerPanel;
+    
     
     public static void main(String[] args) 
     {
-        frame = new JFrame();
-        headerPanel = new HeaderPanel(frame);
-        bodyPanel = new BodyPanel();
-        footerPanel = new FooterPanel();
+        SupermarketFrame frame = new SupermarketFrame();
+        FooterPanel footerPanel = new FooterPanel();
+        BodyPanel bodyPanel = new BodyPanel();
+        HeaderPanel headerPanel = new HeaderPanel(bodyPanel);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(true);

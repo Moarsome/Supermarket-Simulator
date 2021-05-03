@@ -13,30 +13,45 @@ import javax.swing.*;
  * @author kyliec
  */
 
-public class HeaderPanel extends JPanel {
-    private JButton leftIsleButton;
-    private JButton rightIsleButton;
-    private JButton checkoutButton;
-    private JLabel budgetLabel;
-    private JLabel cartLabel;
+public final class HeaderPanel extends JPanel {
+    private final JButton leftIsleButton;
+    private final JButton rightIsleButton;
+    private final JButton checkoutButton;
+    private final JLabel budgetLabel;
+    private final JLabel cartLabel;
     
-    public HeaderPanel(JFrame frame)
+    private final IsleMarker isleManager;
+    private final User user;
+    
+    public HeaderPanel(BodyPanel panel)
     {
+        user = new User(200.0f, "test");
+        isleManager = new IsleMarker(user);
+        isleManager.setIsle(1);
+        
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         
+        
         leftIsleButton = createNewButton(new ImageIcon("./resources/left.png"));
+        leftIsleButton.setActionCommand("leftIsle");
         rightIsleButton = createNewButton(new ImageIcon("./resources/right.png"));
+        rightIsleButton.setActionCommand("rightIsle");
         checkoutButton = createNewButton(resizeComponent("./resources/checkout.png",100,40));
         checkoutButton.setActionCommand("checkout");
-        checkoutButton.addActionListener(new ComponentListener());
         
-        budgetLabel = new JLabel("$00.00");
+        budgetLabel = new JLabel("$"+user.getBudget());
         budgetLabel.setForeground(Color.getHSBColor(0.336f, .228f, .6f));
         setLabelSize(budgetLabel);
         
         cartLabel = new JLabel("$00.00");
         cartLabel.setForeground(Color.getHSBColor(1.0f, 1.0f, .6f));
         setLabelSize(cartLabel);
+        
+        //ComponentListener listener = new ComponentListener(isleManager,this, panel);
+        
+        leftIsleButton.addActionListener(new ComponentListener(isleManager,this, panel));
+        rightIsleButton.addActionListener(new ComponentListener(isleManager,this, panel));
+        checkoutButton.addActionListener(new ComponentListener(isleManager,this, panel));
         
         addSpace(this,10);
         this.add(leftIsleButton);
@@ -62,6 +77,7 @@ public class HeaderPanel extends JPanel {
         tempButton.setMinimumSize(new Dimension(width,height));
         tempButton.setMaximumSize(new Dimension(width,height));
         tempButton.setPreferredSize(new Dimension(width,height));
+        tempButton.setAlignmentY(TOP_ALIGNMENT);
         
         return tempButton;
     }
@@ -79,6 +95,7 @@ public class HeaderPanel extends JPanel {
         label.setPreferredSize(new Dimension(80,30));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setFont(new Font("Avenir", Font.PLAIN, 12));
+        label.setAlignmentY(TOP_ALIGNMENT);
     }
     
     public ImageIcon resizeComponent(String imgURL, int width, int height)
@@ -89,5 +106,27 @@ public class HeaderPanel extends JPanel {
         tempImage = new ImageIcon(newimg);
         
         return tempImage;
+    }
+    
+    public void enableLeftIsleButton()
+    {
+        System.out.println("enabling");
+        this.leftIsleButton.setEnabled(true);
+    }
+    
+    public void disableLeftIsleButton()
+    {
+        System.out.println("disabling");
+        this.leftIsleButton.setEnabled(false);
+    }
+    
+    public void enableRightIsleButton()
+    {
+        this.rightIsleButton.setEnabled(true);
+    }
+    
+    public void disableRightIsleButton()
+    {
+        this.rightIsleButton.setEnabled(false);
     }
 }
