@@ -110,13 +110,11 @@ public final class HeaderPanel extends JPanel {
     
     public void enableLeftIsleButton()
     {
-        System.out.println("enabling");
         this.leftIsleButton.setEnabled(true);
     }
     
     public void disableLeftIsleButton()
     {
-        System.out.println("disabling");
         this.leftIsleButton.setEnabled(false);
     }
     
