@@ -44,14 +44,22 @@ public class User {
     public void createUserTable() throws SQLException {
         statement = conn.createStatement();
         
-        statement.executeUpdate("CREATE TABLE USER (USER VARCHAR(50), PASSWORD VARCHAR(50), BUDGET FLOAT)");
+        statement.executeUpdate("CREATE TABLE USERS (USERNAME VARCHAR(50), PASSWORD VARCHAR(50), BUDGET FLOAT)");
         }
       
-    // need to uodate with shit later
-    public void updateNewUser(String user, String pass, float budget) throws SQLException {
+    
+    public void addNewUser(String user, String pass, float budget) throws SQLException {
+        statement = conn.createStatement();
+        
+        statement.executeUpdate("INSERT INTO USERS VALUES('" + user + "', '" + pass + "', " + budget + ")");
+    }
+    
+    
+    //need to figure out how to udate shit
+    public void updateUserBudget(float budget) throws SQLException {
         //use the conn, initialize database by creating BOOK Table and insert records
         statement = conn.createStatement();
         
-        statement.executeUpdate("INSERT INTO USER VALUES('" + user + "', '" + pass + "', " + budget + ")");
+       // statement.executeUpdate();
     }
 }

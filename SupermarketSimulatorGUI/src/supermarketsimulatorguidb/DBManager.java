@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 
 public final class DBManager {
 
-    private static final String USER_NAME = "pdc"; //your DB username
-    private static final String PASSWORD = "pdc"; //your DB password
-    private static final String URL = "jdbc:derby:SupermarketDB_EBD; create = true";  //url of the DB host
+    private static final String USER_NAME = "super"; //your DB username
+    private static final String PASSWORD = "market"; //your DB password
+    private static final String URL = "jdbc:derby:supermarketDB_Ebd; create=true";  //url of the DB host
 
     Connection conn;
 

@@ -7,8 +7,11 @@ public class SupermarketDBMain {
     public static void main(String[] args) throws SQLException {
 
         User user = new User();
-        DBManager dbm = new DBManager();
+        Inventory inventory = new Inventory();
         user.createUserTable();
+        inventory.createInventoryrTable();
+        
+        
     }
 
 }
