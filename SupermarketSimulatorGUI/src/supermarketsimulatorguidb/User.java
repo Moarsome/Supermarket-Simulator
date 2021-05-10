@@ -35,7 +35,7 @@ public class User {
         try {
             statement = conn.createStatement();
             
-            statement.executeUpdate("CREATE TABLE ")
+            statement.executeUpdate("CREATE TABLE ");
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
