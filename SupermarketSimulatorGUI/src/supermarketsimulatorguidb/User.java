@@ -30,6 +30,17 @@ public class User {
         conn = dbManager.getConnection();
     }
     
+    public void createItemTable()
+    {
+        try {
+            statement = conn.createStatement();
+            
+            statement.executeUpdate("CREATE TABLE ")
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void createUserTable() throws SQLException {
         statement = conn.createStatement();
         
