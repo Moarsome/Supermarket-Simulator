@@ -36,6 +36,6 @@ public class Inventory {
       
     
     public void addInventory(String user, String pass, float budget) {
-        dbManager.updateDB("INSERT INTO USERS VALUES('" + user + "', '" + pass + "', " + budget + ")");
+        dbManager.updateDB("INSERT INTO INVENTORY VALUES('" + user + "', '" + pass + "', " + budget + ")");
     }
 }
