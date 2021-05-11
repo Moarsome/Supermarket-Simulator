@@ -30,16 +30,12 @@ public class Inventory {
         conn = dbManager.getConnection();
     }
     
-    public void createInventoryrTable() throws SQLException {
-        statement = conn.createStatement();
-        
-        statement.executeUpdate("CREATE TABLE INVENTORY (NAME VARCHAR(50), PRICE FLOAT, STOCK INT)");
+    public void createInventoryTable() {
+        dbManager.updateDB("CREATE TABLE INVENTORY (NAME VARCHAR(50), PRICE FLOAT, STOCK INT)");
         }
       
     
-    public void addInventory(String user, String pass, float budget) throws SQLException {
-        statement = conn.createStatement();
-        
-        statement.executeUpdate("INSERT INTO USERS VALUES('" + user + "', '" + pass + "', " + budget + ")");
+    public void addInventory(String user, String pass, float budget) {
+        dbManager.updateDB("INSERT INTO USERS VALUES('" + user + "', '" + pass + "', " + budget + ")");
     }
 }

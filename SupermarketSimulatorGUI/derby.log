@@ -1,20 +1,13 @@
-Tue May 11 00:28:46 NZST 2021 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue May 11 00:28:46 NZST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-5640-533f-ffffaa351cea 
-on database directory /Users/poyanpayandeh/NetBeansProjects/supermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
-Loaded from file:/Users/poyanpayandeh/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+Tue May 11 21:32:40 NZST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-5ac5-7495-000007a5a2c8 
+on database directory /Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+Loaded from file:/Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=14.0.1+7
-user.dir=/Users/poyanpayandeh/Downloads/db-derby-10.14.2.0-bin
+java.runtime.version=14.0.2+12-46
+user.dir=/Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI
 os.name=Mac OS X
 os.arch=x86_64
-os.version=10.16
-derby.system.home=/Users/poyanpayandeh/NetBeansProjects/supermarketSimulatorGUI/SupermarketSimulatorGUI
+os.version=10.15.7
+derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Tue May 11 00:30:07 NZST 2021: Shutting down Derby engine
-----------------------------------------------------------------
-Tue May 11 00:30:07 NZST 2021:
-Shutting down instance a816c00e-0179-5640-533f-ffffaa351cea on database directory /Users/poyanpayandeh/NetBeansProjects/supermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
-----------------------------------------------------------------

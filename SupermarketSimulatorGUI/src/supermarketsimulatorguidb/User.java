@@ -32,26 +32,21 @@ public class User {
     
     public void createItemTable()
     {
-        try {
-            statement = conn.createStatement();
-            
-            statement.executeUpdate("CREATE TABLE ");
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+            dbManager.updateDB("CREATE TABLE ");
+
     }
     
-    public void createUserTable() throws SQLException {
-        statement = conn.createStatement();
-        
-        statement.executeUpdate("CREATE TABLE USERS (USERNAME VARCHAR(50), PASSWORD VARCHAR(50), BUDGET FLOAT)");
+    public void createUserTable() {
+        dbManager.updateDB("CREATE TABLE USERS (USERNAME VARCHAR(50), PASSWORD VARCHAR(50), BUDGET FLOAT)");
         }
       
     
-    public void addNewUser(String user, String pass, float budget) throws SQLException {
-        statement = conn.createStatement();
+    public void addNewUser(String user, String pass, float budget)  {
+        dbManager.updateDB("INSERT INTO USERS VALUES('" + user + "', '" + pass + "', " + budget + ")");
         
-        statement.executeUpdate("INSERT INTO USERS VALUES('" + user + "', '" + pass + "', " + budget + ")");
+        dbManager.updateDB("SELECT * FROM SUPER.TABLES");
+        System.out.println("added");
     }
     
     
