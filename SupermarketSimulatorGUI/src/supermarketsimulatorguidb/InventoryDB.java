@@ -19,12 +19,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class Inventory {
+public class InventoryDB {
     private final DBManager dbManager;
     private final Connection conn;
     private Statement statement;
     
-    public Inventory() throws SQLException {
+    public InventoryDB() throws SQLException {
         dbManager = new DBManager();
         dbManager.establishConnection();
         conn = dbManager.getConnection();

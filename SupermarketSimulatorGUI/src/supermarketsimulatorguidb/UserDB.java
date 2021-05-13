@@ -19,12 +19,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class User {
+public class UserDB {
     private final DBManager dbManager;
     private final Connection conn;
     private Statement statement;
     
-    public User() throws SQLException {
+    public UserDB() throws SQLException {
         dbManager = new DBManager();
         dbManager.establishConnection();
         conn = dbManager.getConnection();
