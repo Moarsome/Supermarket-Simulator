@@ -27,14 +27,14 @@ public class SupermarketFrame extends JFrame{
         loginPanel.setVisible(true);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setUndecorated(true);
+        frame.setUndecorated(true);
         frame.getContentPane().setBackground(Color.getHSBColor(.678f, 0.46f, 1.0f));
         frame.add(loginPanel);
         frame.add(headerPanel, BorderLayout.NORTH);
         frame.add(bodyPanel);
         frame.add(footerPanel, BorderLayout.SOUTH);
-        frame.pack();
-        //frame.setResizable(false);
+        frame.setSize(750,750);
+        frame.setResizable(false);
         frame.setVisible(true);
     }
     
