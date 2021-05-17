@@ -11,13 +11,13 @@ import java.awt.event.*;
  *
  * @author kyliec
  */
-public class ComponentListener implements ActionListener
+public class IsleChangeListener implements ActionListener
 {
     private IsleMarker isleManager;
     private HeaderPanel headerPanel;
     private BodyPanel bodyPanel;
     
-    public ComponentListener(IsleMarker isleManager, HeaderPanel headerPanel, BodyPanel bodyPanel)
+    public IsleChangeListener(IsleMarker isleManager, HeaderPanel headerPanel, BodyPanel bodyPanel)
     {
         super();
         this.isleManager = isleManager;

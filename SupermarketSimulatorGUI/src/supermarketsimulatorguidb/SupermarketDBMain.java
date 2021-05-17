@@ -9,7 +9,6 @@ public class SupermarketDBMain {
         UserDB user = new UserDB();
         InventoryDB inventory = new InventoryDB();
         user.createUserTable();
-        user.addNewUser("Kylie", "123", 100);
         inventory.createInventoryTable();
     }
 

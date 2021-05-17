@@ -28,7 +28,7 @@ import javax.swing.JTextField;
  *
  * @author kyliec
  */
-public final class LoginPanel extends JPanel {
+public final class LoginPanel extends StarterPanel {
     private final JLabel userIcon;
     private final JLabel loginHeader;
     private final JTextField userInput;
@@ -65,6 +65,8 @@ public final class LoginPanel extends JPanel {
         passInput.setForeground(Color.DARK_GRAY);
         
         submitButton = createNewButton(resizeComponent("./resources/submit.png", 208, 40));
+        submitButton.setActionCommand("register");
+        submitButton.addActionListener(new DBListener(this));
         loginButton = createNewButton(resizeComponent("./resources/login.png", 104, 40));
         loginButton.setEnabled(false);
         registerButton = createNewButton(resizeComponent("./resources/register.png", 104, 40));
@@ -87,34 +89,7 @@ public final class LoginPanel extends JPanel {
         this.add(userIcon);
         this.add(innerPane);
         
-        
         this.setOpaque(false);
-    }
-    
-    public ImageIcon resizeComponent(String imgURL, int width, int height)
-    {
-        ImageIcon tempImage = new ImageIcon(imgURL);
-        Image image = tempImage.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        tempImage = new ImageIcon(newimg);
-        
-        return tempImage;
-    }
-    
-    public JButton createNewButton(ImageIcon image)
-    {
-        JButton tempButton = new JButton(image);
-        tempButton.setBorderPainted(false);
-        tempButton.setFocusPainted(false);
-        tempButton.setContentAreaFilled(false);
-        int width = image.getIconWidth();
-        int height = image.getIconHeight();
-        tempButton.setMinimumSize(new Dimension(width,height));
-        tempButton.setMaximumSize(new Dimension(width,height));
-        tempButton.setPreferredSize(new Dimension(width,height));
-        tempButton.setAlignmentY(TOP_ALIGNMENT);
-        
-        return tempButton;
     }
     
     public void changeGridLayout(GridBagConstraints constraints, int x, int y)
@@ -122,4 +97,20 @@ public final class LoginPanel extends JPanel {
         constraints.gridx = x;
         constraints.gridy = y;
     }
+
+    /**
+     * @return the userInput
+     */
+    public JTextField getUserInput() {
+        return userInput;
+    }
+
+    /**
+     * @return the passInput
+     */
+    public JTextField getPassInput() {
+        return passInput;
+    }
+    
+    
 }

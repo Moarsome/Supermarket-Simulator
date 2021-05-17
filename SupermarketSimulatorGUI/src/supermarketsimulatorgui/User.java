@@ -12,8 +12,12 @@ import java.util.HashMap;
  * @author kyliec
  */
 public class User {
+    private static int userStaticID = 0;
+    
     private float budget;
+    private int userID;
     private String name;
+    private String password;
     private boolean isShopping;
     private HashMap<ItemDatabase, Integer> inventory;
     private float cart;
@@ -25,10 +29,14 @@ public class User {
      * @param name
      */
     
-    public User(float budget, String name)
+    public User(float budget, String name, String password)
     {
+        userStaticID++;
+        
+        this.userID = userStaticID;
         this.budget = budget;
         this.name = name;
+        this.password = password;
         this.isShopping = true;
         this.inventory = new HashMap<ItemDatabase, Integer>();
     }
@@ -37,12 +45,17 @@ public class User {
      * 2nd Constructor for user
      *
      * @param name
+     * @param password
      */
     
-    public User(String name)
+    public User(String name, String password)
     {
+        userStaticID++;
+        
+        this.userID = userStaticID;
         this.budget = 0.0f;
         this.name = name;
+        this.password = password;
         this.isShopping = true;
         this.inventory = new HashMap<ItemDatabase, Integer>();
     }
@@ -51,12 +64,18 @@ public class User {
      * 3rd Constructor for user
      *
      * @param user
+     * @param password
      */
     
-    public User(User user)
+    public User(User user, String password)
     {
+        userStaticID++;
+        
+        
+        this.userID = userStaticID;
         this.budget = user.budget;
         this.name = user.name;
+        this.password = password;
         this.isShopping = true;
     }
     
@@ -158,5 +177,15 @@ public class User {
     public void addInventory(ItemDatabase item, int stock) {
         inventory.put(item, stock);
     }
+    
+    public int getUserID()
+    {
+        return this.userID;
+    }  
+    
+    public int getPassword()
+    {
+        return this.userID;
+    }  
     
 }

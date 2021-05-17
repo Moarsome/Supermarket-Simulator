@@ -7,15 +7,13 @@ package supermarketsimulatorgui;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Image;
 import javax.swing.*;
 
 /**
  *
  * @author kyliec
  */
-public class FooterPanel extends JPanel{
+public class FooterPanel extends StarterPanel{
     private JButton viewCartButton;
     
     public FooterPanel()
@@ -40,20 +38,5 @@ public class FooterPanel extends JPanel{
         tempButton.setPreferredSize(new Dimension(width,height));
         
         return tempButton;
-    }
-    
-    public void addSpace(JPanel panel, int xSpace)
-    {
-        panel.add(Box.createRigidArea(new Dimension(xSpace, 0)));
-    }
-    
-    public ImageIcon resizeComponent(String imgURL, int width, int height)
-    {
-        ImageIcon tempImage = new ImageIcon(imgURL);
-        Image image = tempImage.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        tempImage = new ImageIcon(newimg);
-        
-        return tempImage;
     }
 }

@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
  *
  * @author kyliec
  */
-public class BodyPanel extends JPanel 
+public class BodyPanel extends StarterPanel 
 {
     private JLabel shelves;
     private JLabel isleLabel;
@@ -41,11 +41,6 @@ public class BodyPanel extends JPanel
         this.addSpace(this,30);
         this.add(shelves);
         this.addSpace(this,70);
-    }
-
-    public void addSpace(JPanel panel, int space)
-    {
-        panel.add(Box.createRigidArea(new Dimension(0, space)));
     }
     
     public void setIsleLabel(String newText)

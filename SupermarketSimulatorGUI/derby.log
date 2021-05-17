@@ -1,7 +1,7 @@
-Mon May 17 20:07:58 NZST 2021 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Tue May 18 10:16:27 NZST 2021 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Mon May 17 20:07:58 NZST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-795e-1056-ffffcca550ee 
+Tue May 18 10:16:28 NZST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-7c66-e0f1-ffffcca550ee 
 on database directory /Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
 Loaded from file:/Users/kyliec/Downloads/db-derby-10.14.2.0-lib/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -12,8 +12,8 @@ os.arch=x86_64
 os.version=10.15.7
 derby.system.home=/Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI
 Database Class Loader started - derby.database.classpath=''
-Mon May 17 20:08:04 NZST 2021 Thread[DRDAConnThread_2,5,main] (XID = 770), (SESSIONID = 1), (DATABASE = supermarketDB_Ebd), (DRDAID = ��������.����-4471791333763312992{1}), Cleanup action starting
-Mon May 17 20:08:04 NZST 2021 Thread[DRDAConnThread_2,5,main] (XID = 770), (SESSIONID = 1), (DATABASE = supermarketDB_Ebd), (DRDAID = ��������.����-4471791333763312992{1}), Failed Statement is: CALL SYSIBM.SQLFOREIGNKEYS(?,?,?,?,?,?,?) with 7 parameters begin parameter #1:  :end parameter begin parameter #2: NULL :end parameter begin parameter #3:  :end parameter begin parameter #4: NULL :end parameter begin parameter #5: SUPER :end parameter begin parameter #6: USERS :end parameter begin parameter #7: DATATYPE='JDBC';IMPORTEDKEY=1; CURSORHOLD=1 :end parameter 
+Tue May 18 10:16:34 NZST 2021 Thread[DRDAConnThread_2,5,main] (XID = 1115), (SESSIONID = 1), (DATABASE = supermarketDB_Ebd), (DRDAID = ��������.����-736899867738709408{1}), Cleanup action starting
+Tue May 18 10:16:34 NZST 2021 Thread[DRDAConnThread_2,5,main] (XID = 1115), (SESSIONID = 1), (DATABASE = supermarketDB_Ebd), (DRDAID = ��������.����-736899867738709408{1}), Failed Statement is: CALL SYSIBM.SQLFOREIGNKEYS(?,?,?,?,?,?,?) with 7 parameters begin parameter #1:  :end parameter begin parameter #2: NULL :end parameter begin parameter #3:  :end parameter begin parameter #4: NULL :end parameter begin parameter #5: SUPER :end parameter begin parameter #6: USERS :end parameter begin parameter #7: DATATYPE='JDBC';IMPORTEDKEY=1; CURSORHOLD=1 :end parameter 
 java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
 	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
 	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
@@ -33,7 +33,7 @@ java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
 	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.getPreparedQuery(Unknown Source)
 	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.getImportedKeys(Unknown Source)
 	at org.apache.derby.catalog.SystemProcedures.SQLFOREIGNKEYS(Unknown Source)
-	at org.apache.derby.exe.acf81e0010x0179x795ex1056xffffcca550ee8.g0(Unknown Source)
+	at org.apache.derby.exe.acf81e0010x0179x7c66xe0f1xffffcca550ee8.g0(Unknown Source)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
