@@ -39,9 +39,12 @@ public final class LoginPanel extends StarterPanel {
     private final JButton loginButton;
     private final JButton registerButton;
     private final JPanel innerPane;
+    private final MainPanel mainPanel;
     
-    public LoginPanel()
+    public LoginPanel(MainPanel mainPanel)
     {
+        this.mainPanel = mainPanel;
+        
         this.setSize(new Dimension(750,750));
         this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
         
@@ -68,7 +71,9 @@ public final class LoginPanel extends StarterPanel {
         
         submitButton = createNewButton(resizeComponent("./resources/submit.png", 208, 40));
         submitButton.setActionCommand("register");
-        submitButton.addActionListener(new DBListener(this));
+        submitButton.addActionListener(new DBListener(this, mainPanel));
+        
+        
         loginButton = createNewButton(resizeComponent("./resources/login.png", 104, 40));
         loginButton.setActionCommand("login");
         loginButton.addActionListener(new MiscActionListener(this));
@@ -134,15 +139,17 @@ public final class LoginPanel extends StarterPanel {
     
     public void switchToLogin()
     {
-        this.registerButton.setEnabled(false);
-        this.loginButton.setEnabled(true);
+        this.loginButton.setEnabled(false);
+        this.registerButton.setEnabled(true);
         this.submitButton.setActionCommand("login");
+        this.setTextFeedback("Enter username and password or switch to 'register' to create a new user");
     }
     
     public void switchToRegister()
     {
-        this.registerButton.setEnabled(true);
-        this.loginButton.setEnabled(false);
+        this.loginButton.setEnabled(true);
+        this.registerButton.setEnabled(false);
         this.submitButton.setActionCommand("register");
+        this.setTextFeedback("Enter registration details or choose 'login' to access an existing user");
     }
 }

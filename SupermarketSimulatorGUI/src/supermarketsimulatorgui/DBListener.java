@@ -23,10 +23,12 @@ public class DBListener implements ActionListener {
 
     private Connection connection;
     private LoginPanel panel;
+    private MainPanel mainPanel;
     
-    public DBListener(LoginPanel panel)
+    public DBListener(LoginPanel panel, MainPanel mainPanel)
     {
         this.panel = panel;
+        this.mainPanel = mainPanel;
         
         try 
         {
@@ -53,6 +55,7 @@ public class DBListener implements ActionListener {
             if (findUser(userInput, passInput) == true)
             {
                 User existingUser = new User(userInput,passInput);
+                switchToMainPanel();
             }
         }
        
@@ -65,6 +68,8 @@ public class DBListener implements ActionListener {
             
             stmt.executeUpdate("INSERT INTO USERS VALUES(" + user.getUserID() + ",'" + user.getName() + "', '" + user.getPassword() + "', " + user.getBudget() + ")");
             panel.setTextFeedback("Successfully created new user '"+user.getName()+"'");
+            
+            switchToMainPanel();
         } catch (SQLException ex) {
             Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,5 +95,11 @@ public class DBListener implements ActionListener {
         }
         
         return false;
+    }
+    
+    public void switchToMainPanel()
+    {
+        panel.setVisible(false);
+        mainPanel.enableVisible();
     }
 }

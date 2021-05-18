@@ -36,6 +36,7 @@ public final class HeaderPanel extends StarterPanel {
         
         leftIsleButton = createNewButton(new ImageIcon("./resources/left.png"));
         leftIsleButton.setActionCommand("leftIsle");
+        leftIsleButton.setEnabled(false);
         rightIsleButton = createNewButton(new ImageIcon("./resources/right.png"));
         rightIsleButton.setActionCommand("rightIsle");
         checkoutButton = createNewButton(resizeComponent("./resources/checkout.png",100,40));

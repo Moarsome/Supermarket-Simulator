@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * @author kyliec
  */
 public class MiscActionListener implements ActionListener{
-    private LoginPanel panel;
+    private final LoginPanel panel;
     
     public MiscActionListener(LoginPanel panel)
     {
