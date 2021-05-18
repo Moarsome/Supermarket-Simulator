@@ -5,6 +5,7 @@
  */
 package supermarketsimulatorgui;
 
+import supermarketsimulatorlisteners.IsleChangeListener;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;

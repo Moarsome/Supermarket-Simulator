@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supermarketsimulatorgui;
+package supermarketsimulatorlisteners;
 
 import java.awt.event.*;
+import supermarketsimulatorgui.BodyPanel;
+import supermarketsimulatorgui.HeaderPanel;
+import supermarketsimulatorgui.IsleMarker;
 
 /**
  *

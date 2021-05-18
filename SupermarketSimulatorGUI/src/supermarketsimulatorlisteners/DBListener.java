@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supermarketsimulatorgui;
+package supermarketsimulatorlisteners;
 
 import java.sql.Connection;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,9 @@ import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import supermarketsimulatorgui.LoginPanel;
+import supermarketsimulatorgui.MainPanel;
+import supermarketsimulatorgui.User;
 
 /**
  *
