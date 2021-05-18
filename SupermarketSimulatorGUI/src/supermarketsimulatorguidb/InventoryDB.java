@@ -11,15 +11,25 @@ package supermarketsimulatorguidb;
  */
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import supermarketsimulatorgui.ItemDatabase;
 
 public class InventoryDB {
     private final DBManager dbManager;
     private int itemID;
+    private ArrayList<ItemDatabase> items;
     
     public InventoryDB() throws SQLException {
         dbManager = new DBManager();
         dbManager.establishConnection();
         itemID = 0;
+        items = new ArrayList<ItemDatabase>();
+        
+        
+        for (ItemDatabase itdb: ItemDatabase.values())
+        {
+            
+        }
     }
     
     public void createInventoryTable() {
