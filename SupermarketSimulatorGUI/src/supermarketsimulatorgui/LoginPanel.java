@@ -22,6 +22,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -31,8 +32,9 @@ import javax.swing.JTextField;
 public final class LoginPanel extends StarterPanel {
     private final JLabel userIcon;
     private final JLabel loginHeader;
+    private final JLabel textFeedback;
     private final JTextField userInput;
-    private final JTextField passInput;
+    private final JPasswordField passInput;
     private final JButton submitButton;
     private final JButton loginButton;
     private final JButton registerButton;
@@ -60,7 +62,7 @@ public final class LoginPanel extends StarterPanel {
         userInput = new JTextField("Username");
         userInput.setFont(new Font("Verdana", Font.ITALIC,16));
         userInput.setForeground(Color.DARK_GRAY);
-        passInput = new JTextField("Password");
+        passInput = new JPasswordField("Password");
         passInput.setFont(new Font("Verdana", Font.ITALIC,16));
         passInput.setForeground(Color.DARK_GRAY);
         
@@ -68,13 +70,20 @@ public final class LoginPanel extends StarterPanel {
         submitButton.setActionCommand("register");
         submitButton.addActionListener(new DBListener(this));
         loginButton = createNewButton(resizeComponent("./resources/login.png", 104, 40));
-        loginButton.setEnabled(false);
+        loginButton.setActionCommand("login");
+        loginButton.addActionListener(new MiscActionListener(this));
         registerButton = createNewButton(resizeComponent("./resources/register.png", 104, 40));
+        registerButton.setActionCommand("register");
+        registerButton.addActionListener(new MiscActionListener(this));
+        registerButton.setEnabled(false);
+        
+        textFeedback = new JLabel("Enter registration details or choose 'login' to access an existing user");
+        textFeedback.setAlignmentX(CENTER_ALIGNMENT);
         
         changeGridLayout(constraints, 0, 0);
-        innerPane.add(loginButton,constraints);
-        changeGridLayout(constraints, 1, 0);
         innerPane.add(registerButton,constraints);
+        changeGridLayout(constraints, 1, 0);
+        innerPane.add(loginButton,constraints);
         constraints.gridwidth = 2;
         changeGridLayout(constraints, 0, 3);
         innerPane.add(submitButton, constraints);
@@ -88,6 +97,7 @@ public final class LoginPanel extends StarterPanel {
         this.add(Box.createRigidArea(new Dimension(0, 40)));
         this.add(userIcon);
         this.add(innerPane);
+        this.add(textFeedback);
         
         this.setOpaque(false);
     }
@@ -112,5 +122,27 @@ public final class LoginPanel extends StarterPanel {
         return passInput;
     }
     
+    public JLabel getTextFeedback()
+    {
+        return this.textFeedback;
+    }
     
+    public void setTextFeedback(String newText)
+    {
+        this.textFeedback.setText(newText);
+    }
+    
+    public void switchToLogin()
+    {
+        this.registerButton.setEnabled(false);
+        this.loginButton.setEnabled(true);
+        this.submitButton.setActionCommand("login");
+    }
+    
+    public void switchToRegister()
+    {
+        this.registerButton.setEnabled(true);
+        this.loginButton.setEnabled(false);
+        this.submitButton.setActionCommand("register");
+    }
 }

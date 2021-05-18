@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
 
 /**
  *
@@ -44,6 +45,16 @@ public class DBListener implements ActionListener {
             User newUser = new User(panel.getUserInput().getText(),panel.getPassInput().getText());
             addUser(newUser);
         }
+        else if (e.getActionCommand().equals("login"))
+        {
+            String userInput = panel.getUserInput().getText();
+            String passInput = panel.getPassInput().getText();
+            
+            if (findUser(userInput, passInput) == true)
+            {
+                User existingUser = new User(userInput,passInput);
+            }
+        }
        
     }
 
@@ -53,9 +64,31 @@ public class DBListener implements ActionListener {
             Statement stmt = connection.createStatement();
             
             stmt.executeUpdate("INSERT INTO USERS VALUES(" + user.getUserID() + ",'" + user.getName() + "', '" + user.getPassword() + "', " + user.getBudget() + ")");
-            System.out.println("Added user");
+            panel.setTextFeedback("Successfully created new user '"+user.getName()+"'");
         } catch (SQLException ex) {
             Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public boolean findUser(String username, String password)
+    {
+        try {
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM USERS WHERE USERNAME = '"+username+"' AND PASSWORD = '"+password+"'");
+            if (rs.next())
+            {
+                panel.setTextFeedback("User '"+username+"' was found, loading data...");
+                return true;
+            }
+            else
+            {
+                panel.setTextFeedback("Username and password combination not found");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 }

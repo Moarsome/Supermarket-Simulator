@@ -27,6 +27,7 @@ public class User {
      *
      * @param budget
      * @param name
+     * @param password
      */
     
     public User(float budget, String name, String password)
@@ -183,9 +184,9 @@ public class User {
         return this.userID;
     }  
     
-    public int getPassword()
+    public String getPassword()
     {
-        return this.userID;
+        return this.password;
     }  
     
 }
