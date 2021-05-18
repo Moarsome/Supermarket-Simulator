@@ -12,6 +12,7 @@ import java.util.Scanner;
  *
  * @author kyliec
  */
+
 public class SupermarketSimulator {
 
     /**
@@ -33,11 +34,10 @@ public class SupermarketSimulator {
 
         isleManagement.changeIsle(1);
 
-        while (user.getIsShopping() == true) {
-
+        while (user.getIsShopping() == true) 
+        {
             parseUserCommand(fileManagement, user, scan, isleManagement, itemManagement);
         }
-
     }
 
     /**
@@ -195,18 +195,19 @@ public class SupermarketSimulator {
     
     public static boolean checkAlpha(String s) {
         s = s.toLowerCase();
-        if (s == null) {
+        if (s == null) 
+        {
             return false;
         }
 
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) 
+        {
             char c = s.charAt(i);
 
             if (!(c >= 'a' && c <= 'z')) {
                 return false;
             }
         }
-
         return true;
     }
 }

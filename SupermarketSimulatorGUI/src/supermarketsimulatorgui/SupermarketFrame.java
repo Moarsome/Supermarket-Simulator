@@ -5,7 +5,6 @@
  */
 package supermarketsimulatorgui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
 
@@ -19,6 +18,7 @@ public class SupermarketFrame extends JFrame{
         SupermarketFrame frame = new SupermarketFrame();
         MainPanel mainPanel = new MainPanel();
         LoginPanel loginPanel = new LoginPanel(mainPanel);
+        mainPanel.setVisible(false);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(true);
