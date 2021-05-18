@@ -42,6 +42,8 @@ public class DBListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) 
     {
+        
+        
         if (e.getActionCommand().equals("register"))
         {
             User newUser = new User(panel.getUserInput().getText(),panel.getPassInput().getText());

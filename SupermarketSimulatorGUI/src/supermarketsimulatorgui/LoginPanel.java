@@ -5,22 +5,16 @@
  */
 package supermarketsimulatorgui;
 
-import javax.swing.BoxLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -63,10 +57,12 @@ public final class LoginPanel extends StarterPanel {
         loginHeader.setAlignmentX(CENTER_ALIGNMENT);
         
         userInput = new JTextField("Username");
-        userInput.setFont(new Font("Verdana", Font.ITALIC,16));
+        userInput.addFocusListener(new FieldFocusListener());
+        userInput.setFont(new Font("Avenir", Font.ITALIC,16));
         userInput.setForeground(Color.DARK_GRAY);
         passInput = new JPasswordField("Password");
-        passInput.setFont(new Font("Verdana", Font.ITALIC,16));
+        passInput.addFocusListener(new FieldFocusListener());
+        passInput.setFont(new Font("Avenir", Font.ITALIC,16));
         passInput.setForeground(Color.DARK_GRAY);
         
         submitButton = createNewButton(resizeComponent("./resources/submit.png", 208, 40));
