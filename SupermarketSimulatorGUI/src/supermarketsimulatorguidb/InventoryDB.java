@@ -12,6 +12,7 @@ package supermarketsimulatorguidb;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import supermarketsimulatorgui.ItemDatabase;
 
 public class InventoryDB {
@@ -24,20 +25,20 @@ public class InventoryDB {
         dbManager.establishConnection();
         itemID = 0;
         items = new ArrayList<ItemDatabase>();
-        
-        
-        for (ItemDatabase itdb: ItemDatabase.values())
-        {
-            
-        }
+        items.addAll(Arrays.asList(ItemDatabase.values()));
     }
     
     public void createInventoryTable() {
-        dbManager.updateDB("CREATE TABLE INVENTORY (ITEM_ID INT, NAME VARCHAR(50), PRICE FLOAT, STOCK INT)");
+        dbManager.updateDB("CREATE TABLE INVENTORY (ITEM_ID INT, NAME VARCHAR(50), PRICE FLOAT)");
         }
       
     
-    public void addInventory(String user, String pass, float budget) {
-        dbManager.updateDB("INSERT INTO INVENTORY VALUES("+itemID+"'" + user + "', '" + pass + "', " + budget + ")");
+    public void fillInventoryTable() {
+        
+        for (int i = 0; i < items.size(); i++)
+        {
+         dbManager.updateDB("INSERT INTO INVENTORY VALUES('" + items.get(i).getName() + "'," + items.get(i).getPrice() + ")");
+         //dbManager.updateDB("INSERT INTO INVENTORY VALUES("+itemID+",'" + items.get(i).getName() + "'," + items.get(i).getPrice() + ")");
+        }
     }
 }
