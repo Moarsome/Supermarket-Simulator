@@ -10,7 +10,7 @@ public class SupermarketDBMain {
         InventoryDB inventory = new InventoryDB();
         user.createUserTable();
         inventory.createInventoryTable();
-        //inventory.fillInventoryTable();
+        inventory.fillInventoryTable();
     }
 
 }
