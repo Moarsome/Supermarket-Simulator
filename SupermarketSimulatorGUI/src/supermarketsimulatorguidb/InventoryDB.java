@@ -26,6 +26,11 @@ public class InventoryDB {
         itemID = 0;
         items = new ArrayList<ItemDatabase>();
         items.addAll(Arrays.asList(ItemDatabase.values()));
+       
+        for (int i = 0; i < items.size(); i++)
+        {
+            System.out.println(items.get(i).getName());
+        }
     }
     
     public void createInventoryTable() {
@@ -37,8 +42,8 @@ public class InventoryDB {
         
         for (int i = 0; i < items.size(); i++)
         {
-         dbManager.updateDB("INSERT INTO INVENTORY VALUES('" + items.get(i).getName() + "'," + items.get(i).getPrice() + ")");
-         //dbManager.updateDB("INSERT INTO INVENTORY VALUES("+itemID+",'" + items.get(i).getName() + "'," + items.get(i).getPrice() + ")");
+         dbManager.updateDB("INSERT INTO INVENTORY VALUES("+itemID+",'" + items.get(i).getName() + "'," + items.get(i).getPrice() + ")");
+         itemID++;
         }
     }
 }
