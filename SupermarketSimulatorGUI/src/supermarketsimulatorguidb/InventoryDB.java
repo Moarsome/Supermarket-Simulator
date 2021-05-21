@@ -26,11 +26,6 @@ public class InventoryDB {
         itemID = 0;
         items = new ArrayList<ItemDatabase>();
         items.addAll(Arrays.asList(ItemDatabase.values()));
-       
-        for (int i = 0; i < items.size(); i++)
-        {
-            System.out.println(items.get(i).getName());
-        }
     }
     
     public void createInventoryTable() {

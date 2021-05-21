@@ -52,3 +52,9 @@ java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
 	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 Cleanup action completed
+----------------------------------------------------------------
+Thu May 20 12:57:47 NZST 2021: Shutting down Derby engine
+----------------------------------------------------------------
+Thu May 20 12:57:47 NZST 2021:
+Shutting down instance a816c00e-0179-86aa-f6ae-ffffaa351cea on database directory /Users/poyanpayandeh/NetBeansProjects/supermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+----------------------------------------------------------------
