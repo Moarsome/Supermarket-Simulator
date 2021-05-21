@@ -34,7 +34,7 @@ public class MainPanel extends JPanel {
         //layeredPane.setBounds(0, 200, 400, 400);
         
         bodyPanel.setBounds(0,100,750,750);
-        itemPanel.setBounds(0, 160, 750, 450);
+        itemPanel.setBounds(0, 160, 750, 350);
         layeredPane.add(bodyPanel,JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(itemPanel,JLayeredPane.PALETTE_LAYER);
         

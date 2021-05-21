@@ -8,6 +8,7 @@ package supermarketsimulatorgui;
 import static java.awt.Component.TOP_ALIGNMENT;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -64,5 +65,10 @@ abstract class StarterPanel extends JPanel{
         return tempImage;
     }
     
+    public void changeGridLayout(GridBagConstraints constraints, int x, int y)
+    {
+        constraints.gridx = x;
+        constraints.gridy = y;
+    }
     
 }

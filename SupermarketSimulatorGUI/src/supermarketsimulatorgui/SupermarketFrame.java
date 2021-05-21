@@ -18,7 +18,7 @@ public class SupermarketFrame extends JFrame{
         SupermarketFrame frame = new SupermarketFrame();
         MainPanel mainPanel = new MainPanel();
         LoginPanel loginPanel = new LoginPanel(mainPanel);
-        mainPanel.setVisible(false);
+        loginPanel.setVisible(false);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(true);

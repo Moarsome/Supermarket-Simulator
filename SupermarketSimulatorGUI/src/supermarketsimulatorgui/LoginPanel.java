@@ -105,12 +105,6 @@ public final class LoginPanel extends StarterPanel {
         
         this.setOpaque(false);
     }
-    
-    public void changeGridLayout(GridBagConstraints constraints, int x, int y)
-    {
-        constraints.gridx = x;
-        constraints.gridy = y;
-    }
 
     /**
      * @return the userInput

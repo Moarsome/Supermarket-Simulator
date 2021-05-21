@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Fri May 21 13:51:23 NZST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-8c9e-b9d6-00000ecb9818 
-on database directory /Users/poyanpayandeh/NetBeansProjects/supermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@355da254 
-Loaded from file:/Users/poyanpayandeh/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+Sat May 22 11:37:54 NZST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-914a-e2bd-000007681c00 
+on database directory /Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+Loaded from file:/Users/kyliec/Downloads/db-derby-10.14.2.0-lib/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=14.0.1+7
-user.dir=/Users/poyanpayandeh/NetBeansProjects/supermarketSimulatorGUI/SupermarketSimulatorGUI
+java.runtime.version=14.0.2+12-46
+user.dir=/Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI
 os.name=Mac OS X
 os.arch=x86_64
-os.version=10.16
+os.version=10.15.7
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
