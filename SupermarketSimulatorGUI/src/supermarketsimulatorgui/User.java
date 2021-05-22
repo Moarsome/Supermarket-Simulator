@@ -30,7 +30,7 @@ public class User {
      * @param password
      */
     
-    public User(float budget, String name, String password)
+    public User(String name, String password, float budget)
     {
         userStaticID++;
         
@@ -39,45 +39,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.isShopping = true;
-        this.inventory = new HashMap<ItemDatabase, Integer>();
-    }
-    
-    /**
-     * 2nd Constructor for user
-     *
-     * @param name
-     * @param password
-     */
-    
-    public User(String name, String password)
-    {
-        userStaticID++;
-        
-        this.userID = userStaticID;
-        this.budget = 0.0f;
-        this.name = name;
-        this.password = password;
-        this.isShopping = true;
-        this.inventory = new HashMap<ItemDatabase, Integer>();
-    }
-    
-    /**
-     * 3rd Constructor for user
-     *
-     * @param user
-     * @param password
-     */
-    
-    public User(User user, String password)
-    {
-        userStaticID++;
-        
-        
-        this.userID = userStaticID;
-        this.budget = user.budget;
-        this.name = user.name;
-        this.password = password;
-        this.isShopping = true;
+        this.inventory = new HashMap<>();
     }
     
     /**

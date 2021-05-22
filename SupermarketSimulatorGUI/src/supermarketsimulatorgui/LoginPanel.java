@@ -27,16 +27,18 @@ import javax.swing.JTextField;
  * @author kyliec
  */
 public final class LoginPanel extends StarterPanel {
-    private final JLabel userIcon;
-    private final JLabel loginHeader;
-    private final JLabel textFeedback;
-    private final JTextField userInput;
-    private final JPasswordField passInput;
-    private final JButton submitButton;
-    private final JButton loginButton;
-    private final JButton registerButton;
-    private final JPanel innerPane;
+    private JLabel userIcon;
+    private JLabel loginHeader;
+    private JLabel textFeedback;
+    private JTextField budgetInput;
+    private JTextField userInput;
+    private JPasswordField passInput;
+    private JButton submitButton;
+    private JButton loginButton;
+    private JButton registerButton;
+    private JPanel innerPane;
     private final MainPanel mainPanel;
+    private User user;
     
     public LoginPanel(MainPanel mainPanel)
     {
@@ -45,6 +47,13 @@ public final class LoginPanel extends StarterPanel {
         this.setSize(new Dimension(750,750));
         this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
         
+        addComponents(this);
+        
+        this.setOpaque(false);
+    }
+
+    public void addComponents(LoginPanel panel)
+    {
         innerPane = new JPanel();
         innerPane.setMaximumSize(new Dimension(300,230));
         innerPane.setAlignmentY(TOP_ALIGNMENT);
@@ -59,19 +68,18 @@ public final class LoginPanel extends StarterPanel {
         loginHeader = new JLabel(resizeComponent("./resources/shoppingLogo.png", 509,124));
         loginHeader.setAlignmentX(CENTER_ALIGNMENT);
         
+        budgetInput = new JTextField("Enter budget");
+        designTextField(budgetInput);
+        
         userInput = new JTextField("Username");
-        userInput.addFocusListener(new FieldFocusListener());
-        userInput.setFont(new Font("Avenir", Font.ITALIC,16));
-        userInput.setForeground(Color.DARK_GRAY);
+        designTextField(userInput);
+        
         passInput = new JPasswordField("Password");
-        passInput.addFocusListener(new FieldFocusListener());
-        passInput.setFont(new Font("Avenir", Font.ITALIC,16));
-        passInput.setForeground(Color.DARK_GRAY);
+        designTextField(passInput);
         
         submitButton = createNewButton(resizeComponent("./resources/submit.png", 208, 40));
         submitButton.setActionCommand("register");
         submitButton.addActionListener(new DBListener(this, mainPanel));
-        
         
         loginButton = createNewButton(resizeComponent("./resources/login.png", 104, 40));
         loginButton.setActionCommand("login");
@@ -84,7 +92,11 @@ public final class LoginPanel extends StarterPanel {
         textFeedback = new JLabel("Enter registration details or choose 'login' to access an existing user");
         textFeedback.setAlignmentX(CENTER_ALIGNMENT);
         
-        changeGridLayout(constraints, 0, 0);
+        constraints.gridwidth = 2;
+        innerPane.add(budgetInput,constraints);
+        budgetInput.setVisible(false);
+
+        constraints.gridwidth = 1;
         innerPane.add(registerButton,constraints);
         changeGridLayout(constraints, 1, 0);
         innerPane.add(loginButton,constraints);
@@ -96,16 +108,28 @@ public final class LoginPanel extends StarterPanel {
         changeGridLayout(constraints, 0, 2);
         innerPane.add(passInput, constraints);
         
-        this.add(Box.createRigidArea(new Dimension(0, 20)));
-        this.add(loginHeader);
-        this.add(Box.createRigidArea(new Dimension(0, 40)));
-        this.add(userIcon);
-        this.add(innerPane);
-        this.add(textFeedback);
-        
-        this.setOpaque(false);
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
+        panel.add(loginHeader);
+        panel.add(Box.createRigidArea(new Dimension(0, 40)));
+        panel.add(userIcon);
+        panel.add(innerPane);
+        panel.add(textFeedback);
     }
-
+    
+    public void switchToSetBudget()
+    {
+        registerButton.setVisible(false);
+        loginButton.setVisible(false);
+        userInput.setVisible(false);
+        passInput.setVisible(false);
+        budgetInput.setVisible(true);
+    }
+    
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
+    
     /**
      * @return the userInput
      */

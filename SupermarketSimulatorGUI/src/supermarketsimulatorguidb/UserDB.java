@@ -18,7 +18,6 @@ public class UserDB {
     public UserDB() throws SQLException {
         dbManager = new DBManager();
         dbManager.establishConnection();
-        
     }
 
     public void createUserTable() 

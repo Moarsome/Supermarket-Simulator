@@ -26,14 +26,14 @@ public final class HeaderPanel extends StarterPanel {
     private final IsleMarker isleManager;
     private final User user;
     
-    public HeaderPanel(BodyPanel panel)
+    public HeaderPanel(BodyPanel panel, User user)
     {
-        user = new User(200.0f, "test", "test");
-        isleManager = new IsleMarker(user);
+        this.user = user;
+        
+        isleManager = new IsleMarker();
         isleManager.setIsle(1);
         
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
-        
         
         leftIsleButton = createNewButton(new ImageIcon("./resources/left.png"));
         leftIsleButton.setActionCommand("leftIsle");
@@ -43,7 +43,7 @@ public final class HeaderPanel extends StarterPanel {
         checkoutButton = createNewButton(resizeComponent("./resources/checkout.png",100,40));
         checkoutButton.setActionCommand("checkout");
         
-        budgetLabel = new JLabel("$"+user.getBudget());
+        budgetLabel = new JLabel("$00.00");
         budgetLabel.setForeground(Color.getHSBColor(0.336f, .228f, .6f));
         setLabelSize(budgetLabel);
         
@@ -57,17 +57,22 @@ public final class HeaderPanel extends StarterPanel {
         rightIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel));
         checkoutButton.addActionListener(new IsleChangeListener(isleManager,this, panel));
         
-        addSpace(this,10);
+        addSpace(this,10, 0);
         this.add(leftIsleButton);
-        addSpace(this,80);
+        addSpace(this,80, 0);
         this.add(budgetLabel);
         this.add(checkoutButton);
         this.add(cartLabel);
-        addSpace(this,80);
+        addSpace(this,80, 0);
         this.add(rightIsleButton);
-        addSpace(this,10);
+        addSpace(this,10, 0);
         
         this.setOpaque(false);
+    }
+    
+    public void setBudgetLabel(float value)
+    {
+        this.budgetLabel.setText("$"+value);
     }
     
     public void enableLeftIsleButton()

@@ -5,6 +5,7 @@
  */
 package supermarketsimulatorgui;
 
+import java.awt.Color;
 import static java.awt.Component.TOP_ALIGNMENT;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,9 +14,11 @@ import java.awt.Image;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import supermarketsimulatorlisteners.FieldFocusListener;
 
 /**
  * This abstract class provides vital methods related to the supermarket simulator
@@ -39,9 +42,16 @@ abstract class StarterPanel extends JPanel{
         return tempButton;
     }
     
-    public void addSpace(JPanel panel, int xSpace)
+    public void addSpace(JPanel panel, int xSpace, int ySpace)
     {
-        panel.add(Box.createRigidArea(new Dimension(xSpace, 0)));
+        panel.add(Box.createRigidArea(new Dimension(xSpace, ySpace)));
+    }
+    
+    public void designTextField(JComponent comp)
+    {
+        comp.addFocusListener(new FieldFocusListener());
+        comp.setFont(new Font("Avenir", Font.ITALIC,16));
+        comp.setForeground(Color.DARK_GRAY);
     }
     
     public void setLabelSize(JLabel label)

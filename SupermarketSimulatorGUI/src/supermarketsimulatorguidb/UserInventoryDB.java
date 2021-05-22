@@ -25,11 +25,11 @@ public class UserInventoryDB {
     }
     
     public void createInventoryTable() {
-        dbManager.updateDB("CREATE TABLE INVENTORY (USER_ID INT, ITEM_ID INT, NAME VARCHAR(50), STOCK INT)");
+        dbManager.updateDB("CREATE TABLE USER_INVENTORY (USER_ID INT, ITEM_ID INT, NAME VARCHAR(50), STOCK INT)");
         }
     
     public void addInventory(int userID, int number) {
-        dbManager.updateDB("INSERT INTO INVENTORY VALUES("+userID+","+itemID+",'" + getUserFromID(userID) + "'," + number + ")");
+        dbManager.updateDB("INSERT INTO USER_INVENTORY VALUES("+userID+","+itemID+",'" + getUserFromID(userID) + "'," + number + ")");
     }
     
     public String getUserFromID(int userID)

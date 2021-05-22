@@ -28,7 +28,6 @@ public class BodyPanel extends StarterPanel
         shelvesImage = new ImageIcon(newimg);
         
         isleLabel = new JLabel("ISLE 1 - DRINKS");
-        isleLabel.setBorder(new EmptyBorder(10, 0, 0, 0));
         isleLabel.setFont(new Font("Avenir", Font.PLAIN, 30));
         isleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
@@ -36,11 +35,9 @@ public class BodyPanel extends StarterPanel
         shelves.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         this.setOpaque(false);
-        this.addSpace(this,30);
         this.add(isleLabel);
-        this.addSpace(this,30);
+        this.addSpace(this,0, 40);
         this.add(shelves);
-        this.addSpace(this,70);
     }
     
     public void setIsleLabel(String newText)

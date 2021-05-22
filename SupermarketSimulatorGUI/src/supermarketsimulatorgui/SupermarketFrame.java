@@ -15,17 +15,21 @@ import javax.swing.*;
 public class SupermarketFrame extends JFrame{
     public static void main(String[] args) 
     {
+        IsleMarker isleManagement = new IsleMarker();
         SupermarketFrame frame = new SupermarketFrame();
-        MainPanel mainPanel = new MainPanel();
+        MainPanel mainPanel = new MainPanel(isleManagement);
         LoginPanel loginPanel = new LoginPanel(mainPanel);
-        loginPanel.setVisible(false);
+        mainPanel.setVisible(false);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setUndecorated(true);
+        frame.setUndecorated(false);
         frame.getContentPane().setBackground(Color.getHSBColor(.678f, 0.46f, 1.0f));
         frame.add(loginPanel);
         frame.add(mainPanel);
+        frame.pack();
+        frame.getContentPane().requestFocusInWindow();
         frame.setSize(750,750);
         frame.setVisible(true);
+        frame.setResizable(false);
     }
 }

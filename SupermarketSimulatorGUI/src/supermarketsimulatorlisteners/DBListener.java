@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import java.util.Objects;
 import supermarketsimulatorgui.LoginPanel;
 import supermarketsimulatorgui.MainPanel;
 import supermarketsimulatorgui.User;
@@ -45,11 +46,11 @@ public class DBListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        
-        
         if (e.getActionCommand().equals("register"))
         {
-            User newUser = new User(panel.getUserInput().getText(),panel.getPassInput().getText());
+            User newUser = new User(panel.getUserInput().getText(),panel.getPassInput().getText(), 200.0f);
+            panel.setUser(newUser);
+            mainPanel.setUser(newUser);
             addUser(newUser);
         }
         else if (e.getActionCommand().equals("login"))
@@ -57,9 +58,14 @@ public class DBListener implements ActionListener {
             String userInput = panel.getUserInput().getText();
             String passInput = panel.getPassInput().getText();
             
-            if (findUser(userInput, passInput) == true)
+            Float tempBudget = findUser(userInput, passInput);
+            
+            if (!Objects.equals(tempBudget, (Float) null))
             {
-                User existingUser = new User(userInput,passInput);
+                User existingUser = new User(userInput,passInput, tempBudget);
+                panel.setUser(existingUser);
+                mainPanel.setUser(existingUser);
+                mainPanel.getHeaderPanel().setBudgetLabel(tempBudget);
                 switchToMainPanel();
             }
         }
@@ -73,6 +79,7 @@ public class DBListener implements ActionListener {
             
             stmt.executeUpdate("INSERT INTO USERS VALUES(" + user.getUserID() + ",'" + user.getName() + "', '" + user.getPassword() + "', " + user.getBudget() + ")");
             panel.setTextFeedback("Successfully created new user '"+user.getName()+"'");
+            mainPanel.getHeaderPanel().setBudgetLabel(user.getBudget());
             
             switchToMainPanel();
         } catch (SQLException ex) {
@@ -80,7 +87,7 @@ public class DBListener implements ActionListener {
         }
     }
     
-    public boolean findUser(String username, String password)
+    public float findUser(String username, String password)
     {
         try {
             Statement stmt = connection.createStatement();
@@ -89,7 +96,7 @@ public class DBListener implements ActionListener {
             if (rs.next())
             {
                 panel.setTextFeedback("User '"+username+"' was found, loading data...");
-                return true;
+                return rs.findColumn("BUDGET");
             }
             else
             {
@@ -99,7 +106,7 @@ public class DBListener implements ActionListener {
             Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return false;
+        return (Float) null;
     }
     
     public void switchToMainPanel()

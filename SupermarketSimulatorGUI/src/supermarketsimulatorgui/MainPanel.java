@@ -6,8 +6,6 @@
 package supermarketsimulatorgui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -17,14 +15,17 @@ import javax.swing.JPanel;
  */
 public class MainPanel extends JPanel {
 
-    public MainPanel()
+    private User user;
+    private HeaderPanel headerPanel;
+    
+    public MainPanel(IsleMarker isleManagement)
     {
         this.setLayout(new BorderLayout());
         JLayeredPane layeredPane = new JLayeredPane();
-        ItemDisplayPanel itemPanel = new ItemDisplayPanel();
+        ItemDisplayPanel itemPanel = new ItemDisplayPanel(isleManagement);
         FooterPanel footerPanel = new FooterPanel();
         BodyPanel bodyPanel = new BodyPanel();
-        HeaderPanel headerPanel = new HeaderPanel(bodyPanel);
+        headerPanel = new HeaderPanel(bodyPanel, user);
         
         this.setOpaque (false);
 
@@ -33,7 +34,7 @@ public class MainPanel extends JPanel {
         //layeredPane.setPreferredSize(new Dimension(500,500));
         //layeredPane.setBounds(0, 200, 400, 400);
         
-        bodyPanel.setBounds(0,100,750,750);
+        bodyPanel.setBounds(0,70,750,750);
         itemPanel.setBounds(0, 160, 750, 350);
         layeredPane.add(bodyPanel,JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(itemPanel,JLayeredPane.PALETTE_LAYER);
@@ -45,9 +46,19 @@ public class MainPanel extends JPanel {
         this.setVisible(true);
     }
     
+    public HeaderPanel getHeaderPanel()
+    {
+        return this.headerPanel;
+    }
+    
     public void enableVisible()
     {
         this.setVisible(true);
+    }
+    
+    public void setUser(User user)
+    {
+        this.user = user;
     }
     
 }
