@@ -5,7 +5,7 @@
  */
 package supermarketsimulatorgui;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * User class for the Supermarket simulator
@@ -15,31 +15,26 @@ public class User {
     private static int userStaticID = 0;
     
     private float budget;
+    private float cartCost;
     private int userID;
     private String name;
     private String password;
     private boolean isShopping;
-    private HashMap<ItemDatabase, Integer> inventory;
-    private float cart;
+    private ArrayList<ItemDatabase> inventory;
     
     /**
      * Constructor for user
      *
-     * @param budget
-     * @param name
-     * @param password
      */
     
-    public User(String name, String password, float budget)
+    public User()
     {
         userStaticID++;
         
         this.userID = userStaticID;
-        this.budget = budget;
-        this.name = name;
-        this.password = password;
         this.isShopping = true;
-        this.inventory = new HashMap<>();
+        this.inventory = new ArrayList<>();
+        this.cartCost = 0.0f;
     }
     
     /**
@@ -109,23 +104,23 @@ public class User {
      * getter for the user cart
      * @return float cart
      */
-    public float getCart() {
-        return cart;
+    public float getCartCost() {
+        return cartCost;
     }
     
     /**
      * setter for the user cart
      * @param cart 
      */
-    public void setCart(float cart) {
-        this.cart = cart;
+    public void addCartCost(float cartCost) {
+        this.cartCost += cartCost;
     }
 
     /**
      * getter for the user inventory
      * @return the inventory
      */
-    public HashMap<ItemDatabase, Integer> getInventory() {
+    public ArrayList<ItemDatabase> getInventory() {
         return inventory;
     }
 
@@ -133,18 +128,33 @@ public class User {
      * setter for the user inventory
      * @param inventory the inventory to set
      */
-    public void setInventory(HashMap<ItemDatabase, Integer> inventory) {
+    public void setInventory(ArrayList<ItemDatabase> inventory) {
         this.inventory = inventory;
     }
     
-    public void addInventory(ItemDatabase item, int stock) {
-        inventory.put(item, stock);
+    public void addInventory(ItemDatabase item) {
+        inventory.add(item);
     }
     
     public int getUserID()
     {
         return this.userID;
     }  
+    
+    public void setUsername(String name)
+    {
+        this.name = name;
+    }
+    
+    public String getUsername()
+    {
+        return this.name;
+    }
+    
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
     
     public String getPassword()
     {

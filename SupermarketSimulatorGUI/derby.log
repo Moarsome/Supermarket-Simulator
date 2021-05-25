@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue May 25 20:41:15 NZST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-a2af-679a-000003f09fb0 
+Wed May 26 11:10:46 NZST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-a5cb-783b-000003edf138 
 on database directory /Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
 Loaded from file:/Users/kyliec/Downloads/db-derby-10.14.2.0-lib/lib/derby.jar
 java.vendor=Oracle Corporation

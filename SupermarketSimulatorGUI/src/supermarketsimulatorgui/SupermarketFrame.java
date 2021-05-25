@@ -15,9 +15,10 @@ import javax.swing.*;
 public class SupermarketFrame extends JFrame{
     public static void main(String[] args) 
     {
+        User user = new User();
         SupermarketFrame frame = new SupermarketFrame();
-        MainPanel mainPanel = new MainPanel();
-        LoginPanel loginPanel = new LoginPanel(mainPanel);
+        MainPanel mainPanel = new MainPanel(user);
+        LoginPanel loginPanel = new LoginPanel(mainPanel, user);
         mainPanel.setVisible(false);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

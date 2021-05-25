@@ -32,10 +32,7 @@ public class SelectItem {
     public void addToCart(ItemDatabase item)
     {
         cart.add(item);
-        user.setCart(user.getCart() + item.getPrice());
-        
-        System.out.println("'"+item.getName()+"' added to cart, total cart cost is $"+user.getCart());
-        
+        user.addCartCost(item.getPrice());
     }
     /**
      * removes selected item for cart
@@ -44,7 +41,7 @@ public class SelectItem {
     public void removeFromCart(ItemDatabase item)
     {
         cart.remove(item);
-        user.setCart(user.getCart() - item.getPrice());
+        user.addCartCost(-1*item.getPrice());
     }
     
     

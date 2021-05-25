@@ -5,12 +5,9 @@
  */
 package supermarketsimulatorgui;
 
-import supermarketsimulatorlisteners.MiscActionListener;
+import supermarketsimulatorlisteners.LoginListener;
 import supermarketsimulatorlisteners.DBListener;
-import supermarketsimulatorlisteners.FieldFocusListener;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -40,19 +37,20 @@ public final class LoginPanel extends StarterPanel {
     private final MainPanel mainPanel;
     private User user;
     
-    public LoginPanel(MainPanel mainPanel)
+    public LoginPanel(MainPanel mainPanel, User user)
     {
         this.mainPanel = mainPanel;
+        this.user = user;
         
         this.setSize(new Dimension(750,750));
         this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
         
-        addComponents(this);
+        createComponents();
         
         this.setOpaque(false);
     }
 
-    public void addComponents(LoginPanel panel)
+    public void createComponents()
     {
         innerPane = new JPanel();
         innerPane.setMaximumSize(new Dimension(300,230));
@@ -83,15 +81,21 @@ public final class LoginPanel extends StarterPanel {
         
         loginButton = createNewButton(resizeComponent("./resources/login.png", 104, 40));
         loginButton.setActionCommand("login");
-        loginButton.addActionListener(new MiscActionListener(this));
+        loginButton.addActionListener(new LoginListener(this));
+        
         registerButton = createNewButton(resizeComponent("./resources/register.png", 104, 40));
         registerButton.setActionCommand("register");
-        registerButton.addActionListener(new MiscActionListener(this));
+        registerButton.addActionListener(new LoginListener(this));
         registerButton.setEnabled(false);
         
         textFeedback = new JLabel("Enter registration details or choose 'login' to access an existing user");
         textFeedback.setAlignmentX(CENTER_ALIGNMENT);
         
+        addComponents(constraints);
+    }
+    
+    public void addComponents(GridBagConstraints constraints)
+    {
         constraints.gridwidth = 2;
         innerPane.add(budgetInput,constraints);
         budgetInput.setVisible(false);
@@ -108,12 +112,12 @@ public final class LoginPanel extends StarterPanel {
         changeGridLayout(constraints, 0, 2);
         innerPane.add(passInput, constraints);
         
-        panel.add(Box.createRigidArea(new Dimension(0, 20)));
-        panel.add(loginHeader);
-        panel.add(Box.createRigidArea(new Dimension(0, 40)));
-        panel.add(userIcon);
-        panel.add(innerPane);
-        panel.add(textFeedback);
+        this.add(Box.createRigidArea(new Dimension(0, 20)));
+        this.add(loginHeader);
+        this.add(Box.createRigidArea(new Dimension(0, 40)));
+        this.add(userIcon);
+        this.add(innerPane);
+        this.add(textFeedback);
     }
     
     public void switchToSetBudget()

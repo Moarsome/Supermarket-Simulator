@@ -26,12 +26,14 @@ import supermarketsimulatorgui.User;
 public class DBListener implements ActionListener 
 {
     private Connection connection;
-    private LoginPanel panel;
+    private LoginPanel loginPanel;
     private MainPanel mainPanel;
+    private User user;
     
-    public DBListener(LoginPanel panel, MainPanel mainPanel)
+    public DBListener(LoginPanel loginPanel, MainPanel mainPanel)
     {
-        this.panel = panel;
+        this.user = mainPanel.getUser();
+        this.loginPanel = loginPanel;
         this.mainPanel = mainPanel;
         
         try 
@@ -48,23 +50,24 @@ public class DBListener implements ActionListener
     {
         if (e.getActionCommand().equals("register"))
         {
-            User newUser = new User(panel.getUserInput().getText(),panel.getPassInput().getText(), 200.0f);
-            panel.setUser(newUser);
-            mainPanel.setUser(newUser);
-            addUser(newUser);
+            user.setUsername(loginPanel.getUserInput().getText());
+            user.setPassword(loginPanel.getPassInput().getText());
+            user.setBudget(200.0f);
+            addUser(user);
         }
         else if (e.getActionCommand().equals("login"))
         {
-            String userInput = panel.getUserInput().getText();
-            String passInput = panel.getPassInput().getText();
+            String userInput = loginPanel.getUserInput().getText();
+            String passInput = loginPanel.getPassInput().getText();
             
             Float tempBudget = findUser(userInput, passInput);
             
             if (!Objects.equals(tempBudget, (Float) null))
             {
-                User existingUser = new User(userInput,passInput, tempBudget);
-                panel.setUser(existingUser);
-                mainPanel.setUser(existingUser);
+                user.setUsername(userInput);
+                user.setPassword(passInput);
+                user.setBudget(tempBudget);
+                
                 mainPanel.getHeaderPanel().setBudgetLabel(tempBudget);
                 switchToMainPanel();
             }
@@ -74,15 +77,17 @@ public class DBListener implements ActionListener
 
     public void addUser(User user) 
     {
-        try {
+        try 
+        {
             Statement stmt = connection.createStatement();
             
             stmt.executeUpdate("INSERT INTO USERS VALUES(" + user.getUserID() + ",'" + user.getName() + "', '" + user.getPassword() + "', " + user.getBudget() + ")");
-            panel.setTextFeedback("Successfully created new user '"+user.getName()+"'");
+            loginPanel.setTextFeedback("Successfully created new user '"+user.getName()+"'");
             mainPanel.getHeaderPanel().setBudgetLabel(user.getBudget());
             
             switchToMainPanel();
-        } catch (SQLException ex) {
+        } catch (SQLException ex) 
+        {
             Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -95,12 +100,12 @@ public class DBListener implements ActionListener
             ResultSet rs = stmt.executeQuery("SELECT * FROM USERS WHERE USERNAME = '"+username+"' AND PASSWORD = '"+password+"'");
             if (rs.next())
             {
-                panel.setTextFeedback("User '"+username+"' was found, loading data...");
+                loginPanel.setTextFeedback("User '"+username+"' was found, loading data...");
                 return rs.findColumn("BUDGET");
             }
             else
             {
-                panel.setTextFeedback("Username and password combination not found");
+                loginPanel.setTextFeedback("Username and password combination not found");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +116,7 @@ public class DBListener implements ActionListener
     
     public void switchToMainPanel()
     {
-        panel.setVisible(false);
+        loginPanel.setVisible(false);
         mainPanel.enableVisible();
     }
 }

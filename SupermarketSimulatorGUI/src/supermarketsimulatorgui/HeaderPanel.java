@@ -25,12 +25,14 @@ public final class HeaderPanel extends StarterPanel {
     
     private final IsleMarker isleManager;
     private final User user;
+    private MainPanel mainPanel;
     
-    public HeaderPanel(BodyPanel panel, User user, MainPanel mainPanel, IsleMarker isleManager)
+    public HeaderPanel(MainPanel mainPanel)
     {
-        this.user = user;
+        this.mainPanel = mainPanel;
+        this.user = mainPanel.getUser();
         
-        this.isleManager = isleManager;
+        this.isleManager = mainPanel.getIsleMarker();
         this.isleManager.setIsle(1);
         
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
@@ -53,9 +55,9 @@ public final class HeaderPanel extends StarterPanel {
         
         //ComponentListener listener = new ComponentListener(isleManager,this, panel);
         
-        leftIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel, mainPanel));
-        rightIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel, mainPanel));
-        checkoutButton.addActionListener(new IsleChangeListener(isleManager,this, panel, mainPanel));
+        leftIsleButton.addActionListener(new IsleChangeListener(mainPanel));
+        rightIsleButton.addActionListener(new IsleChangeListener(mainPanel));
+        checkoutButton.addActionListener(new IsleChangeListener(mainPanel));
         
         addSpace(this,10, 0);
         this.add(leftIsleButton);
@@ -73,6 +75,11 @@ public final class HeaderPanel extends StarterPanel {
     public void setBudgetLabel(float value)
     {
         this.budgetLabel.setText("$"+value);
+    }
+    
+    public void setCartLabel(float value)
+    {
+        this.cartLabel.setText("$"+value);
     }
     
     public void enableLeftIsleButton()

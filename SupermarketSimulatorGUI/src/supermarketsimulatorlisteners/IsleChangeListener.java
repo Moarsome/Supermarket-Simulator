@@ -22,12 +22,12 @@ public class IsleChangeListener implements ActionListener
     private BodyPanel bodyPanel;
     private MainPanel mainPanel;
     
-    public IsleChangeListener(IsleMarker isleManager, HeaderPanel headerPanel, BodyPanel bodyPanel, MainPanel mainPanel)
+    public IsleChangeListener(MainPanel mainPanel)
     {
         super();
-        this.isleManager = isleManager;
-        this.headerPanel = headerPanel;
-        this.bodyPanel = bodyPanel;
+        this.isleManager = mainPanel.getIsleMarker();
+        this.headerPanel = mainPanel.getHeaderPanel();
+        this.bodyPanel = mainPanel.getBodyPanel();
         this.mainPanel = mainPanel;
     }
     

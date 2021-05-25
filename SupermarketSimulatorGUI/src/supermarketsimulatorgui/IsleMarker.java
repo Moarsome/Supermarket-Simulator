@@ -8,6 +8,7 @@ package supermarketsimulatorgui;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Set;
+import javax.swing.JButton;
 
 /**
  * organizes the ItemDatabase class into Isles
@@ -29,13 +30,21 @@ public class IsleMarker {
     private ArrayList<Set<ItemDatabase>> isles;
     private final String[] isleNames = {"Confectionary", "Snacks", "Drinks", "Alcohol", "Bread", "Pasta & Noodles", "Condiments", "Dairy", "Frozen"};
     private ArrayList<ItemDisplayPanel> itemPanels;
+    private JButton selectedItem;
+    private User user;
+    private MainPanel mainPanel;
+    private BodyPanel bodyPanel;
     /**
      * Constructor for IsleMarker Class
      */
-    public IsleMarker(BodyPanel bodyPanel) {
+    public IsleMarker(MainPanel mainPanel) {
         // ARRAY LIST OF SETS
         isles = new ArrayList<>(isleNames.length);
         itemPanels = new ArrayList<>();
+        selectedItem = null;
+        this.mainPanel = mainPanel;
+        this.bodyPanel = mainPanel.getBodyPanel();
+        this.user = mainPanel.getUser();
         
         isles.add(confectionary);
         isles.add(snacks);
@@ -49,7 +58,7 @@ public class IsleMarker {
         
         for (int i = 0; i < 9; i++)
         {
-            ItemDisplayPanel itemPanel = new ItemDisplayPanel(this, i, bodyPanel);
+            ItemDisplayPanel itemPanel = new ItemDisplayPanel(mainPanel, this, i);
             itemPanel.setVisible(false);
             itemPanel.setBounds(0, 160, 750, 350);
             itemPanels.add(itemPanel);
@@ -162,5 +171,15 @@ public class IsleMarker {
     public ItemDisplayPanel getItemPanel(int isleNum)
     {
         return this.itemPanels.get(isleNum);
+    }
+    
+    public JButton getSelectedItem()
+    {
+        return this.selectedItem;
+    }
+    
+    public void setSelectedItem(JButton selectedItem)
+    {
+        this.selectedItem = selectedItem;
     }
 }

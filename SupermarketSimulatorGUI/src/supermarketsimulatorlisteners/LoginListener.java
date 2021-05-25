@@ -13,10 +13,10 @@ import supermarketsimulatorgui.LoginPanel;
  *
  * @author kyliec
  */
-public class MiscActionListener implements ActionListener{
+public class LoginListener implements ActionListener{
     private final LoginPanel panel;
     
-    public MiscActionListener(LoginPanel panel)
+    public LoginListener(LoginPanel panel)
     {
         this.panel = panel;
     }

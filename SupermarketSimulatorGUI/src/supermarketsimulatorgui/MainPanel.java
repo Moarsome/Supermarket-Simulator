@@ -6,7 +6,6 @@
 package supermarketsimulatorgui;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -14,20 +13,24 @@ import javax.swing.JPanel;
  *
  * @author kyliec
  */
-public class MainPanel extends JPanel {
+public class MainPanel extends JPanel 
+{
 
     private User user;
     private HeaderPanel headerPanel;
+    private BodyPanel bodyPanel;
+    private FooterPanel footerPanel;
     private IsleMarker isleManagement;
     
-    public MainPanel()
+    public MainPanel(User user)
     {
+        this.user = user;
         this.setLayout(new BorderLayout());
         JLayeredPane layeredPane = new JLayeredPane();
-        FooterPanel footerPanel = new FooterPanel();
-        BodyPanel bodyPanel = new BodyPanel();
-        isleManagement = new IsleMarker(bodyPanel);
-        headerPanel = new HeaderPanel(bodyPanel, user, this, isleManagement);
+        footerPanel = new FooterPanel();
+        bodyPanel = new BodyPanel();
+        isleManagement = new IsleMarker(this);
+        headerPanel = new HeaderPanel(this);
         
         for (int i = 0; i < 9; i++)
         {
@@ -55,13 +58,23 @@ public class MainPanel extends JPanel {
         return this.headerPanel;
     }
     
+    public BodyPanel getBodyPanel()
+    {
+        return this.bodyPanel;
+    }
+    
+    public IsleMarker getIsleMarker()
+    {
+        return this.isleManagement;
+    }
+    
+    public User getUser()
+    {
+        return this.user;
+    }
+    
     public void enableVisible()
     {
         this.setVisible(true);
-    }
-    
-    public void setUser(User user)
-    {
-        this.user = user;
     }
 }

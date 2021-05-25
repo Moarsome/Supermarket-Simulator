@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,6 +30,7 @@ abstract class StarterPanel extends JPanel{
     public JButton createNewButton(ImageIcon image)
     {
         JButton tempButton = new JButton(image);
+        tempButton.setBorder(BorderFactory.createLineBorder(Color.WHITE,3));
         tempButton.setBorderPainted(false);
         tempButton.setFocusPainted(false);
         tempButton.setContentAreaFilled(false);
