@@ -28,13 +28,15 @@ public class IsleMarker {
     private int isle = 1;
     private ArrayList<Set<ItemDatabase>> isles;
     private final String[] isleNames = {"Confectionary", "Snacks", "Drinks", "Alcohol", "Bread", "Pasta & Noodles", "Condiments", "Dairy", "Frozen"};
+    private ArrayList<ItemDisplayPanel> itemPanels;
     /**
      * Constructor for IsleMarker Class
      */
-    public IsleMarker() {
+    public IsleMarker(BodyPanel bodyPanel) {
         // ARRAY LIST OF SETS
         isles = new ArrayList<>(isleNames.length);
-
+        itemPanels = new ArrayList<>();
+        
         isles.add(confectionary);
         isles.add(snacks);
         isles.add(drinks);
@@ -44,6 +46,15 @@ public class IsleMarker {
         isles.add(condiments);
         isles.add(dairy);
         isles.add(frozen);
+        
+        for (int i = 0; i < 9; i++)
+        {
+            ItemDisplayPanel itemPanel = new ItemDisplayPanel(this, i, bodyPanel);
+            itemPanel.setVisible(false);
+            itemPanel.setBounds(0, 160, 750, 350);
+            itemPanels.add(itemPanel);
+        }
+        itemPanels.get(0).setVisible(true);
     }
 
     /**
@@ -53,6 +64,7 @@ public class IsleMarker {
      */
     public void changeIsle(int isleChange) {
         this.isle += isleChange;
+        
     }
     
     /**
@@ -63,6 +75,22 @@ public class IsleMarker {
     public ItemDatabase getItem(int selectedItem)
     {
         Set<ItemDatabase> isleDatabase = isles.get(this.isle-1);
+        
+        int index = 0;
+        for (ItemDatabase item:isleDatabase)
+        {
+            if (index == selectedItem)
+            {
+                return item;
+            }
+            index++;
+        }
+        return null;
+    }
+    
+    public ItemDatabase getItem(int selectedItem, int isleNum)
+    {
+        Set<ItemDatabase> isleDatabase = isles.get(isleNum);
         
         int index = 0;
         for (ItemDatabase item:isleDatabase)
@@ -103,8 +131,11 @@ public class IsleMarker {
      * setter method for isle number
      * @param isle the isle to set
      */
-    public void setIsle(int isle) {
+    public void setIsle(int isle) 
+    {
+        itemPanels.get(this.isle-1).setVisible(false);
         this.isle = isle;
+        itemPanels.get(this.isle-1).setVisible(true);
     }
 
     /**
@@ -121,5 +152,15 @@ public class IsleMarker {
      */
     public void setIsles(ArrayList<Set<ItemDatabase>> isles) {
         this.isles = isles;
+    }
+    
+    public ArrayList<ItemDisplayPanel> getItemPanels()
+    {
+        return this.itemPanels;
+    }
+    
+    public ItemDisplayPanel getItemPanel(int isleNum)
+    {
+        return this.itemPanels.get(isleNum);
     }
 }

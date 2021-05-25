@@ -26,12 +26,12 @@ public final class HeaderPanel extends StarterPanel {
     private final IsleMarker isleManager;
     private final User user;
     
-    public HeaderPanel(BodyPanel panel, User user)
+    public HeaderPanel(BodyPanel panel, User user, MainPanel mainPanel, IsleMarker isleManager)
     {
         this.user = user;
         
-        isleManager = new IsleMarker();
-        isleManager.setIsle(1);
+        this.isleManager = isleManager;
+        this.isleManager.setIsle(1);
         
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         
@@ -53,9 +53,9 @@ public final class HeaderPanel extends StarterPanel {
         
         //ComponentListener listener = new ComponentListener(isleManager,this, panel);
         
-        leftIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel));
-        rightIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel));
-        checkoutButton.addActionListener(new IsleChangeListener(isleManager,this, panel));
+        leftIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel, mainPanel));
+        rightIsleButton.addActionListener(new IsleChangeListener(isleManager,this, panel, mainPanel));
+        checkoutButton.addActionListener(new IsleChangeListener(isleManager,this, panel, mainPanel));
         
         addSpace(this,10, 0);
         this.add(leftIsleButton);

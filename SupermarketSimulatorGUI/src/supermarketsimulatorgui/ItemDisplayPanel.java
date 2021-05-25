@@ -12,6 +12,7 @@ import java.awt.Insets;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import supermarketsimulatorlisteners.ItemSelectListener;
 
 /**
  *
@@ -20,11 +21,16 @@ import javax.swing.JPanel;
 public class ItemDisplayPanel extends StarterPanel {
     
     private IsleMarker isleManagement;
-
-    public ItemDisplayPanel(IsleMarker isleManagement) {
+    private BodyPanel bodyPanel;
+    private int isleNum;
+    
+    public ItemDisplayPanel(IsleMarker isleManagement, int isleNum, BodyPanel bodyPanel) 
+    {
         this.setMaximumSize(new Dimension(750, 350));
         this.setLayout(new GridBagLayout());
         this.isleManagement = isleManagement;
+        this.isleNum = isleNum;
+        this.bodyPanel = bodyPanel;
                 
         addPanels(this);
         
@@ -41,16 +47,16 @@ public class ItemDisplayPanel extends StarterPanel {
         
         for (int row = 0; row < 3; row++)
         {
-            ItemDatabase tempItem = isleManagement.getItem(row);
-        for (int column = 0; column < 8; column++)
+            ItemDatabase tempItem = isleManagement.getItem(row, isleNum);
+            for (int column = 0; column < 8; column++)
             {
                 changeGridLayout(c, column, row);
                 JButton tempButton = createNewButton(resizeComponent(tempItem.getImgURL(), 50, 80));
-                tempButton.putClientProperty(tempItem, tempItem.getName());
+                tempButton.putClientProperty("item", tempItem);
+                tempButton.putClientProperty("selected", false);
+                tempButton.addActionListener(new ItemSelectListener(bodyPanel));
                 panel.add(tempButton, c);
             }
         }
-        
-        
     }
 }

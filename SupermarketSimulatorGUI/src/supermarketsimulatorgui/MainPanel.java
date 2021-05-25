@@ -6,6 +6,7 @@
 package supermarketsimulatorgui;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -17,27 +18,30 @@ public class MainPanel extends JPanel {
 
     private User user;
     private HeaderPanel headerPanel;
+    private IsleMarker isleManagement;
     
-    public MainPanel(IsleMarker isleManagement)
+    public MainPanel()
     {
         this.setLayout(new BorderLayout());
         JLayeredPane layeredPane = new JLayeredPane();
-        ItemDisplayPanel itemPanel = new ItemDisplayPanel(isleManagement);
         FooterPanel footerPanel = new FooterPanel();
         BodyPanel bodyPanel = new BodyPanel();
-        headerPanel = new HeaderPanel(bodyPanel, user);
+        isleManagement = new IsleMarker(bodyPanel);
+        headerPanel = new HeaderPanel(bodyPanel, user, this, isleManagement);
+        
+        for (int i = 0; i < 9; i++)
+        {
+            layeredPane.add(isleManagement.getItemPanel(i),JLayeredPane.PALETTE_LAYER);
+        }
         
         this.setOpaque (false);
 
         this.add(footerPanel, BorderLayout.SOUTH);
-
-        //layeredPane.setPreferredSize(new Dimension(500,500));
-        //layeredPane.setBounds(0, 200, 400, 400);
         
         bodyPanel.setBounds(0,70,750,750);
-        itemPanel.setBounds(0, 160, 750, 350);
+        
         layeredPane.add(bodyPanel,JLayeredPane.DEFAULT_LAYER);
-        layeredPane.add(itemPanel,JLayeredPane.PALETTE_LAYER);
+        
         
         this.add(layeredPane, BorderLayout.CENTER);
         
@@ -60,5 +64,4 @@ public class MainPanel extends JPanel {
     {
         this.user = user;
     }
-    
 }

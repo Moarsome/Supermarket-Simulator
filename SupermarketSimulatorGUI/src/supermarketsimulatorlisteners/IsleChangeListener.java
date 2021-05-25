@@ -9,6 +9,7 @@ import java.awt.event.*;
 import supermarketsimulatorgui.BodyPanel;
 import supermarketsimulatorgui.HeaderPanel;
 import supermarketsimulatorgui.IsleMarker;
+import supermarketsimulatorgui.MainPanel;
 
 /**
  *
@@ -19,13 +20,15 @@ public class IsleChangeListener implements ActionListener
     private IsleMarker isleManager;
     private HeaderPanel headerPanel;
     private BodyPanel bodyPanel;
+    private MainPanel mainPanel;
     
-    public IsleChangeListener(IsleMarker isleManager, HeaderPanel headerPanel, BodyPanel bodyPanel)
+    public IsleChangeListener(IsleMarker isleManager, HeaderPanel headerPanel, BodyPanel bodyPanel, MainPanel mainPanel)
     {
         super();
         this.isleManager = isleManager;
         this.headerPanel = headerPanel;
         this.bodyPanel = bodyPanel;
+        this.mainPanel = mainPanel;
     }
     
     @Override
@@ -47,9 +50,8 @@ public class IsleChangeListener implements ActionListener
             {
                 headerPanel.enableRightIsleButton();
             }
+            setIsleVisibility(currentIsle);
             
-            isleManager.setIsle(currentIsle);
-            bodyPanel.setIsleLabel("ISLE "+(currentIsle)+" - "+isleManager.getIsleName(currentIsle));
         }
         else if (e.getActionCommand().equals("rightIsle"))
         {
@@ -65,9 +67,13 @@ public class IsleChangeListener implements ActionListener
                 headerPanel.enableLeftIsleButton();
             }
             
-            isleManager.setIsle(currentIsle);
-            bodyPanel.setIsleLabel("ISLE "+(currentIsle)+" - "+isleManager.getIsleName(currentIsle));
+            setIsleVisibility(currentIsle);
         }
     }
     
+    public void setIsleVisibility(int currentIsle)
+    {
+            isleManager.setIsle(currentIsle);
+            bodyPanel.setIsleLabel("ISLE "+(currentIsle)+" - "+isleManager.getIsleName(currentIsle));
+    }
 }

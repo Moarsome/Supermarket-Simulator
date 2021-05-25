@@ -15,9 +15,8 @@ import javax.swing.*;
 public class SupermarketFrame extends JFrame{
     public static void main(String[] args) 
     {
-        IsleMarker isleManagement = new IsleMarker();
         SupermarketFrame frame = new SupermarketFrame();
-        MainPanel mainPanel = new MainPanel(isleManagement);
+        MainPanel mainPanel = new MainPanel();
         LoginPanel loginPanel = new LoginPanel(mainPanel);
         mainPanel.setVisible(false);
         

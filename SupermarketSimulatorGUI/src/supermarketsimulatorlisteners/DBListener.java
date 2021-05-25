@@ -23,8 +23,8 @@ import supermarketsimulatorgui.User;
  *
  * @author kyliec
  */
-public class DBListener implements ActionListener {
-
+public class DBListener implements ActionListener 
+{
     private Connection connection;
     private LoginPanel panel;
     private MainPanel mainPanel;
