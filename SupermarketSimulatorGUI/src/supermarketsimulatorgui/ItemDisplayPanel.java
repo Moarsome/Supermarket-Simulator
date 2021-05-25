@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -17,10 +18,13 @@ import javax.swing.JPanel;
  * @author kyliec
  */
 public class ItemDisplayPanel extends StarterPanel {
+    
+    private IsleMarker isleManagement;
 
     public ItemDisplayPanel(IsleMarker isleManagement) {
         this.setMaximumSize(new Dimension(750, 350));
         this.setLayout(new GridBagLayout());
+        this.isleManagement = isleManagement;
                 
         addPanels(this);
         
@@ -37,11 +41,12 @@ public class ItemDisplayPanel extends StarterPanel {
         
         for (int row = 0; row < 3; row++)
         {
+            ItemDatabase tempItem = isleManagement.getItem(row);
         for (int column = 0; column < 8; column++)
             {
                 changeGridLayout(c, column, row);
-                JButton tempButton = createNewButton(resizeComponent("./resources/items/coca_cola.png", 50, 80));
-                tempButton.putClientProperty("insert itemDatabase obj here", "maybe its name here??");
+                JButton tempButton = createNewButton(resizeComponent(tempItem.getImgURL(), 50, 80));
+                tempButton.putClientProperty(tempItem, tempItem.getName());
                 panel.add(tempButton, c);
             }
         }

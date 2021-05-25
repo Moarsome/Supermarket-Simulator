@@ -25,7 +25,7 @@ public class IsleMarker {
     Set<ItemDatabase> dairy = EnumSet.range(ItemDatabase.MILK_FULLCREAM, ItemDatabase.CREAM);
     Set<ItemDatabase> frozen = EnumSet.range(ItemDatabase.ICE_CREAM_CHOCOLATE, ItemDatabase.BERRIES_MIXED);
 
-    private int isle = 0;
+    private int isle = 1;
     private ArrayList<Set<ItemDatabase>> isles;
     private final String[] isleNames = {"Confectionary", "Snacks", "Drinks", "Alcohol", "Bread", "Pasta & Noodles", "Condiments", "Dairy", "Frozen"};
     /**
@@ -52,13 +52,7 @@ public class IsleMarker {
      * 
      */
     public void changeIsle(int isleChange) {
-        int newIsle = this.isle + isleChange;
-        if (newIsle > 0 && newIsle <= isles.size()) {
-            // PRINT OUT ISLE NAMES IF APPLICABLE
-            this.isle = newIsle;
-            boolean leftIsle = newIsle - 1 > 0;
-            boolean rightIsle = newIsle + 1 <= isles.size();
-        }
+        this.isle += isleChange;
     }
     
     /**
@@ -70,7 +64,7 @@ public class IsleMarker {
     {
         Set<ItemDatabase> isleDatabase = isles.get(this.isle-1);
         
-        int index = 1;
+        int index = 0;
         for (ItemDatabase item:isleDatabase)
         {
             if (index == selectedItem)
@@ -128,5 +122,4 @@ public class IsleMarker {
     public void setIsles(ArrayList<Set<ItemDatabase>> isles) {
         this.isles = isles;
     }
-
 }
