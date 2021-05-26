@@ -62,10 +62,11 @@ public class ItemSelectListener implements ActionListener{
         else
         {
             selectedButton.setEnabled(false);
-            selectedButton.setVisible(false);
+            selectedButton.setBorderPainted(false);
             user.addInventory(item);
             headerPanel.setCartLabel(user.getCartCost());
             bodyPanel.setIndicatorText(item.getName()+" added to cart!");
+            currentlySelected = null;
         }
     }
 }

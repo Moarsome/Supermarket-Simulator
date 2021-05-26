@@ -36,7 +36,6 @@ public class ItemDisplayPanel extends StarterPanel {
         this.bodyPanel = mainPanel.getBodyPanel();
         this.user = mainPanel.getUser();
                 
-        System.out.println("retrieved IM: "+isleManagement+", IN: "+isleNum);
         addPanels(this);
         
         this.setOpaque(false);

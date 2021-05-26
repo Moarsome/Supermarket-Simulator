@@ -55,7 +55,10 @@ public class IsleMarker {
         isles.add(condiments);
         isles.add(dairy);
         isles.add(frozen);
-        
+    }
+
+    public void createPanels()
+    {
         for (int i = 0; i < 9; i++)
         {
             ItemDisplayPanel itemPanel = new ItemDisplayPanel(mainPanel, this, i);
@@ -65,7 +68,7 @@ public class IsleMarker {
         }
         itemPanels.get(0).setVisible(true);
     }
-
+    
     /**
      * changes isle number
      * @param isleChange

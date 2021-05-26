@@ -24,11 +24,10 @@ public class IsleChangeListener implements ActionListener
     
     public IsleChangeListener(MainPanel mainPanel)
     {
-        super();
+        this.mainPanel = mainPanel;
         this.isleManager = mainPanel.getIsleMarker();
         this.headerPanel = mainPanel.getHeaderPanel();
         this.bodyPanel = mainPanel.getBodyPanel();
-        this.mainPanel = mainPanel;
     }
     
     @Override

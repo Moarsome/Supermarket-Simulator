@@ -30,7 +30,7 @@ abstract class StarterPanel extends JPanel{
     public JButton createNewButton(ImageIcon image)
     {
         JButton tempButton = new JButton(image);
-        tempButton.setBorder(BorderFactory.createLineBorder(Color.WHITE,3));
+        tempButton.setBorder(BorderFactory.createLineBorder(Color.getHSBColor(.641f, .59f, .5f),3));
         tempButton.setBorderPainted(false);
         tempButton.setFocusPainted(false);
         tempButton.setContentAreaFilled(false);

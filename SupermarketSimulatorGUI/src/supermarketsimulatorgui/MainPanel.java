@@ -27,10 +27,15 @@ public class MainPanel extends JPanel
         this.user = user;
         this.setLayout(new BorderLayout());
         JLayeredPane layeredPane = new JLayeredPane();
+        isleManagement = new IsleMarker(this);
+        
         footerPanel = new FooterPanel();
         bodyPanel = new BodyPanel();
-        isleManagement = new IsleMarker(this);
         headerPanel = new HeaderPanel(this);
+        
+        isleManagement.createPanels();
+        
+        headerPanel.addListeners();
         
         for (int i = 0; i < 9; i++)
         {

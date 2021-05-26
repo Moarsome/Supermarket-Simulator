@@ -134,6 +134,7 @@ public class User {
     
     public void addInventory(ItemDatabase item) {
         inventory.add(item);
+        addCartCost(item.getPrice());
     }
     
     public int getUserID()

@@ -33,7 +33,6 @@ public final class HeaderPanel extends StarterPanel {
         this.user = mainPanel.getUser();
         
         this.isleManager = mainPanel.getIsleMarker();
-        this.isleManager.setIsle(1);
         
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         
@@ -53,12 +52,6 @@ public final class HeaderPanel extends StarterPanel {
         cartLabel.setForeground(Color.getHSBColor(1.0f, 1.0f, .6f));
         setLabelSize(cartLabel);
         
-        //ComponentListener listener = new ComponentListener(isleManager,this, panel);
-        
-        leftIsleButton.addActionListener(new IsleChangeListener(mainPanel));
-        rightIsleButton.addActionListener(new IsleChangeListener(mainPanel));
-        checkoutButton.addActionListener(new IsleChangeListener(mainPanel));
-        
         addSpace(this,10, 0);
         this.add(leftIsleButton);
         addSpace(this,80, 0);
@@ -72,14 +65,22 @@ public final class HeaderPanel extends StarterPanel {
         this.setOpaque(false);
     }
     
+    public void addListeners()
+    {
+        IsleChangeListener listener = new IsleChangeListener(mainPanel);
+        leftIsleButton.addActionListener(listener);
+        rightIsleButton.addActionListener(listener);
+        checkoutButton.addActionListener(listener);
+    }
+    
     public void setBudgetLabel(float value)
     {
-        this.budgetLabel.setText("$"+value);
+        this.budgetLabel.setText(String.format("$%.02f", value));
     }
     
     public void setCartLabel(float value)
     {
-        this.cartLabel.setText("$"+value);
+        this.cartLabel.setText(String.format("$%.02f", value));
     }
     
     public void enableLeftIsleButton()

@@ -15,14 +15,18 @@ import javax.swing.*;
  */
 public class FooterPanel extends StarterPanel{
     private JButton viewCartButton;
+    private JScrollPane viewCartPane;
     
     public FooterPanel()
     {
         viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
+        viewCartPane = new JScrollPane();
+        viewCartPane.setPreferredSize(new Dimension(750, 150));
         
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         this.setOpaque(false);
         this.add(viewCartButton);
+        //this.add(viewCartPane);
     }
     
         public JButton createNewButton(ImageIcon image)
