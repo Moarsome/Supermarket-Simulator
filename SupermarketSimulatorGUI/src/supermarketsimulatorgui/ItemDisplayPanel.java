@@ -29,7 +29,7 @@ public class ItemDisplayPanel extends StarterPanel {
     public ItemDisplayPanel(MainPanel mainPanel, IsleMarker isleManagement, int isleNum) 
     {
         this.mainPanel = mainPanel;
-        this.setMaximumSize(new Dimension(750, 350));
+        this.setMaximumSize(new Dimension(750, 320));
         this.setLayout(new GridBagLayout());
         this.isleManagement = isleManagement;
         this.isleNum = isleNum;

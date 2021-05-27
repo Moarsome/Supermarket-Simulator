@@ -5,9 +5,12 @@
  */
 package supermarketsimulatorgui;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,15 +21,16 @@ public class BodyPanel extends StarterPanel
     private JLabel shelves;
     private JLabel isleLabel;
     private JLabel itemIndicator;
+    private JButton cancelCheckout;
     
     public BodyPanel() 
     {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        ImageIcon shelvesImage = resizeComponent("./resources/shelves.png", 600, 320);
         
-        ImageIcon shelvesImage = new ImageIcon("./resources/shelves.png");
-        Image image = shelvesImage.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(600, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        shelvesImage = new ImageIcon(newimg);
+        cancelCheckout = createNewButton(resizeComponent("./resources/cancelCheckout.png", 100, 40));
+        cancelCheckout.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //cancelCheckout.setVisible(false);
         
         isleLabel = new JLabel("ISLE 1 - CONFECTIONARY");
         isleLabel.setFont(new Font("Avenir", Font.PLAIN, 30));
@@ -40,6 +44,8 @@ public class BodyPanel extends StarterPanel
         itemIndicator.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         this.setOpaque(false);
+        this.add(cancelCheckout);
+        this.addSpace(this,0, 50);
         this.add(isleLabel);
         this.addSpace(this,0, 40);
         this.add(shelves);

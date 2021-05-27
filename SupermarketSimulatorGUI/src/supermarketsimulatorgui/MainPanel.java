@@ -46,7 +46,7 @@ public class MainPanel extends JPanel
 
         this.add(footerPanel, BorderLayout.SOUTH);
         
-        bodyPanel.setBounds(0,70,750,750);
+        bodyPanel.setBounds(0,5,750,750);
         
         layeredPane.add(bodyPanel,JLayeredPane.DEFAULT_LAYER);
         

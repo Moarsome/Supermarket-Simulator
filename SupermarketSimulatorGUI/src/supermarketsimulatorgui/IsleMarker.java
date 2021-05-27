@@ -63,7 +63,7 @@ public class IsleMarker {
         {
             ItemDisplayPanel itemPanel = new ItemDisplayPanel(mainPanel, this, i);
             itemPanel.setVisible(false);
-            itemPanel.setBounds(0, 160, 750, 350);
+            itemPanel.setBounds(0, 180, 750, 320);
             itemPanels.add(itemPanel);
         }
         itemPanels.get(0).setVisible(true);

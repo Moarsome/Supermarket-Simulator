@@ -5,10 +5,8 @@
  */
 package supermarketsimulatorgui;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -21,6 +19,7 @@ import supermarketsimulatorlisteners.CartViewListener;
  *
  * @author kyliec
  */
+
 public class FooterPanel extends StarterPanel{
     private MainPanel mainPanel;
     private JButton viewCartButton;
@@ -54,7 +53,7 @@ public class FooterPanel extends StarterPanel{
     
     public void addItemToCart(ItemDatabase item)
     {
-        JButton itemButton = createNewButton(resizeComponent(item.getImgURL(),50,80));
+        JButton itemButton = createNewButton(resizeComponent(item.getImgURL(),40,64));
         itemButton.addActionListener(new CartRemoveItem(mainPanel));
         itemButton.putClientProperty("item", item);
         

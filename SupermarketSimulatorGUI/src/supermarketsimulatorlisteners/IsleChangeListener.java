@@ -32,12 +32,7 @@ public class IsleChangeListener implements ActionListener
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if (e.getActionCommand().equals("checkout"))
-        {
-            System.exit(0);
-        }
-        else if (e.getActionCommand().equals("leftIsle"))
+        if (e.getActionCommand().equals("leftIsle"))
         {
             int currentIsle = isleManager.getIsle() - 1;
             
