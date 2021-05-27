@@ -132,9 +132,16 @@ public class User {
         this.inventory = inventory;
     }
     
-    public void addInventory(ItemDatabase item) {
+    public void addInventory(ItemDatabase item) 
+    {
         inventory.add(item);
         addCartCost(item.getPrice());
+    }
+    
+    public void removeFromInventory(ItemDatabase item)
+    {
+        inventory.remove(item);
+        addCartCost(-1*item.getPrice());
     }
     
     public int getUserID()

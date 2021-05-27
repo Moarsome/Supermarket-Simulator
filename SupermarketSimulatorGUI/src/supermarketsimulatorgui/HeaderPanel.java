@@ -54,11 +54,11 @@ public final class HeaderPanel extends StarterPanel {
         
         addSpace(this,10, 0);
         this.add(leftIsleButton);
-        addSpace(this,80, 0);
+        addSpace(this,115, 0);
         this.add(budgetLabel);
         this.add(checkoutButton);
         this.add(cartLabel);
-        addSpace(this,80, 0);
+        addSpace(this, 115, 0);
         this.add(rightIsleButton);
         addSpace(this,10, 0);
         

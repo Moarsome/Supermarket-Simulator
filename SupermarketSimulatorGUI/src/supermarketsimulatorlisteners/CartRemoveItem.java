@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import supermarketsimulatorgui.BodyPanel;
 import supermarketsimulatorgui.FooterPanel;
 import supermarketsimulatorgui.HeaderPanel;
-import supermarketsimulatorgui.IsleMarker;
 import supermarketsimulatorgui.ItemDatabase;
 import supermarketsimulatorgui.MainPanel;
 import supermarketsimulatorgui.User;
@@ -20,58 +19,49 @@ import supermarketsimulatorgui.User;
  *
  * @author kyliec
  */
+public class CartRemoveItem implements ActionListener {
 
-public class ItemSelectListener implements ActionListener{
-    private JButton currentlySelected;
     private MainPanel mainPanel;
+    private FooterPanel footerPanel;
     private BodyPanel bodyPanel;
     private HeaderPanel headerPanel;
-    private FooterPanel footerPanel;
-    private IsleMarker isleManagement;
     private User user;
     
-    public ItemSelectListener(MainPanel mainPanel, IsleMarker isleManagement)
+    public CartRemoveItem(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
-        this.bodyPanel = mainPanel.getBodyPanel();
         this.footerPanel = mainPanel.getFooterPanel();
-        this.isleManagement = isleManagement;
-        this.user = mainPanel.getUser();
+        this.bodyPanel = mainPanel.getBodyPanel();
         this.headerPanel = mainPanel.getHeaderPanel();
-        
-        currentlySelected = isleManagement.getSelectedItem();
+        this.user = mainPanel.getUser();
     }
     
     @Override
-    public void actionPerformed(ActionEvent e) 
-    {
+    public void actionPerformed(ActionEvent e) {
         JButton selectedButton = (JButton) e.getSource();
         ItemDatabase item = (ItemDatabase) selectedButton.getClientProperty("item");
-        currentlySelected = isleManagement.getSelectedItem();
+        JButton currentlySelected = footerPanel.getSelectedButton();
         
         if (selectedButton != currentlySelected)
         {
             if (currentlySelected != null)
             {
-               currentlySelected.putClientProperty("selected", false);
                currentlySelected.setBorderPainted(false);
             }
-            isleManagement.setSelectedItem(selectedButton); 
-            selectedButton.putClientProperty("selected", true);
+            footerPanel.setSelectedButton(selectedButton);
             selectedButton.setBorderPainted(true);
 
-            bodyPanel.setIndicatorText("Selected: $"+item.getPrice()+" '"+item.getName()+"', click again to buy");
+            bodyPanel.setIndicatorText("Selected: $"+item.getPrice()+" '"+item.getName()+"' in inventory, click again to remove");
         }
         else
         {
-            // Add item to inventory
-            selectedButton.setEnabled(false);
-            selectedButton.setBorderPainted(false);
-            user.addInventory(item);
+            // Remove item from inventory
+            selectedButton.setVisible(false);
+            user.removeFromInventory(item);
             headerPanel.setCartLabel(user.getCartCost());
-            footerPanel.addItemToCart(item);
-            bodyPanel.setIndicatorText("'"+item.getName()+"' added to cart!");
-            currentlySelected = null;
+            bodyPanel.setIndicatorText("'"+item.getName()+"' removed from cart!");
+            footerPanel.setSelectedButton(null);
         }
     }
+    
 }

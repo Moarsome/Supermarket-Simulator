@@ -101,7 +101,9 @@ public class DBListener implements ActionListener
             if (rs.next())
             {
                 loginPanel.setTextFeedback("User '"+username+"' was found, loading data...");
-                return rs.findColumn("BUDGET");
+                
+                float foundBudget = rs.getFloat("BUDGET");
+                return foundBudget;
             }
             else
             {

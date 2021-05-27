@@ -5,42 +5,86 @@
  */
 package supermarketsimulatorgui;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import supermarketsimulatorlisteners.CartRemoveItem;
+import supermarketsimulatorlisteners.CartViewListener;
 
 /**
  *
  * @author kyliec
  */
 public class FooterPanel extends StarterPanel{
+    private MainPanel mainPanel;
     private JButton viewCartButton;
     private JScrollPane viewCartPane;
+    private JPanel cartPanel;
+    private JButton selectedButton;
     
-    public FooterPanel()
+    public FooterPanel(MainPanel mainPanel)
     {
-        viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
-        viewCartPane = new JScrollPane();
-        viewCartPane.setPreferredSize(new Dimension(750, 150));
+        this.mainPanel = mainPanel;
         
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
+        viewCartButton.putClientProperty("status", true);
+        viewCartButton.addActionListener(new CartViewListener(this));
+        
+        cartPanel = new JPanel();
+        cartPanel.setLayout(new BoxLayout(cartPanel,BoxLayout.X_AXIS));
+        
+        viewCartPane = new JScrollPane();
+        viewCartPane.setPreferredSize(new Dimension(750, 80));
+        viewCartPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        viewCartPane.setVisible(true);
+        viewCartPane.setViewportView(cartPanel);
+        
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        viewCartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.setOpaque(false);
-        this.add(viewCartButton);
-        //this.add(viewCartPane);
+        this.add(viewCartPane,0);
+        this.add(viewCartButton,0);
     }
     
-        public JButton createNewButton(ImageIcon image)
+    public void addItemToCart(ItemDatabase item)
     {
-        JButton tempButton = new JButton(image);
-        tempButton.setBorderPainted(false);
-        tempButton.setFocusPainted(false);
-        tempButton.setContentAreaFilled(false);
-        int width = image.getIconWidth();
-        int height = image.getIconHeight();
-        tempButton.setMinimumSize(new Dimension(width,height));
-        tempButton.setMaximumSize(new Dimension(width,height));
-        tempButton.setPreferredSize(new Dimension(width,height));
+        JButton itemButton = createNewButton(resizeComponent(item.getImgURL(),50,80));
+        itemButton.addActionListener(new CartRemoveItem(mainPanel));
+        itemButton.putClientProperty("item", item);
         
-        return tempButton;
+        cartPanel.add(itemButton);
+        cartPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+    }
+    
+    public void showInventory()
+    {
+        this.removeAll();
+        this.add(viewCartPane,0);
+        this.add(viewCartButton,0);
+        this.revalidate();
+        this.repaint();
+    }
+    
+    public void hideInventory()
+    {
+        this.remove(viewCartPane);
+        this.revalidate();
+        this.repaint();
+    }
+    
+    public void setSelectedButton(JButton button)
+    {
+        this.selectedButton = button;
+    }
+    
+    public JButton getSelectedButton()
+    {
+        return this.selectedButton;
     }
 }

@@ -28,7 +28,13 @@ public class CartViewListener implements ActionListener {
         
         if ((boolean) viewButton.getClientProperty("status") == false)
         {
-           // footerPanel
+           footerPanel.showInventory();
+           viewButton.putClientProperty("status", true);
+        }
+        else
+        {
+            footerPanel.hideInventory();
+            viewButton.putClientProperty("status", false);
         }
     }
     
