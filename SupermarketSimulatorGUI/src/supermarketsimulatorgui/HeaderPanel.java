@@ -7,10 +7,12 @@ package supermarketsimulatorgui;
 
 import supermarketsimulatorlisteners.IsleChangeListener;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import supermarketsimulatorlisteners.CheckoutListener;
 /**
  *
  * @author kyliec
@@ -41,8 +43,11 @@ public final class HeaderPanel extends StarterPanel {
         leftIsleButton.setEnabled(false);
         rightIsleButton = createNewButton(new ImageIcon("./resources/right.png"));
         rightIsleButton.setActionCommand("rightIsle");
+        
         checkoutButton = createNewButton(resizeComponent("./resources/checkout.png",100,40));
+        checkoutButton.putClientProperty("status", false);
         checkoutButton.setActionCommand("checkout");
+        checkoutButton.addActionListener(new CheckoutListener(mainPanel));
         
         budgetLabel = new JLabel("$00.00");
         budgetLabel.setForeground(Color.getHSBColor(0.336f, .228f, .6f));
@@ -101,5 +106,10 @@ public final class HeaderPanel extends StarterPanel {
     public void disableRightIsleButton()
     {
         this.rightIsleButton.setEnabled(false);
+    }
+    
+    public JButton getCheckoutButton()
+    {
+        return this.checkoutButton;
     }
 }

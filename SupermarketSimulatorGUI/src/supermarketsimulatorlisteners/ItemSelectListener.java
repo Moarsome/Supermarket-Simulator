@@ -33,18 +33,17 @@ public class ItemSelectListener implements ActionListener{
     public ItemSelectListener(MainPanel mainPanel, IsleMarker isleManagement)
     {
         this.mainPanel = mainPanel;
-        this.bodyPanel = mainPanel.getBodyPanel();
-        this.footerPanel = mainPanel.getFooterPanel();
         this.isleManagement = isleManagement;
-        this.user = mainPanel.getUser();
-        this.headerPanel = mainPanel.getHeaderPanel();
-        
-        currentlySelected = isleManagement.getSelectedItem();
     }
     
     @Override
     public void actionPerformed(ActionEvent e) 
     {
+        this.bodyPanel = mainPanel.getBodyPanel();
+        this.footerPanel = mainPanel.getFooterPanel();
+        this.user = mainPanel.getUser();
+        this.headerPanel = mainPanel.getHeaderPanel();
+        
         JButton selectedButton = (JButton) e.getSource();
         ItemDatabase item = (ItemDatabase) selectedButton.getClientProperty("item");
         currentlySelected = isleManagement.getSelectedItem();
@@ -69,7 +68,7 @@ public class ItemSelectListener implements ActionListener{
             selectedButton.setBorderPainted(false);
             user.addInventory(item);
             headerPanel.setCartLabel(user.getCartCost());
-            footerPanel.addItemToCart(item);
+            footerPanel.addItemToCart(item).putClientProperty("button", selectedButton);
             bodyPanel.setIndicatorText("'"+item.getName()+"' added to cart!");
             currentlySelected = null;
         }

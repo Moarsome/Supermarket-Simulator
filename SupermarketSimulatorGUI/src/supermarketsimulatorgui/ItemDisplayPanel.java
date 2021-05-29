@@ -46,7 +46,7 @@ public class ItemDisplayPanel extends StarterPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.NORTH;
         c.weighty = 1.0;
-        c.insets = new Insets(10,10,30,10);
+        c.insets = new Insets(10,5,30,5);
         c.fill = GridBagConstraints.NONE;
         
         for (int row = 0; row < 3; row++)
@@ -55,7 +55,7 @@ public class ItemDisplayPanel extends StarterPanel {
             for (int column = 0; column < 8; column++)
             {
                 changeGridLayout(c, column, row);
-                JButton tempButton = createNewButton(resizeComponent(tempItem.getImgURL(), 50, 80));
+                JButton tempButton = createNewButton(resizeComponent(tempItem.getImgURL(), 65, 65));
                 tempButton.putClientProperty("item", tempItem);
                 tempButton.putClientProperty("selected", false);
                 tempButton.addActionListener(new ItemSelectListener(mainPanel, isleManagement));

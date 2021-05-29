@@ -6,6 +6,7 @@
 package supermarketsimulatorgui;
 
 import java.awt.Color;
+import java.awt.Component;
 import static java.awt.Component.TOP_ALIGNMENT;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -44,9 +45,11 @@ abstract class StarterPanel extends JPanel{
         return tempButton;
     }
     
-    public void addSpace(JPanel panel, int xSpace, int ySpace)
+    public Component addSpace(JPanel panel, int xSpace, int ySpace)
     {
-        panel.add(Box.createRigidArea(new Dimension(xSpace, ySpace)));
+        Component space = Box.createRigidArea(new Dimension(xSpace, ySpace));
+        panel.add(space);
+        return space;
     }
     
     public void designTextField(JComponent comp)

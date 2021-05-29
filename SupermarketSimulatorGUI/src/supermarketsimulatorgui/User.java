@@ -12,8 +12,6 @@ import java.util.ArrayList;
  * @author kyliec
  */
 public class User {
-    private static int userStaticID = 0;
-    
     private float budget;
     private float cartCost;
     private int userID;
@@ -29,9 +27,6 @@ public class User {
     
     public User()
     {
-        userStaticID++;
-        
-        this.userID = userStaticID;
         this.isShopping = true;
         this.inventory = new ArrayList<>();
         this.cartCost = 0.0f;
@@ -115,6 +110,20 @@ public class User {
     public void addCartCost(float cartCost) {
         this.cartCost += cartCost;
     }
+    
+    public void purchaseCart()
+    {
+        this.budget -= this.cartCost;
+    }
+    
+    public boolean hasEnoughMoney()
+    {
+        if (this.getBudget() > this.getCartCost())
+        {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * getter for the user inventory
@@ -144,6 +153,11 @@ public class User {
         addCartCost(-1*item.getPrice());
     }
     
+    public void setUserID(int userID)
+    {
+        this.userID = userID;
+    }
+    
     public int getUserID()
     {
         return this.userID;
@@ -168,5 +182,6 @@ public class User {
     {
         return this.password;
     }  
+    
     
 }

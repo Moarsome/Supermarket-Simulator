@@ -41,7 +41,7 @@ public class DBListener implements ActionListener
             connection = DriverManager.getConnection("jdbc:derby:supermarketDB_Ebd", "super", "market");
         } catch (SQLException ex) 
         {
-
+            Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -50,6 +50,7 @@ public class DBListener implements ActionListener
     {
         if (e.getActionCommand().equals("register"))
         {
+            user.setUserID(0);
             user.setUsername(loginPanel.getUserInput().getText());
             user.setPassword(loginPanel.getPassInput().getText());
             user.setBudget(200.0f);
@@ -80,6 +81,7 @@ public class DBListener implements ActionListener
         try 
         {
             Statement stmt = connection.createStatement();
+            user.setUserID(generateUserID());
             
             stmt.executeUpdate("INSERT INTO USERS VALUES(" + user.getUserID() + ",'" + user.getName() + "', '" + user.getPassword() + "', " + user.getBudget() + ")");
             loginPanel.setTextFeedback("Successfully created new user '"+user.getName()+"'");
@@ -114,6 +116,22 @@ public class DBListener implements ActionListener
         }
         
         return (Float) null;
+    }
+    
+    public int generateUserID()
+    {
+        try {
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS total FROM USERS");
+            rs.next();
+            return rs.getInt("total");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return 0;
     }
     
     public void switchToMainPanel()

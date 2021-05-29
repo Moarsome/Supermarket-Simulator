@@ -29,9 +29,9 @@ public class MainPanel extends JPanel
         JLayeredPane layeredPane = new JLayeredPane();
         isleManagement = new IsleMarker(this);
         
-        footerPanel = new FooterPanel(this);
-        bodyPanel = new BodyPanel();
         headerPanel = new HeaderPanel(this);
+        footerPanel = new FooterPanel(this);
+        bodyPanel = new BodyPanel(this);
         
         isleManagement.createPanels();
         

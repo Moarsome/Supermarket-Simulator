@@ -25,13 +25,14 @@ public class IsleChangeListener implements ActionListener
     public IsleChangeListener(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
-        this.isleManager = mainPanel.getIsleMarker();
-        this.headerPanel = mainPanel.getHeaderPanel();
-        this.bodyPanel = mainPanel.getBodyPanel();
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.isleManager = mainPanel.getIsleMarker();
+        this.headerPanel = mainPanel.getHeaderPanel();
+        this.bodyPanel = mainPanel.getBodyPanel();
+        
         if (e.getActionCommand().equals("leftIsle"))
         {
             int currentIsle = isleManager.getIsle() - 1;

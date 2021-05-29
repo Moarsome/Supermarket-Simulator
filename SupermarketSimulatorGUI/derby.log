@@ -1,13 +1,60 @@
+Sat May 29 16:14:58 NZST 2021 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Thu May 27 20:28:59 NZST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-acf0-e679-000003f6aa30 
+Sat May 29 16:14:58 NZST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0179-b655-0b8a-ffffcca550ee 
 on database directory /Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
 Loaded from file:/Users/kyliec/Downloads/db-derby-10.14.2.0-lib/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=14.0.2+12-46
-user.dir=/Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI
+user.dir=/Users/kyliec/Downloads/db-derby-10.14.2.0-lib
 os.name=Mac OS X
 os.arch=x86_64
 os.version=10.15.7
-derby.system.home=null
+derby.system.home=/Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI
 Database Class Loader started - derby.database.classpath=''
+Sat May 29 16:15:03 NZST 2021 Thread[DRDAConnThread_2,5,main] (XID = 3496), (SESSIONID = 1), (DATABASE = supermarketDB_Ebd), (DRDAID = ��������.����-953354123857293688{1}), Cleanup action starting
+Sat May 29 16:15:03 NZST 2021 Thread[DRDAConnThread_2,5,main] (XID = 3496), (SESSIONID = 1), (DATABASE = supermarketDB_Ebd), (DRDAID = ��������.����-953354123857293688{1}), Failed Statement is: CALL SYSIBM.SQLFOREIGNKEYS(?,?,?,?,?,?,?) with 7 parameters begin parameter #1:  :end parameter begin parameter #2: NULL :end parameter begin parameter #3:  :end parameter begin parameter #4: NULL :end parameter begin parameter #5: SUPER :end parameter begin parameter #6: USERS :end parameter begin parameter #7: DATATYPE='JDBC';IMPORTEDKEY=1; CURSORHOLD=1 :end parameter 
+java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:373)
+	at java.base/java.util.ArrayList.set(ArrayList.java:441)
+	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getColumnDescriptorsScan(Unknown Source)
+	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getSPSParams(Unknown Source)
+	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getSPSDescriptorIndex1Scan(Unknown Source)
+	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getUncachedSPSDescriptor(Unknown Source)
+	at org.apache.derby.impl.sql.catalog.SPSNameCacheable.setIdentity(Unknown Source)
+	at org.apache.derby.impl.services.cache.ConcurrentCache.find(Unknown Source)
+	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getSPSDescriptor(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.prepareSPS(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.getPreparedQueryUsingSystemTables(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.getPreparedQuery(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.getPreparedQuery(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedDatabaseMetaData.getImportedKeys(Unknown Source)
+	at org.apache.derby.catalog.SystemProcedures.SQLFOREIGNKEYS(Unknown Source)
+	at org.apache.derby.exe.acf81e0010x0179xb655x0b8axffffcca550ee8.g0(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.apache.derby.impl.services.reflect.ReflectMethod.invoke(Unknown Source)
+	at org.apache.derby.impl.sql.execute.CallStatementResultSet.open(Unknown Source)
+	at org.apache.derby.impl.sql.GenericPreparedStatement.executeStmt(Unknown Source)
+	at org.apache.derby.impl.sql.GenericPreparedStatement.execute(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedStatement.executeStatement(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedPreparedStatement.executeStatement(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedCallableStatement.executeStatement(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedPreparedStatement.execute(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAStatement.execute(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseEXCSQLSTTobjects(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseEXCSQLSTT(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+Cleanup action completed
+----------------------------------------------------------------
+Sat May 29 16:15:21 NZST 2021: Shutting down Derby engine
+----------------------------------------------------------------
+Sat May 29 16:15:21 NZST 2021:
+Shutting down instance a816c00e-0179-b655-0b8a-ffffcca550ee on database directory /Users/kyliec/NetBeansProjects/SupermarketSimulatorGUI/SupermarketSimulatorGUI/supermarketDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+----------------------------------------------------------------

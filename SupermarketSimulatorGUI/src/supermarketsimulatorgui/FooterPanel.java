@@ -22,6 +22,7 @@ import supermarketsimulatorlisteners.CartViewListener;
 
 public class FooterPanel extends StarterPanel{
     private MainPanel mainPanel;
+    private BodyPanel bodyPanel;
     private JButton viewCartButton;
     private JScrollPane viewCartPane;
     private JPanel cartPanel;
@@ -30,9 +31,10 @@ public class FooterPanel extends StarterPanel{
     public FooterPanel(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
+        this.bodyPanel = mainPanel.getBodyPanel();
         
         viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
-        viewCartButton.putClientProperty("status", true);
+        viewCartButton.putClientProperty("status", false);
         viewCartButton.addActionListener(new CartViewListener(this));
         
         cartPanel = new JPanel();
@@ -47,22 +49,27 @@ public class FooterPanel extends StarterPanel{
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         viewCartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.setOpaque(false);
-        this.add(viewCartPane,0);
         this.add(viewCartButton,0);
     }
     
-    public void addItemToCart(ItemDatabase item)
+    public JButton addItemToCart(ItemDatabase item)
     {
-        JButton itemButton = createNewButton(resizeComponent(item.getImgURL(),40,64));
+        Component space = Box.createRigidArea(new Dimension(5, 0));
+        JButton itemButton = createNewButton(resizeComponent(item.getImgURL(),55,55));
         itemButton.addActionListener(new CartRemoveItem(mainPanel));
         itemButton.putClientProperty("item", item);
-        
+        itemButton.putClientProperty("space", space);
+            
         cartPanel.add(itemButton);
-        cartPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+        cartPanel.add(space);
+        
+        return itemButton;
     }
     
     public void showInventory()
     {
+        bodyPanel.setIndicatorText("Opened inventory! Select any item to view details");
+        
         this.removeAll();
         this.add(viewCartPane,0);
         this.add(viewCartButton,0);
@@ -72,6 +79,8 @@ public class FooterPanel extends StarterPanel{
     
     public void hideInventory()
     {
+        bodyPanel.setIndicatorText("Closed inventory!");
+        
         this.remove(viewCartPane);
         this.revalidate();
         this.repaint();
@@ -85,5 +94,10 @@ public class FooterPanel extends StarterPanel{
     public JButton getSelectedButton()
     {
         return this.selectedButton;
+    }
+    
+    public JPanel getCartPanel()
+    {
+        return this.cartPanel;
     }
 }

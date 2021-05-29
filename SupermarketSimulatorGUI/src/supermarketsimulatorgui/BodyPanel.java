@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import supermarketsimulatorlisteners.CancelListener;
 
 /**
  *
@@ -22,15 +23,17 @@ public class BodyPanel extends StarterPanel
     private JLabel isleLabel;
     private JLabel itemIndicator;
     private JButton cancelCheckout;
+    private Component space;
     
-    public BodyPanel() 
+    public BodyPanel(MainPanel mainPanel) 
     {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-        ImageIcon shelvesImage = resizeComponent("./resources/shelves.png", 600, 320);
+        ImageIcon shelvesImage = resizeComponent("./resources/shelves.png", 620, 320);
         
         cancelCheckout = createNewButton(resizeComponent("./resources/cancelCheckout.png", 100, 40));
         cancelCheckout.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //cancelCheckout.setVisible(false);
+        cancelCheckout.addActionListener(new CancelListener(mainPanel));
+        cancelCheckout.setVisible(false);
         
         isleLabel = new JLabel("ISLE 1 - CONFECTIONARY");
         isleLabel.setFont(new Font("Avenir", Font.PLAIN, 30));
@@ -44,13 +47,9 @@ public class BodyPanel extends StarterPanel
         itemIndicator.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         this.setOpaque(false);
-        this.add(cancelCheckout);
-        this.addSpace(this,0, 50);
-        this.add(isleLabel);
-        this.addSpace(this,0, 40);
-        this.add(shelves);
-        this.addSpace(this,0, 30);
-        this.add(itemIndicator);
+        
+        addComponents();
+        
     }
     
     public void setIsleLabel(String newText)
@@ -61,5 +60,34 @@ public class BodyPanel extends StarterPanel
     public void setIndicatorText(String newText)
     {
         this.itemIndicator.setText(newText);
+    }
+    
+    public JButton getCancelButton()
+    {
+        return this.cancelCheckout;
+    }
+    
+    public void removeSpace()
+    {
+        this.remove(space);
+    }
+    
+    public void addComponents()
+    {
+        this.removeAll();
+        
+        space = addSpace(this,0,40);
+        
+        this.add(space);
+        this.add(cancelCheckout);
+        this.addSpace(this,0, 50);
+        this.add(isleLabel);
+        this.addSpace(this,0, 40);
+        this.add(shelves);
+        this.addSpace(this,0, 30);
+        this.add(itemIndicator);
+        
+        this.revalidate();
+        this.repaint();
     }
 }
