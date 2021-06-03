@@ -20,10 +20,12 @@ public class MainPanel extends JPanel
     private HeaderPanel headerPanel;
     private BodyPanel bodyPanel;
     private FooterPanel footerPanel;
+    private InventoryPanel inventoryPanel;
     private IsleMarker isleManagement;
     
-    public MainPanel(User user)
+    public MainPanel(User user, InventoryPanel inventoryPanel)
     {
+        this.inventoryPanel = inventoryPanel;
         this.user = user;
         this.setLayout(new BorderLayout());
         JLayeredPane layeredPane = new JLayeredPane();
@@ -71,6 +73,11 @@ public class MainPanel extends JPanel
     public FooterPanel getFooterPanel()
     {
         return this.footerPanel;
+    }
+    
+    public InventoryPanel getInventoryPanel()
+    {
+        return this.inventoryPanel;
     }
     
     public IsleMarker getIsleMarker()

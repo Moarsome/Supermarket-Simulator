@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import supermarketsimulatorlisteners.ItemSelectListener;
@@ -39,7 +38,6 @@ public class ItemDisplayPanel extends StarterPanel {
         addPanels(this);
         
         this.setOpaque(false);
-        
     }
 
     private void addPanels(JPanel panel){

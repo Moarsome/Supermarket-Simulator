@@ -120,14 +120,6 @@ public final class LoginPanel extends StarterPanel {
         this.add(textFeedback);
     }
     
-    public void switchToSetBudget()
-    {
-        registerButton.setVisible(false);
-        loginButton.setVisible(false);
-        userInput.setVisible(false);
-        passInput.setVisible(false);
-        budgetInput.setVisible(true);
-    }
     
     public void setUser(User user)
     {
@@ -158,6 +150,22 @@ public final class LoginPanel extends StarterPanel {
         this.textFeedback.setText(newText);
     }
     
+    public JTextField getBudgetInput()
+    {
+        return this.budgetInput;
+    }
+    
+    public void switchToSetBudget()
+    {
+        registerButton.setVisible(false);
+        loginButton.setVisible(false);
+        userInput.setVisible(false);
+        passInput.setVisible(false);
+        budgetInput.setVisible(true);
+        
+        this.submitButton.setActionCommand("budget");
+    }
+    
     public void switchToLogin()
     {
         this.loginButton.setEnabled(false);
@@ -172,5 +180,16 @@ public final class LoginPanel extends StarterPanel {
         this.registerButton.setEnabled(false);
         this.submitButton.setActionCommand("register");
         this.setTextFeedback("Enter registration details or choose 'login' to access an existing user");
+    }
+    
+    public void resetPanel()
+    {
+        registerButton.setVisible(true);
+        loginButton.setVisible(true);
+        userInput.setVisible(true);
+        passInput.setVisible(true);
+        budgetInput.setVisible(false);
+        
+        switchToRegister();
     }
 }

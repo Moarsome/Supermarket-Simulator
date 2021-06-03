@@ -31,7 +31,6 @@ public class FooterPanel extends StarterPanel{
     public FooterPanel(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
-        this.bodyPanel = mainPanel.getBodyPanel();
         
         viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
         viewCartButton.putClientProperty("status", false);
@@ -68,7 +67,7 @@ public class FooterPanel extends StarterPanel{
     
     public void showInventory()
     {
-        bodyPanel.setIndicatorText("Opened inventory! Select any item to view details");
+        mainPanel.getBodyPanel().setIndicatorText("Opened inventory! Select any item to view details");
         
         this.removeAll();
         this.add(viewCartPane,0);
@@ -79,7 +78,7 @@ public class FooterPanel extends StarterPanel{
     
     public void hideInventory()
     {
-        bodyPanel.setIndicatorText("Closed inventory!");
+        mainPanel.getBodyPanel().setIndicatorText("Closed inventory!");
         
         this.remove(viewCartPane);
         this.revalidate();

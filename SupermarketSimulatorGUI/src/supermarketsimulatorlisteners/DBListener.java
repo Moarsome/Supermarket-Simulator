@@ -65,13 +65,34 @@ public class DBListener implements ActionListener
             
             if (!Objects.equals(tempBudget, (Float) null))
             {
+                loginPanel.switchToSetBudget();
+                
                 user.setUsername(userInput);
                 user.setPassword(passInput);
                 user.setBudget(tempBudget);
                 
-                mainPanel.getHeaderPanel().setBudgetLabel(tempBudget);
+                loginPanel.setTextFeedback("User successfully loaded! Please add to your existing budget.");
+            }
+        }
+        else if (e.getActionCommand().equals("budget"))
+        {
+            Float tempBudget = user.getBudget();
+                
+            try
+            {
+                Float enteredBudget = Float.parseFloat(loginPanel.getBudgetInput().getText());
+                Float newBudget = tempBudget + enteredBudget;
+                
+                user.setBudget(newBudget);
+                mainPanel.getHeaderPanel().setBudgetLabel(newBudget);
                 switchToMainPanel();
             }
+            catch (NumberFormatException ex)
+            {
+                loginPanel.setTextFeedback("Invalid budget value! Please enter a valid number and try again.");
+            }
+            
+            
         }
        
     }
@@ -88,7 +109,8 @@ public class DBListener implements ActionListener
             mainPanel.getHeaderPanel().setBudgetLabel(user.getBudget());
             
             switchToMainPanel();
-        } catch (SQLException ex) 
+        } 
+        catch (SQLException ex) 
         {
             Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
         }

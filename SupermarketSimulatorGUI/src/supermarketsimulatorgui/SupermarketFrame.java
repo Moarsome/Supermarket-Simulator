@@ -17,13 +17,18 @@ public class SupermarketFrame extends JFrame{
     {
         User user = new User();
         SupermarketFrame frame = new SupermarketFrame();
-        MainPanel mainPanel = new MainPanel(user);
+        InventoryPanel inventoryPanel = new InventoryPanel();
+        MainPanel mainPanel = new MainPanel(user, inventoryPanel);
         LoginPanel loginPanel = new LoginPanel(mainPanel, user);
+        inventoryPanel.setLoginPanel(loginPanel);
+        
         mainPanel.setVisible(false);
+        inventoryPanel.setVisible(false);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(false);
         frame.getContentPane().setBackground(Color.getHSBColor(.678f, 0.46f, 1.0f));
+        frame.add(inventoryPanel);
         frame.add(loginPanel);
         frame.add(mainPanel);
         frame.pack();

@@ -15,10 +15,12 @@ import javax.swing.JButton;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
 import supermarketsimulatorgui.BodyPanel;
 import supermarketsimulatorgui.ItemDatabase;
 import supermarketsimulatorgui.MainPanel;
 import supermarketsimulatorgui.User;
+import supermarketsimulatorgui.InventoryPanel;
 
 /**
  *
@@ -28,6 +30,7 @@ import supermarketsimulatorgui.User;
 public class CheckoutListener implements ActionListener {
     private MainPanel mainPanel;
     private BodyPanel bodyPanel;
+    private InventoryPanel inventoryPanel;
     private Connection connection;
     private User user;
     
@@ -52,9 +55,11 @@ public class CheckoutListener implements ActionListener {
             Statement statement = connection.createStatement();
             JButton checkoutButton = (JButton) e.getSource();
             JButton cancelButton = bodyPanel.getCancelButton();
-            
+
+            // User has enough money
             if (user.hasEnoughMoney() == true)
             {
+                // If checkout button is clicked once
                 if ((boolean) checkoutButton.getClientProperty("status") == false)
                 {
                     checkoutButton.putClientProperty("status", true); 
@@ -63,6 +68,7 @@ public class CheckoutListener implements ActionListener {
                     String costAfter = String.format("$%.02f", user.getBudget()-user.getCartCost());
                     bodyPanel.setIndicatorText("Click 'checkout' again to confirm or click 'cancel'. Your budget after will be "+costAfter);
                 }
+                // If checkout button is clicked twice (confirmed checkout)
                 else
                 {
                     // initiate checkout
@@ -80,8 +86,10 @@ public class CheckoutListener implements ActionListener {
                         }
                     }
                     user.setInventory(new ArrayList<>());
+                    setFinalPanel(user);
                 }
             }
+            // User does not have enough money
             else
             {
                 bodyPanel.setIndicatorText("You do not have enough money! Please remove some items");
@@ -91,4 +99,39 @@ public class CheckoutListener implements ActionListener {
         }
     }
     
+    private void setFinalPanel(User user)
+    {
+        inventoryPanel = mainPanel.getInventoryPanel();
+        
+        mainPanel.setVisible(false);
+        inventoryPanel.setVisible(true);
+        
+        try {
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT * FROM USER_INVENTORY WHERE USER_ID = "+user.getUserID());
+            
+            while (rs.next())
+            {
+                ItemDatabase tempItem = getItemFromName(rs.getString("NAME"));
+                inventoryPanel.addItemToPanel(tempItem);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckoutListener.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        inventoryPanel.enablePanel();
+    }
+    
+    private ItemDatabase getItemFromName(String itemName)
+    {
+        for (ItemDatabase item:ItemDatabase.values())
+        {
+            if (item.getName().equals(itemName))
+            {
+                return item;
+            }
+        }
+        return null;
+    }
 }

@@ -27,7 +27,8 @@ public class CancelListener implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) 
+    {
         this.bodyPanel = mainPanel.getBodyPanel();
         this.headerPanel = mainPanel.getHeaderPanel();
         
@@ -40,6 +41,4 @@ public class CancelListener implements ActionListener{
         
         bodyPanel.setIndicatorText("Checkout cancelled!");
     }
-    
-    
 }
