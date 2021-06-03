@@ -20,10 +20,7 @@ import supermarketsimulatorlisteners.ItemSelectListener;
 public class ItemDisplayPanel extends StarterPanel {
     private MainPanel mainPanel;
     private IsleMarker isleManagement;
-    private BodyPanel bodyPanel;
-    private HeaderPanel headerPanel;
     private int isleNum;
-    private User user;
     
     public ItemDisplayPanel(MainPanel mainPanel, IsleMarker isleManagement, int isleNum) 
     {
@@ -32,9 +29,7 @@ public class ItemDisplayPanel extends StarterPanel {
         this.setLayout(new GridBagLayout());
         this.isleManagement = isleManagement;
         this.isleNum = isleNum;
-        this.bodyPanel = mainPanel.getBodyPanel();
-        this.user = mainPanel.getUser();
-                
+
         addPanels(this);
         
         this.setOpaque(false);

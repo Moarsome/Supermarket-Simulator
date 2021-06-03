@@ -27,9 +27,20 @@ public class BodyPanel extends StarterPanel
     
     public BodyPanel(MainPanel mainPanel) 
     {
-        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-        ImageIcon shelvesImage = resizeComponent("./resources/shelves.png", 620, 320);
         
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        
+        this.setOpaque(false);
+        
+        createComponents(mainPanel);
+        
+        addComponents();
+        
+    }
+    
+    
+    public void createComponents(MainPanel mainPanel)
+    {
         cancelCheckout = createNewButton(resizeComponent("./resources/cancelCheckout.png", 100, 40));
         cancelCheckout.setAlignmentX(Component.CENTER_ALIGNMENT);
         cancelCheckout.addActionListener(new CancelListener(mainPanel));
@@ -39,17 +50,32 @@ public class BodyPanel extends StarterPanel
         isleLabel.setFont(new Font("Avenir", Font.PLAIN, 30));
         isleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        ImageIcon shelvesImage = resizeComponent("./resources/shelves.png", 620, 320);
         shelves = new JLabel(shelvesImage);
         shelves.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         itemIndicator = new JLabel("Click any item to display information.");
         itemIndicator.setFont(new Font("Avenir", Font.PLAIN, 18));
         itemIndicator.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+    
+    public void addComponents()
+    {
+        this.removeAll();
         
-        this.setOpaque(false);
+        space = addSpace(this,0,40);
         
-        addComponents();
+        this.add(space);
+        this.add(cancelCheckout);
+        this.addSpace(this,0, 50);
+        this.add(isleLabel);
+        this.addSpace(this,0, 40);
+        this.add(shelves);
+        this.addSpace(this,0, 30);
+        this.add(itemIndicator);
         
+        this.revalidate();
+        this.repaint();
     }
     
     public void setIsleLabel(String newText)
@@ -70,24 +96,5 @@ public class BodyPanel extends StarterPanel
     public void removeSpace()
     {
         this.remove(space);
-    }
-    
-    public void addComponents()
-    {
-        this.removeAll();
-        
-        space = addSpace(this,0,40);
-        
-        this.add(space);
-        this.add(cancelCheckout);
-        this.addSpace(this,0, 50);
-        this.add(isleLabel);
-        this.addSpace(this,0, 40);
-        this.add(shelves);
-        this.addSpace(this,0, 30);
-        this.add(itemIndicator);
-        
-        this.revalidate();
-        this.repaint();
     }
 }

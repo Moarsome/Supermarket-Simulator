@@ -71,7 +71,7 @@ public class DBListener implements ActionListener
                 user.setPassword(passInput);
                 user.setBudget(tempBudget);
                 
-                loginPanel.setTextFeedback("User successfully loaded! Please add to your existing budget.");
+                loginPanel.setTextFeedback("User successfully loaded! Please add to your existing budget of "+tempBudget+".");
             }
         }
         else if (e.getActionCommand().equals("budget"))

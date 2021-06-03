@@ -46,6 +46,11 @@ public class IsleMarker {
         this.bodyPanel = mainPanel.getBodyPanel();
         this.user = mainPanel.getUser();
         
+        addIsles();
+    }
+
+    public void addIsles()
+    {
         isles.add(confectionary);
         isles.add(snacks);
         isles.add(drinks);
@@ -56,7 +61,7 @@ public class IsleMarker {
         isles.add(dairy);
         isles.add(frozen);
     }
-
+    
     public void createPanels()
     {
         for (int i = 0; i < 9; i++)

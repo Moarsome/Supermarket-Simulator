@@ -72,6 +72,7 @@ public class CheckoutListener implements ActionListener {
                 else
                 {
                     // initiate checkout
+                    bodyPanel.setIndicatorText("Loading inventory...");
                     
                     user.purchaseCart();
                     

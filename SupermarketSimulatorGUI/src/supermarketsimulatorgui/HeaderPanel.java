@@ -7,7 +7,6 @@ package supermarketsimulatorgui;
 
 import supermarketsimulatorlisteners.IsleChangeListener;
 import java.awt.Color;
-import java.awt.Component;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +18,11 @@ import supermarketsimulatorlisteners.CheckoutListener;
  */
 
 public final class HeaderPanel extends StarterPanel {
-    private final JButton leftIsleButton;
-    private final JButton rightIsleButton;
-    private final JButton checkoutButton;
-    private final JLabel budgetLabel;
-    private final JLabel cartLabel;
+    private JButton leftIsleButton;
+    private JButton rightIsleButton;
+    private JButton checkoutButton;
+    private JLabel budgetLabel;
+    private JLabel cartLabel;
     
     private final IsleMarker isleManager;
     private final User user;
@@ -33,14 +32,22 @@ public final class HeaderPanel extends StarterPanel {
     {
         this.mainPanel = mainPanel;
         this.user = mainPanel.getUser();
-        
         this.isleManager = mainPanel.getIsleMarker();
-        
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         
+        createComponents();
+        
+        addComponents();
+        
+        this.setOpaque(false);
+    }
+    
+    public void createComponents()
+    {
         leftIsleButton = createNewButton(new ImageIcon("./resources/left.png"));
         leftIsleButton.setActionCommand("leftIsle");
         leftIsleButton.setEnabled(false);
+        
         rightIsleButton = createNewButton(new ImageIcon("./resources/right.png"));
         rightIsleButton.setActionCommand("rightIsle");
         
@@ -56,7 +63,10 @@ public final class HeaderPanel extends StarterPanel {
         cartLabel = new JLabel("$00.00");
         cartLabel.setForeground(Color.getHSBColor(1.0f, 1.0f, .6f));
         setLabelSize(cartLabel);
-        
+    }
+    
+    public void addComponents()
+    {
         addSpace(this,10, 0);
         this.add(leftIsleButton);
         addSpace(this,115, 0);
@@ -66,8 +76,6 @@ public final class HeaderPanel extends StarterPanel {
         addSpace(this, 115, 0);
         this.add(rightIsleButton);
         addSpace(this,10, 0);
-        
-        this.setOpaque(false);
     }
     
     public void addListeners()

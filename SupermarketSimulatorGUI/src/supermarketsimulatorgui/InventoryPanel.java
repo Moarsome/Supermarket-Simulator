@@ -31,6 +31,7 @@ public class InventoryPanel extends StarterPanel {
     private ArrayList<JPanel> panelList;
     private JPanel viewPanel;
     private int itemCount;
+    private JButton currentlySelected;
     
     public InventoryPanel()
     {
@@ -39,11 +40,18 @@ public class InventoryPanel extends StarterPanel {
         this.setSize(new Dimension(750,750));
         this.setOpaque(false);
         
+        createComponents();
+        
+        addComponents();
+    }
+    
+    public void createComponents()
+    {
         panelList = new ArrayList<>();
         
         itemCount = 0;
         
-        headerLabel = new JLabel("YOUR BOUGHT ITEMS");
+        headerLabel = new JLabel("ALL YOUR BOUGHT ITEMS");
         headerLabel.setAlignmentX(CENTER_ALIGNMENT);
         headerLabel.setFont(new Font("Avenir", Font.PLAIN, 24));
         
@@ -57,7 +65,6 @@ public class InventoryPanel extends StarterPanel {
         
         
         viewPanel = new JPanel();
-        //inventoryPanel.setPreferredSize(new Dimension(550, 400));
         viewPanel.setOpaque(false);
         viewPanel.setLayout(new BoxLayout(viewPanel,BoxLayout.Y_AXIS));
         
@@ -66,8 +73,10 @@ public class InventoryPanel extends StarterPanel {
         scrollPane.setMaximumSize(new Dimension(600, 400));
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setViewportView(viewPanel);
-        //scrollPane.getViewport().setOpaque(false);
-        
+    }
+    
+    public void addComponents()
+    {
         this.add(headerLabel);
         this.add(Box.createRigidArea(new Dimension(0, 10)));
         this.add(descriptorLabel);
@@ -93,7 +102,9 @@ public class InventoryPanel extends StarterPanel {
             
             JPanel currentPanel = panelList.get(panelList.size()-1);
             JButton tempButton = createNewButton(resizeComponent(item.getImgURL(), 80,80));
+            tempButton.putClientProperty("item", item);
             tempButton.setAlignmentX(LEFT_ALIGNMENT);
+            tempButton.addActionListener(new selectionListener());
             currentPanel.add(Box.createRigidArea(new Dimension(10, 0)));
             currentPanel.add(tempButton);
         }
@@ -122,7 +133,7 @@ public class InventoryPanel extends StarterPanel {
         this.loginPanel = loginPanel;
     }
     
-    public class continueListener implements ActionListener
+    private class continueListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -130,6 +141,32 @@ public class InventoryPanel extends StarterPanel {
             loginPanel.resetPanel();
             loginPanel.setVisible(true);
         }
+    }
+    
+    private class selectionListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton selectedButton = (JButton) e.getSource();
+            ItemDatabase item = (ItemDatabase) selectedButton.getClientProperty("item");
+            
+            if (selectedButton != currentlySelected)
+            {
+                // Select button
+                if (currentlySelected != null)
+                {
+                    // Deselect previous button
+                    currentlySelected.setBorderPainted(false);
+
+                }
+                currentlySelected = selectedButton;
+                selectedButton.setBorderPainted(true);
+
+                descriptorLabel.setText("Selected: $"+item.getPrice()+" '"+item.getName()+"' in inventory");
+            }
+        }
+        
     }
 }
 

@@ -22,7 +22,6 @@ import supermarketsimulatorlisteners.CartViewListener;
 
 public class FooterPanel extends StarterPanel{
     private MainPanel mainPanel;
-    private BodyPanel bodyPanel;
     private JButton viewCartButton;
     private JScrollPane viewCartPane;
     private JPanel cartPanel;
@@ -32,9 +31,19 @@ public class FooterPanel extends StarterPanel{
     {
         this.mainPanel = mainPanel;
         
+        createComponents();
+        
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        this.setOpaque(false);
+        this.add(viewCartButton,0);
+    }
+    
+    public void createComponents()
+    {
         viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
         viewCartButton.putClientProperty("status", false);
         viewCartButton.addActionListener(new CartViewListener(this));
+        viewCartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         cartPanel = new JPanel();
         cartPanel.setLayout(new BoxLayout(cartPanel,BoxLayout.X_AXIS));
@@ -44,11 +53,6 @@ public class FooterPanel extends StarterPanel{
         viewCartPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         viewCartPane.setVisible(true);
         viewCartPane.setViewportView(cartPanel);
-        
-        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-        viewCartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.setOpaque(false);
-        this.add(viewCartButton,0);
     }
     
     public JButton addItemToCart(ItemDatabase item)
