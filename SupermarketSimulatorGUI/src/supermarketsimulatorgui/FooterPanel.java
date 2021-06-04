@@ -27,6 +27,10 @@ public class FooterPanel extends StarterPanel{
     private JPanel cartPanel;
     private JButton selectedButton;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public FooterPanel(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
@@ -38,6 +42,9 @@ public class FooterPanel extends StarterPanel{
         this.add(viewCartButton,0);
     }
     
+    /**
+     *
+     */
     public void createComponents()
     {
         viewCartButton = createNewButton(resizeComponent("/resources/viewCart.png",110,40));
@@ -55,6 +62,11 @@ public class FooterPanel extends StarterPanel{
         viewCartPane.setViewportView(cartPanel);
     }
     
+    /**
+     *
+     * @param item
+     * @return
+     */
     public JButton addItemToCart(ItemDatabase item)
     {
         Component space = Box.createRigidArea(new Dimension(5, 0));
@@ -69,6 +81,9 @@ public class FooterPanel extends StarterPanel{
         return itemButton;
     }
     
+    /**
+     *
+     */
     public void showInventory()
     {
         mainPanel.getBodyPanel().setIndicatorText("Opened inventory! Select any item to view details");
@@ -80,6 +95,9 @@ public class FooterPanel extends StarterPanel{
         this.repaint();
     }
     
+    /**
+     *
+     */
     public void hideInventory()
     {
         mainPanel.getBodyPanel().setIndicatorText("Closed inventory!");
@@ -89,16 +107,28 @@ public class FooterPanel extends StarterPanel{
         this.repaint();
     }
     
+    /**
+     *
+     * @param button
+     */
     public void setSelectedButton(JButton button)
     {
         this.selectedButton = button;
     }
     
+    /**
+     *
+     * @return
+     */
     public JButton getSelectedButton()
     {
         return this.selectedButton;
     }
     
+    /**
+     *
+     * @return
+     */
     public JPanel getCartPanel()
     {
         return this.cartPanel;

@@ -29,11 +29,19 @@ public class CartRemoveItem implements ActionListener {
     private JPanel cartPanel;
     private User user;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public CartRemoveItem(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         this.footerPanel = mainPanel.getFooterPanel();

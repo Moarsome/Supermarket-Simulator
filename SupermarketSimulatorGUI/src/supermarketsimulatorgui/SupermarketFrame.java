@@ -15,6 +15,12 @@ import supermarketsimulatorguidb.DBManager;
  * @author kyliec
  */
 public class SupermarketFrame extends JFrame{
+
+    /**
+     *
+     * @param args
+     * @throws SQLException
+     */
     public static void main(String[] args) throws SQLException 
     {
         DBManager dbManager = new DBManager();

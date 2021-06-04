@@ -34,6 +34,10 @@ public class CheckoutListener implements ActionListener {
     private Connection connection;
     private User user;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public CheckoutListener(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
@@ -46,6 +50,10 @@ public class CheckoutListener implements ActionListener {
         }
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         this.bodyPanel = mainPanel.getBodyPanel();

@@ -17,6 +17,10 @@ import javax.swing.JTextField;
 public class FieldFocusListener implements FocusListener 
 {
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void focusGained(FocusEvent e) {
         JTextField comp = (JTextField) e.getComponent();
@@ -24,6 +28,10 @@ public class FieldFocusListener implements FocusListener
         comp.setFont(new Font("Avenir", Font.PLAIN, 16));
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void focusLost(FocusEvent e) {
         

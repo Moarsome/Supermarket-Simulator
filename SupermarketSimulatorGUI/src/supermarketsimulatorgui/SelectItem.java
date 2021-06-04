@@ -46,8 +46,7 @@ public class SelectItem {
     
     
     /**
-     * Prints out cart content
-     * @return 
+     * Prints out cart content 
      */
     public void printCartContent()
     {   
@@ -69,6 +68,10 @@ public class SelectItem {
         return cart;
     }
     
+    /**
+     *
+     * @return
+     */
     public float getTotalCost()
     {
         float totalCost = 0.0f;

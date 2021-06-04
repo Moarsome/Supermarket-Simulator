@@ -15,10 +15,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import supermarketsimulatorgui.ItemDatabase;
 
+/**
+ *
+ * @author kyliec
+ */
 public class InventoryDB {
     private final DBManager dbManager;
     private ArrayList<ItemDatabase> items;
     
+    /**
+     *
+     * @throws SQLException
+     */
     public InventoryDB() throws SQLException {
         dbManager = new DBManager();
         dbManager.establishConnection();
@@ -26,11 +34,17 @@ public class InventoryDB {
         items.addAll(Arrays.asList(ItemDatabase.values()));
     }
     
+    /**
+     *
+     */
     public void createInventoryTable() 
     {
         dbManager.updateDB("CREATE TABLE INVENTORY (ITEM_ID INT, NAME VARCHAR(50), PRICE FLOAT)");
     }
     
+    /**
+     *
+     */
     public void fillInventoryTable() {
         
         for (int i = 0; i < items.size(); i++)

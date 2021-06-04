@@ -90,5 +90,4 @@ public class ItemDatabaseTest {
         int result = instance.getItemID();
         assertEquals(expResult, result);
     }
-    
 }

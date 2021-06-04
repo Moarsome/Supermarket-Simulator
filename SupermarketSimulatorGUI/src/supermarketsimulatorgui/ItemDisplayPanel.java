@@ -22,6 +22,12 @@ public class ItemDisplayPanel extends StarterPanel {
     private IsleMarker isleManagement;
     private int isleNum;
     
+    /**
+     *
+     * @param mainPanel
+     * @param isleManagement
+     * @param isleNum
+     */
     public ItemDisplayPanel(MainPanel mainPanel, IsleMarker isleManagement, int isleNum) 
     {
         this.mainPanel = mainPanel;

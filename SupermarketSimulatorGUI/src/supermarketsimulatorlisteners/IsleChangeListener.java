@@ -22,11 +22,19 @@ public class IsleChangeListener implements ActionListener
     private BodyPanel bodyPanel;
     private MainPanel mainPanel;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public IsleChangeListener(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         this.isleManager = mainPanel.getIsleMarker();
@@ -66,6 +74,10 @@ public class IsleChangeListener implements ActionListener
         }
     }
     
+    /**
+     *
+     * @param currentIsle
+     */
     public void setIsleVisibility(int currentIsle)
     {
             isleManager.setIsle(currentIsle);

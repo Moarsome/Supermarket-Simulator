@@ -28,6 +28,10 @@ public final class HeaderPanel extends StarterPanel {
     private final User user;
     private MainPanel mainPanel;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public HeaderPanel(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
@@ -42,6 +46,9 @@ public final class HeaderPanel extends StarterPanel {
         this.setOpaque(false);
     }
     
+    /**
+     *
+     */
     public void createComponents()
     {
         leftIsleButton = createNewButton(new ImageIcon(getClass().getResource("/resources/left.png")));
@@ -65,6 +72,9 @@ public final class HeaderPanel extends StarterPanel {
         setLabelSize(cartLabel);
     }
     
+    /**
+     *
+     */
     public void addComponents()
     {
         addSpace(this,10, 0);
@@ -78,6 +88,9 @@ public final class HeaderPanel extends StarterPanel {
         addSpace(this,10, 0);
     }
     
+    /**
+     *
+     */
     public void addListeners()
     {
         IsleChangeListener listener = new IsleChangeListener(mainPanel);
@@ -86,36 +99,60 @@ public final class HeaderPanel extends StarterPanel {
         checkoutButton.addActionListener(listener);
     }
     
+    /**
+     *
+     * @param value
+     */
     public void setBudgetLabel(float value)
     {
         this.budgetLabel.setText(String.format("$%.02f", value));
     }
     
+    /**
+     *
+     * @param value
+     */
     public void setCartLabel(float value)
     {
         this.cartLabel.setText(String.format("$%.02f", value));
     }
     
+    /**
+     *
+     */
     public void enableLeftIsleButton()
     {
         this.leftIsleButton.setEnabled(true);
     }
     
+    /**
+     *
+     */
     public void disableLeftIsleButton()
     {
         this.leftIsleButton.setEnabled(false);
     }
     
+    /**
+     *
+     */
     public void enableRightIsleButton()
     {
         this.rightIsleButton.setEnabled(true);
     }
     
+    /**
+     *
+     */
     public void disableRightIsleButton()
     {
         this.rightIsleButton.setEnabled(false);
     }
     
+    /**
+     *
+     * @return
+     */
     public JButton getCheckoutButton()
     {
         return this.checkoutButton;

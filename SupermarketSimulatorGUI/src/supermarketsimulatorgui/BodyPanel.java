@@ -25,6 +25,10 @@ public class BodyPanel extends StarterPanel
     private JButton cancelCheckout;
     private Component space;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public BodyPanel(MainPanel mainPanel) 
     {
         
@@ -38,7 +42,10 @@ public class BodyPanel extends StarterPanel
         
     }
     
-    
+    /**
+     *
+     * @param mainPanel
+     */
     public void createComponents(MainPanel mainPanel)
     {
         cancelCheckout = createNewButton(resizeComponent("/resources/cancelCheckout.png", 100, 40));
@@ -59,6 +66,9 @@ public class BodyPanel extends StarterPanel
         itemIndicator.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
     
+    /**
+     *
+     */
     public void addComponents()
     {
         this.removeAll();
@@ -78,21 +88,36 @@ public class BodyPanel extends StarterPanel
         this.repaint();
     }
     
+    /**
+     *
+     * @param newText
+     */
     public void setIsleLabel(String newText)
     {
         this.isleLabel.setText(newText);
     }
     
+    /**
+     *
+     * @param newText
+     */
     public void setIndicatorText(String newText)
     {
         this.itemIndicator.setText(newText);
     }
     
+    /**
+     *
+     * @return
+     */
     public JButton getCancelButton()
     {
         return this.cancelCheckout;
     }
     
+    /**
+     *
+     */
     public void removeSpace()
     {
         this.remove(space);

@@ -11,6 +11,10 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author kyliec
+ */
 public final class DBManager {
 
     private static final String USER_NAME = "super"; //your DB username
@@ -19,6 +23,10 @@ public final class DBManager {
 
     Connection conn;
 
+    /**
+     *
+     * @throws SQLException
+     */
     public DBManager() throws SQLException {
         establishConnection();
         
@@ -34,11 +42,19 @@ public final class DBManager {
 //            userInventory.createInventoryTable();
     }
 
+    /**
+     *
+     * @return
+     */
     public Connection getConnection() {
         return this.conn;
     }
 
     //Establish connection
+
+    /**
+     *
+     */
     public void establishConnection() {
         try {
             //Establish a connection to Database
@@ -48,6 +64,9 @@ public final class DBManager {
         }       
     }
 
+    /**
+     *
+     */
     public void closeConnections() {
         if (conn != null) {
             try {
@@ -58,6 +77,11 @@ public final class DBManager {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public ResultSet queryDB(String sql) {
 
         Connection connection = this.conn;
@@ -74,6 +98,10 @@ public final class DBManager {
         return resultSet;
     }
 
+    /**
+     *
+     * @param sql
+     */
     public void updateDB(String sql) {
 
         Connection connection = this.conn;

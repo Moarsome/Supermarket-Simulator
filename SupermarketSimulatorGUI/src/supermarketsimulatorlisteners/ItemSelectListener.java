@@ -30,12 +30,21 @@ public class ItemSelectListener implements ActionListener{
     private IsleMarker isleManagement;
     private User user;
     
+    /**
+     *
+     * @param mainPanel
+     * @param isleManagement
+     */
     public ItemSelectListener(MainPanel mainPanel, IsleMarker isleManagement)
     {
         this.mainPanel = mainPanel;
         this.isleManagement = isleManagement;
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) 
     {

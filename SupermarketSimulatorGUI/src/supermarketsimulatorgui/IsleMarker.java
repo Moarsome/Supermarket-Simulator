@@ -36,6 +36,7 @@ public class IsleMarker {
     private BodyPanel bodyPanel;
     /**
      * Constructor for IsleMarker Class
+     * @param mainPanel
      */
     public IsleMarker(MainPanel mainPanel) {
         // ARRAY LIST OF SETS
@@ -49,6 +50,9 @@ public class IsleMarker {
         addIsles();
     }
 
+    /**
+     *
+     */
     public void addIsles()
     {
         isles.add(confectionary);
@@ -62,6 +66,9 @@ public class IsleMarker {
         isles.add(frozen);
     }
     
+    /**
+     *
+     */
     public void createPanels()
     {
         for (int i = 0; i < 9; i++)
@@ -105,6 +112,12 @@ public class IsleMarker {
         return null;
     }
     
+    /**
+     *
+     * @param selectedItem
+     * @param isleNum
+     * @return
+     */
     public ItemDatabase getItem(int selectedItem, int isleNum)
     {
         Set<ItemDatabase> isleDatabase = isles.get(isleNum);
@@ -131,6 +144,10 @@ public class IsleMarker {
         return isleNames[isleNum - 1].toUpperCase();
     }
 
+    /**
+     *
+     * @return
+     */
     public Set<ItemDatabase> getCurrentIsle()
     {
         return isles.get(isle);
@@ -171,21 +188,38 @@ public class IsleMarker {
         this.isles = isles;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<ItemDisplayPanel> getItemPanels()
     {
         return this.itemPanels;
     }
     
+    /**
+     *
+     * @param isleNum
+     * @return
+     */
     public ItemDisplayPanel getItemPanel(int isleNum)
     {
         return this.itemPanels.get(isleNum);
     }
     
+    /**
+     *
+     * @return
+     */
     public JButton getSelectedItem()
     {
         return this.selectedItem;
     }
     
+    /**
+     *
+     * @param selectedItem
+     */
     public void setSelectedItem(JButton selectedItem)
     {
         this.selectedItem = selectedItem;

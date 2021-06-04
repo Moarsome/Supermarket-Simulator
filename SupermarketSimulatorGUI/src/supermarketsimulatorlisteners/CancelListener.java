@@ -21,11 +21,19 @@ public class CancelListener implements ActionListener{
     private BodyPanel bodyPanel;
     private HeaderPanel headerPanel;
     
+    /**
+     *
+     * @param mainPanel
+     */
     public CancelListener(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) 
     {

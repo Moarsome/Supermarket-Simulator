@@ -30,6 +30,11 @@ public class DBListener implements ActionListener
     private MainPanel mainPanel;
     private User user;
     
+    /**
+     *
+     * @param loginPanel
+     * @param mainPanel
+     */
     public DBListener(LoginPanel loginPanel, MainPanel mainPanel)
     {
         this.user = mainPanel.getUser();
@@ -45,6 +50,10 @@ public class DBListener implements ActionListener
         }
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -97,6 +106,10 @@ public class DBListener implements ActionListener
        
     }
 
+    /**
+     *
+     * @param user
+     */
     public void addUser(User user) 
     {
         try 
@@ -116,6 +129,12 @@ public class DBListener implements ActionListener
         }
     }
     
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public float findUser(String username, String password)
     {
         try {
@@ -140,6 +159,10 @@ public class DBListener implements ActionListener
         return (Float) null;
     }
     
+    /**
+     *
+     * @return
+     */
     public int generateUserID()
     {
         try {
@@ -156,6 +179,9 @@ public class DBListener implements ActionListener
         return 0;
     }
     
+    /**
+     *
+     */
     public void switchToMainPanel()
     {
         loginPanel.setVisible(false);

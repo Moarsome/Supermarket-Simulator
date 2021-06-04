@@ -23,6 +23,11 @@ public class MainPanel extends JPanel
     private InventoryPanel inventoryPanel;
     private IsleMarker isleManagement;
     
+    /**
+     *
+     * @param user
+     * @param inventoryPanel
+     */
     public MainPanel(User user, InventoryPanel inventoryPanel)
     {
         this.inventoryPanel = inventoryPanel;
@@ -60,36 +65,63 @@ public class MainPanel extends JPanel
         this.setVisible(true);
     }
     
+    /**
+     *
+     * @return
+     */
     public HeaderPanel getHeaderPanel()
     {
         return this.headerPanel;
     }
     
+    /**
+     *
+     * @return
+     */
     public BodyPanel getBodyPanel()
     {
         return this.bodyPanel;
     }
     
+    /**
+     *
+     * @return
+     */
     public FooterPanel getFooterPanel()
     {
         return this.footerPanel;
     }
     
+    /**
+     *
+     * @return
+     */
     public InventoryPanel getInventoryPanel()
     {
         return this.inventoryPanel;
     }
     
+    /**
+     *
+     * @return
+     */
     public IsleMarker getIsleMarker()
     {
         return this.isleManagement;
     }
     
+    /**
+     *
+     * @return
+     */
     public User getUser()
     {
         return this.user;
     }
     
+    /**
+     *
+     */
     public void enableVisible()
     {
         this.setVisible(true);

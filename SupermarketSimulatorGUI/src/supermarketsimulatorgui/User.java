@@ -104,18 +104,25 @@ public class User {
     }
     
     /**
-     * setter for the user cart
-     * @param cart 
+     * setter for the user cart 
+     * @param cartCost
      */
     public void addCartCost(float cartCost) {
         this.cartCost += cartCost;
     }
     
+    /**
+     *
+     */
     public void purchaseCart()
     {
         this.budget -= this.cartCost;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean hasEnoughMoney()
     {
         if (this.getBudget() > this.getCartCost())
@@ -141,43 +148,75 @@ public class User {
         this.inventory = inventory;
     }
     
+    /**
+     *
+     * @param item
+     */
     public void addInventory(ItemDatabase item) 
     {
         inventory.add(item);
         addCartCost(item.getPrice());
     }
     
+    /**
+     *
+     * @param item
+     */
     public void removeFromInventory(ItemDatabase item)
     {
         inventory.remove(item);
         addCartCost(-1*item.getPrice());
     }
     
+    /**
+     *
+     * @param userID
+     */
     public void setUserID(int userID)
     {
         this.userID = userID;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getUserID()
     {
         return this.userID;
     }  
     
+    /**
+     *
+     * @param name
+     */
     public void setUsername(String name)
     {
         this.name = name;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getUsername()
     {
         return this.name;
     }
     
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password)
     {
         this.password = password;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPassword()
     {
         return this.password;

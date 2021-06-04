@@ -16,11 +16,19 @@ import supermarketsimulatorgui.LoginPanel;
 public class LoginListener implements ActionListener{
     private final LoginPanel panel;
     
+    /**
+     *
+     * @param panel
+     */
     public LoginListener(LoginPanel panel)
     {
         this.panel = panel;
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("login"))

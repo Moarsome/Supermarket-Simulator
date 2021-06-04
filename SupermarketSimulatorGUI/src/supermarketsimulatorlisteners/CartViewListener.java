@@ -17,11 +17,20 @@ import supermarketsimulatorgui.FooterPanel;
 public class CartViewListener implements ActionListener {
 
     private FooterPanel footerPanel;
+
+    /**
+     *
+     * @param footerPanel
+     */
     public CartViewListener(FooterPanel footerPanel)
     {
         this.footerPanel = footerPanel;
     }
     
+    /**
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton viewButton = (JButton) e.getSource();

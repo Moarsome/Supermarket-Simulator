@@ -33,6 +33,9 @@ public class InventoryPanel extends StarterPanel {
     private int itemCount;
     private JButton currentlySelected;
     
+    /**
+     *
+     */
     public InventoryPanel()
     {
         this.panel = this;
@@ -45,6 +48,9 @@ public class InventoryPanel extends StarterPanel {
         addComponents();
     }
     
+    /**
+     *
+     */
     public void createComponents()
     {
         panelList = new ArrayList<>();
@@ -75,6 +81,9 @@ public class InventoryPanel extends StarterPanel {
         scrollPane.setViewportView(viewPanel);
     }
     
+    /**
+     *
+     */
     public void addComponents()
     {
         this.add(headerLabel);
@@ -87,6 +96,10 @@ public class InventoryPanel extends StarterPanel {
         this.add(Box.createRigidArea(new Dimension(0, 30)));
     }
     
+    /**
+     *
+     * @param item
+     */
     public void addItemToPanel(ItemDatabase item)
     {
         if (itemCount < 6)
@@ -114,6 +127,9 @@ public class InventoryPanel extends StarterPanel {
         }
     }
     
+    /**
+     *
+     */
     public void enablePanel()
     {
         for (JPanel panel:panelList)
@@ -123,11 +139,19 @@ public class InventoryPanel extends StarterPanel {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JButton getContinueButton()
     {
         return this.continueButton;
     }
     
+    /**
+     *
+     * @param loginPanel
+     */
     public void setLoginPanel(LoginPanel loginPanel)
     {
         this.loginPanel = loginPanel;

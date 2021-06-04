@@ -37,6 +37,11 @@ public final class LoginPanel extends StarterPanel {
     private final MainPanel mainPanel;
     private User user;
     
+    /**
+     *
+     * @param mainPanel
+     * @param user
+     */
     public LoginPanel(MainPanel mainPanel, User user)
     {
         this.mainPanel = mainPanel;
@@ -50,6 +55,9 @@ public final class LoginPanel extends StarterPanel {
         this.setOpaque(false);
     }
 
+    /**
+     *
+     */
     public void createComponents()
     {
         innerPane = new JPanel();
@@ -94,6 +102,10 @@ public final class LoginPanel extends StarterPanel {
         addComponents(constraints);
     }
     
+    /**
+     *
+     * @param constraints
+     */
     public void addComponents(GridBagConstraints constraints)
     {
         constraints.gridwidth = 2;
@@ -120,7 +132,10 @@ public final class LoginPanel extends StarterPanel {
         this.add(textFeedback);
     }
     
-    
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user)
     {
         this.user = user;
@@ -140,21 +155,36 @@ public final class LoginPanel extends StarterPanel {
         return passInput;
     }
     
+    /**
+     *
+     * @return
+     */
     public JLabel getTextFeedback()
     {
         return this.textFeedback;
     }
     
+    /**
+     *
+     * @param newText
+     */
     public void setTextFeedback(String newText)
     {
         this.textFeedback.setText(newText);
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getBudgetInput()
     {
         return this.budgetInput;
     }
     
+    /**
+     *
+     */
     public void switchToSetBudget()
     {
         registerButton.setVisible(false);
@@ -166,6 +196,9 @@ public final class LoginPanel extends StarterPanel {
         this.submitButton.setActionCommand("budget");
     }
     
+    /**
+     *
+     */
     public void switchToLogin()
     {
         this.loginButton.setEnabled(false);
@@ -174,6 +207,9 @@ public final class LoginPanel extends StarterPanel {
         this.setTextFeedback("Enter username and password or switch to 'register' to create a new user");
     }
     
+    /**
+     *
+     */
     public void switchToRegister()
     {
         this.loginButton.setEnabled(true);
@@ -182,6 +218,9 @@ public final class LoginPanel extends StarterPanel {
         this.setTextFeedback("Enter registration details or choose 'login' to access an existing user");
     }
     
+    /**
+     *
+     */
     public void resetPanel()
     {
         registerButton.setVisible(true);
