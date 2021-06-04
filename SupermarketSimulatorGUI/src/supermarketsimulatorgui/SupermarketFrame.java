@@ -6,6 +6,7 @@
 package supermarketsimulatorgui;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import javax.swing.*;
 import supermarketsimulatorguidb.DBManager;
 
@@ -14,7 +15,7 @@ import supermarketsimulatorguidb.DBManager;
  * @author kyliec
  */
 public class SupermarketFrame extends JFrame{
-    public static void main(String[] args) 
+    public static void main(String[] args) throws SQLException 
     {
         DBManager dbManager = new DBManager();
         

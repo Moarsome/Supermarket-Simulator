@@ -19,11 +19,11 @@ public final class DBManager {
 
     Connection conn;
 
-    public DBManager() {
+    public DBManager() throws SQLException {
         establishConnection();
+        
         System.out.println("connection: "+getConnection());
             
-//        try {
 //            System.out.println("Running create tables");
 //            UserDB user = new UserDB();
 //            InventoryDB inventory = new InventoryDB();
@@ -32,10 +32,6 @@ public final class DBManager {
 //            inventory.createInventoryTable();
 //            inventory.fillInventoryTable();
 //            userInventory.createInventoryTable();
-//        } 
-//        catch (SQLException ex) {
-//            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     public Connection getConnection() {
