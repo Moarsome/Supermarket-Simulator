@@ -59,7 +59,7 @@ public class InventoryPanel extends StarterPanel {
         descriptorLabel.setAlignmentX(CENTER_ALIGNMENT);
         descriptorLabel.setFont(new Font("Avenir", Font.PLAIN, 18));
         
-        continueButton = createNewButton(resizeComponent("./resources/continue.png",100,40));
+        continueButton = createNewButton(resizeComponent("/resources/continue.png",100,40));
         continueButton.setAlignmentX(CENTER_ALIGNMENT);
         continueButton.addActionListener(new continueListener());
         

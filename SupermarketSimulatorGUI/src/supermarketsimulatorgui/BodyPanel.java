@@ -41,7 +41,7 @@ public class BodyPanel extends StarterPanel
     
     public void createComponents(MainPanel mainPanel)
     {
-        cancelCheckout = createNewButton(resizeComponent("./resources/cancelCheckout.png", 100, 40));
+        cancelCheckout = createNewButton(resizeComponent("/resources/cancelCheckout.png", 100, 40));
         cancelCheckout.setAlignmentX(Component.CENTER_ALIGNMENT);
         cancelCheckout.addActionListener(new CancelListener(mainPanel));
         cancelCheckout.setVisible(false);
@@ -50,7 +50,7 @@ public class BodyPanel extends StarterPanel
         isleLabel.setFont(new Font("Avenir", Font.PLAIN, 30));
         isleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        ImageIcon shelvesImage = resizeComponent("./resources/shelves.png", 620, 320);
+        ImageIcon shelvesImage = resizeComponent("/resources/shelves.png", 620, 320);
         shelves = new JLabel(shelvesImage);
         shelves.setAlignmentX(Component.CENTER_ALIGNMENT);
         

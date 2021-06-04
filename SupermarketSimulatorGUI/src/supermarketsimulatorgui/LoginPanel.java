@@ -61,9 +61,9 @@ public final class LoginPanel extends StarterPanel {
         constraints.insets = new Insets(5,0,5,0);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         
-        userIcon = new JLabel(resizeComponent("./resources/userIcon.png", 80,100));
+        userIcon = new JLabel(resizeComponent("/resources/userIcon.png", 80,100));
         userIcon.setAlignmentX(CENTER_ALIGNMENT);
-        loginHeader = new JLabel(resizeComponent("./resources/shoppingLogo.png", 509,124));
+        loginHeader = new JLabel(resizeComponent("/resources/shoppingLogo.png", 509,124));
         loginHeader.setAlignmentX(CENTER_ALIGNMENT);
         
         budgetInput = new JTextField("Enter budget");
@@ -75,15 +75,15 @@ public final class LoginPanel extends StarterPanel {
         passInput = new JPasswordField("Password");
         designTextField(passInput);
         
-        submitButton = createNewButton(resizeComponent("./resources/submit.png", 208, 40));
+        submitButton = createNewButton(resizeComponent("/resources/submit.png", 208, 40));
         submitButton.setActionCommand("register");
         submitButton.addActionListener(new DBListener(this, mainPanel));
         
-        loginButton = createNewButton(resizeComponent("./resources/login.png", 104, 40));
+        loginButton = createNewButton(resizeComponent("/resources/login.png", 104, 40));
         loginButton.setActionCommand("login");
         loginButton.addActionListener(new LoginListener(this));
         
-        registerButton = createNewButton(resizeComponent("./resources/register.png", 104, 40));
+        registerButton = createNewButton(resizeComponent("/resources/register.png", 104, 40));
         registerButton.setActionCommand("register");
         registerButton.addActionListener(new LoginListener(this));
         registerButton.setEnabled(false);

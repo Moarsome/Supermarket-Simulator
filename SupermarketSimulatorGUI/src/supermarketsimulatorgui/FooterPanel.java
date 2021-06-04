@@ -40,7 +40,7 @@ public class FooterPanel extends StarterPanel{
     
     public void createComponents()
     {
-        viewCartButton = createNewButton(resizeComponent("./resources/viewCart.png",110,40));
+        viewCartButton = createNewButton(resizeComponent("/resources/viewCart.png",110,40));
         viewCartButton.putClientProperty("status", false);
         viewCartButton.addActionListener(new CartViewListener(this));
         viewCartButton.setAlignmentX(Component.CENTER_ALIGNMENT);

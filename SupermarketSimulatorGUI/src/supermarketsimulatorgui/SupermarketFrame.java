@@ -7,6 +7,7 @@ package supermarketsimulatorgui;
 
 import java.awt.Color;
 import javax.swing.*;
+import supermarketsimulatorguidb.DBManager;
 
 /**
  *
@@ -15,6 +16,8 @@ import javax.swing.*;
 public class SupermarketFrame extends JFrame{
     public static void main(String[] args) 
     {
+        DBManager dbManager = new DBManager();
+        
         User user = new User();
         SupermarketFrame frame = new SupermarketFrame();
         InventoryPanel inventoryPanel = new InventoryPanel();

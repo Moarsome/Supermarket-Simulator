@@ -44,14 +44,14 @@ public final class HeaderPanel extends StarterPanel {
     
     public void createComponents()
     {
-        leftIsleButton = createNewButton(new ImageIcon("./resources/left.png"));
+        leftIsleButton = createNewButton(new ImageIcon(getClass().getResource("/resources/left.png")));
         leftIsleButton.setActionCommand("leftIsle");
         leftIsleButton.setEnabled(false);
         
-        rightIsleButton = createNewButton(new ImageIcon("./resources/right.png"));
+        rightIsleButton = createNewButton(new ImageIcon(getClass().getResource("/resources/right.png")));
         rightIsleButton.setActionCommand("rightIsle");
         
-        checkoutButton = createNewButton(resizeComponent("./resources/checkout.png",100,40));
+        checkoutButton = createNewButton(resizeComponent("/resources/checkout.png",100,40));
         checkoutButton.putClientProperty("status", false);
         checkoutButton.setActionCommand("checkout");
         checkoutButton.addActionListener(new CheckoutListener(mainPanel));

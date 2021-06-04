@@ -72,7 +72,8 @@ abstract class StarterPanel extends JPanel{
     
     public ImageIcon resizeComponent(String imgURL, int width, int height)
     {
-        ImageIcon tempImage = new ImageIcon(imgURL);
+        java.net.URL imageURL = getClass().getResource(imgURL);
+        ImageIcon tempImage = new ImageIcon(imageURL);
         Image image = tempImage.getImage(); // transform it 
         Image newimg = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         tempImage = new ImageIcon(newimg);

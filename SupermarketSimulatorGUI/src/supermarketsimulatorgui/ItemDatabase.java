@@ -92,7 +92,7 @@ public enum ItemDatabase {
     
     public String getImgURL()
     {
-        return "./resources/items/"+this.imgURL;
+        return "/resources/items/"+this.imgURL;
     }
 
     /**

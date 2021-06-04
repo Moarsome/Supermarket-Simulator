@@ -17,13 +17,11 @@ import supermarketsimulatorgui.ItemDatabase;
 
 public class InventoryDB {
     private final DBManager dbManager;
-    private int itemID;
     private ArrayList<ItemDatabase> items;
     
     public InventoryDB() throws SQLException {
         dbManager = new DBManager();
         dbManager.establishConnection();
-        itemID = 0;
         items = new ArrayList<>();
         items.addAll(Arrays.asList(ItemDatabase.values()));
     }
@@ -38,7 +36,6 @@ public class InventoryDB {
         for (int i = 0; i < items.size(); i++)
         {
          dbManager.updateDB("INSERT INTO INVENTORY VALUES("+items.get(i).getItemID()+",'" + items.get(i).getName() + "'," + items.get(i).getPrice() + ")");
-         itemID++;
         }
     }
 }
