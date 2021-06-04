@@ -13,7 +13,7 @@ import supermarketsimulatorgui.HeaderPanel;
 import supermarketsimulatorgui.MainPanel;
 
 /**
- *
+ * Action listener for cancelling checkout
  * @author kyliec
  */
 public class CancelListener implements ActionListener{
@@ -22,7 +22,7 @@ public class CancelListener implements ActionListener{
     private HeaderPanel headerPanel;
     
     /**
-     *
+     * Constructor
      * @param mainPanel
      */
     public CancelListener(MainPanel mainPanel)
@@ -31,7 +31,7 @@ public class CancelListener implements ActionListener{
     }
 
     /**
-     *
+     * When button is clicked
      * @param e
      */
     @Override

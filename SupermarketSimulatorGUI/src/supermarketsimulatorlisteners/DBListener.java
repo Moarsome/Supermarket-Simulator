@@ -20,7 +20,7 @@ import supermarketsimulatorgui.MainPanel;
 import supermarketsimulatorgui.User;
 
 /**
- *
+ * ActionListener for register and login connections to database
  * @author kyliec
  */
 public class DBListener implements ActionListener 
@@ -31,7 +31,7 @@ public class DBListener implements ActionListener
     private User user;
     
     /**
-     *
+     * Constructor
      * @param loginPanel
      * @param mainPanel
      */
@@ -51,7 +51,7 @@ public class DBListener implements ActionListener
     }
     
     /**
-     *
+     * When button(s) are clicked
      * @param e
      */
     @Override
@@ -59,11 +59,25 @@ public class DBListener implements ActionListener
     {
         if (e.getActionCommand().equals("register"))
         {
-            user.setUserID(0);
-            user.setUsername(loginPanel.getUserInput().getText());
-            user.setPassword(loginPanel.getPassInput().getText());
-            user.setBudget(200.0f);
-            addUser(user);
+            try {
+                String tempUsername = loginPanel.getUserInput().getText();
+                Statement stmt = connection.createStatement();
+                
+                ResultSet rs = stmt.executeQuery("SELECT * FROM USERS WHERE USERNAME = '"+tempUsername+"'");
+                if (rs.next())
+                {
+                    loginPanel.setTextFeedback("Username already exists! Please choose another name.");
+                }
+                else
+                {
+                    user.setUsername(tempUsername);
+                    user.setPassword(loginPanel.getPassInput().getText());
+                    user.setBudget(200.0f);
+                    addUser(user);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(DBListener.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if (e.getActionCommand().equals("login"))
         {
@@ -80,7 +94,7 @@ public class DBListener implements ActionListener
                 user.setPassword(passInput);
                 user.setBudget(tempBudget);
                 
-                loginPanel.setTextFeedback("User successfully loaded! Please add to your existing budget of "+tempBudget+".");
+                loginPanel.setTextFeedback("User successfully loaded! Please add to your existing budget of $"+tempBudget+".");
             }
         }
         else if (e.getActionCommand().equals("budget"))
@@ -107,7 +121,7 @@ public class DBListener implements ActionListener
     }
 
     /**
-     *
+     * Add user into database
      * @param user
      */
     public void addUser(User user) 
@@ -130,7 +144,7 @@ public class DBListener implements ActionListener
     }
     
     /**
-     *
+     * Find user within database
      * @param username
      * @param password
      * @return

@@ -14,7 +14,8 @@ import javax.swing.JPanel;
 import supermarketsimulatorlisteners.ItemSelectListener;
 
 /**
- *
+ * Creates display of items for shelves
+ * 
  * @author kyliec
  */
 public class ItemDisplayPanel extends StarterPanel {
@@ -23,7 +24,7 @@ public class ItemDisplayPanel extends StarterPanel {
     private int isleNum;
     
     /**
-     *
+     * Constructor for ItemDisplayPanel
      * @param mainPanel
      * @param isleManagement
      * @param isleNum
@@ -41,6 +42,10 @@ public class ItemDisplayPanel extends StarterPanel {
         this.setOpaque(false);
     }
 
+    /**
+     * Add JPanels to main panel
+     * @param panel
+     */
     private void addPanels(JPanel panel){
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.NORTH;

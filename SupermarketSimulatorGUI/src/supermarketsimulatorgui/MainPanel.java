@@ -10,12 +10,11 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 /**
- *
+ * MainPanel includes organization and management of header,body and footer panels
  * @author kyliec
  */
 public class MainPanel extends JPanel 
 {
-
     private User user;
     private HeaderPanel headerPanel;
     private BodyPanel bodyPanel;
@@ -24,7 +23,8 @@ public class MainPanel extends JPanel
     private IsleMarker isleManagement;
     
     /**
-     *
+     * Constructor for MainPanel
+     * 
      * @param user
      * @param inventoryPanel
      */
@@ -66,7 +66,8 @@ public class MainPanel extends JPanel
     }
     
     /**
-     *
+     * Retrieves header panel
+     * 
      * @return
      */
     public HeaderPanel getHeaderPanel()
@@ -75,7 +76,7 @@ public class MainPanel extends JPanel
     }
     
     /**
-     *
+     * Retrieves body panel
      * @return
      */
     public BodyPanel getBodyPanel()
@@ -83,8 +84,8 @@ public class MainPanel extends JPanel
         return this.bodyPanel;
     }
     
-    /**
-     *
+    /** 
+     * Retrieves footer panel
      * @return
      */
     public FooterPanel getFooterPanel()
@@ -93,7 +94,7 @@ public class MainPanel extends JPanel
     }
     
     /**
-     *
+     * Retrieves inventory panel
      * @return
      */
     public InventoryPanel getInventoryPanel()
@@ -102,7 +103,7 @@ public class MainPanel extends JPanel
     }
     
     /**
-     *
+     * Retrieves isle management object
      * @return
      */
     public IsleMarker getIsleMarker()
@@ -111,7 +112,7 @@ public class MainPanel extends JPanel
     }
     
     /**
-     *
+     * Retrieves user
      * @return
      */
     public User getUser()
@@ -120,7 +121,7 @@ public class MainPanel extends JPanel
     }
     
     /**
-     *
+     * Sets this object visible
      */
     public void enableVisible()
     {

@@ -12,8 +12,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import supermarketsimulatorlisteners.CheckoutListener;
+
 /**
- *
+ * 
+ * 
  * @author kyliec
  */
 
@@ -24,19 +26,16 @@ public final class HeaderPanel extends StarterPanel {
     private JLabel budgetLabel;
     private JLabel cartLabel;
     
-    private final IsleMarker isleManager;
-    private final User user;
     private MainPanel mainPanel;
     
     /**
-     *
+     * The HeaderPanel creates the top-most panel for the MainPanel
+     * 
      * @param mainPanel
      */
     public HeaderPanel(MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
-        this.user = mainPanel.getUser();
-        this.isleManager = mainPanel.getIsleMarker();
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
         
         createComponents();
@@ -47,7 +46,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Creates components for the JPanel
      */
     public void createComponents()
     {
@@ -73,7 +72,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Add created components to the panel
      */
     public void addComponents()
     {
@@ -89,7 +88,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Add necessary listeners to buttons
      */
     public void addListeners()
     {
@@ -100,7 +99,8 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Set the budget label to a float value
+     * 
      * @param value
      */
     public void setBudgetLabel(float value)
@@ -109,7 +109,8 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Set the cart label with a float value
+     * 
      * @param value
      */
     public void setCartLabel(float value)
@@ -118,7 +119,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Enable left isle button for clicking
      */
     public void enableLeftIsleButton()
     {
@@ -126,7 +127,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Disable left isle button
      */
     public void disableLeftIsleButton()
     {
@@ -134,7 +135,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Enable right isle button
      */
     public void enableRightIsleButton()
     {
@@ -142,7 +143,7 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Disable right isle button
      */
     public void disableRightIsleButton()
     {
@@ -150,7 +151,8 @@ public final class HeaderPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Retrieve checkout button
+     * 
      * @return
      */
     public JButton getCheckoutButton()

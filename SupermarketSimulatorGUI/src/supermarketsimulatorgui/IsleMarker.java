@@ -51,7 +51,7 @@ public class IsleMarker {
     }
 
     /**
-     *
+     * Add relevant isles
      */
     public void addIsles()
     {
@@ -67,7 +67,7 @@ public class IsleMarker {
     }
     
     /**
-     *
+     * Creates item panels to display on shelves
      */
     public void createPanels()
     {
@@ -113,7 +113,8 @@ public class IsleMarker {
     }
     
     /**
-     *
+     * Retrieves item from isles
+     * 
      * @param selectedItem
      * @param isleNum
      * @return
@@ -145,7 +146,7 @@ public class IsleMarker {
     }
 
     /**
-     *
+     * Get set of items from isle number
      * @return
      */
     public Set<ItemDatabase> getCurrentIsle()
@@ -189,7 +190,7 @@ public class IsleMarker {
     }
     
     /**
-     *
+     * Retrieve item panels
      * @return
      */
     public ArrayList<ItemDisplayPanel> getItemPanels()
@@ -198,7 +199,7 @@ public class IsleMarker {
     }
     
     /**
-     *
+     * Retrieve item panel by isle
      * @param isleNum
      * @return
      */
@@ -208,7 +209,7 @@ public class IsleMarker {
     }
     
     /**
-     *
+     * Retrieve currently selected item
      * @return
      */
     public JButton getSelectedItem()
@@ -217,7 +218,7 @@ public class IsleMarker {
     }
     
     /**
-     *
+     * Set currently selected item
      * @param selectedItem
      */
     public void setSelectedItem(JButton selectedItem)

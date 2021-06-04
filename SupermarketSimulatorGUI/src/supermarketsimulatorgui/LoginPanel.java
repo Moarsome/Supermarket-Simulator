@@ -20,7 +20,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- *
+ * Creates login screen of JFrame
+ * 
  * @author kyliec
  */
 public final class LoginPanel extends StarterPanel {
@@ -38,7 +39,8 @@ public final class LoginPanel extends StarterPanel {
     private User user;
     
     /**
-     *
+     * Constructor for LoginPanel
+     * 
      * @param mainPanel
      * @param user
      */
@@ -56,7 +58,7 @@ public final class LoginPanel extends StarterPanel {
     }
 
     /**
-     *
+     * Creates components for JPanel
      */
     public void createComponents()
     {
@@ -103,7 +105,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Adds components to JPanel
      * @param constraints
      */
     public void addComponents(GridBagConstraints constraints)
@@ -133,7 +135,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Sets current user
      * @param user
      */
     public void setUser(User user)
@@ -142,6 +144,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
+     * Retrieves username input
      * @return the userInput
      */
     public JTextField getUserInput() {
@@ -149,6 +152,7 @@ public final class LoginPanel extends StarterPanel {
     }
 
     /**
+     * Retrieves password input
      * @return the passInput
      */
     public JTextField getPassInput() {
@@ -156,7 +160,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Retrieves current text description
      * @return
      */
     public JLabel getTextFeedback()
@@ -165,7 +169,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Sets text description for user
      * @param newText
      */
     public void setTextFeedback(String newText)
@@ -174,7 +178,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Retrieves inputted budget
      * @return
      */
     public JTextField getBudgetInput()
@@ -183,7 +187,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Switch to set budget mode
      */
     public void switchToSetBudget()
     {
@@ -197,7 +201,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Switch to login mode
      */
     public void switchToLogin()
     {
@@ -208,7 +212,7 @@ public final class LoginPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Switch to register mode
      */
     public void switchToRegister()
     {
@@ -216,19 +220,5 @@ public final class LoginPanel extends StarterPanel {
         this.registerButton.setEnabled(false);
         this.submitButton.setActionCommand("register");
         this.setTextFeedback("Enter registration details or choose 'login' to access an existing user");
-    }
-    
-    /**
-     *
-     */
-    public void resetPanel()
-    {
-        registerButton.setVisible(true);
-        loginButton.setVisible(true);
-        userInput.setVisible(true);
-        passInput.setVisible(true);
-        budgetInput.setVisible(false);
-        
-        switchToRegister();
     }
 }

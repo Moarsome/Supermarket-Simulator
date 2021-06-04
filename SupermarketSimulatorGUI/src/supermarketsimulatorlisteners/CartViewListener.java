@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import supermarketsimulatorgui.FooterPanel;
 
 /**
- *
+ * ActionListener for viewing the class
  * @author kyliec
  */
 public class CartViewListener implements ActionListener {
@@ -19,7 +19,7 @@ public class CartViewListener implements ActionListener {
     private FooterPanel footerPanel;
 
     /**
-     *
+     * Constructor
      * @param footerPanel
      */
     public CartViewListener(FooterPanel footerPanel)
@@ -28,7 +28,7 @@ public class CartViewListener implements ActionListener {
     }
     
     /**
-     *
+     * When button is clicked
      * @param e
      */
     @Override

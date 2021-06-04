@@ -11,14 +11,14 @@ import java.awt.event.FocusListener;
 import javax.swing.JTextField;
 
 /**
- *
+ * ActionListener for focusing on text fields
  * @author kyliec
  */
 public class FieldFocusListener implements FocusListener 
 {
 
     /**
-     *
+     * When fields are clicked
      * @param e
      */
     @Override
@@ -29,7 +29,7 @@ public class FieldFocusListener implements FocusListener
     }
 
     /**
-     *
+     * When fields are clicked away
      * @param e
      */
     @Override

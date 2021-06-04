@@ -16,7 +16,8 @@ import supermarketsimulatorlisteners.CartRemoveItem;
 import supermarketsimulatorlisteners.CartViewListener;
 
 /**
- *
+ * FooterPanel is the JPanel that displays the bottom portion of the MainPanel
+ * 
  * @author kyliec
  */
 
@@ -28,7 +29,8 @@ public class FooterPanel extends StarterPanel{
     private JButton selectedButton;
     
     /**
-     *
+     * Constructor for the FooterPanel
+     * 
      * @param mainPanel
      */
     public FooterPanel(MainPanel mainPanel)
@@ -43,7 +45,8 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Creates necessary components for the FooterPanel
+     * 
      */
     public void createComponents()
     {
@@ -63,7 +66,8 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Adds an ItemDatabase item to the user's cart
+     * 
      * @param item
      * @return
      */
@@ -82,7 +86,7 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Displays inventory scroll panel
      */
     public void showInventory()
     {
@@ -96,7 +100,7 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Hides opened inventory panel
      */
     public void hideInventory()
     {
@@ -108,7 +112,8 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Sets the selected button
+     * 
      * @param button
      */
     public void setSelectedButton(JButton button)
@@ -117,7 +122,8 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Retrieve the selected button
+     * 
      * @return
      */
     public JButton getSelectedButton()
@@ -126,7 +132,8 @@ public class FooterPanel extends StarterPanel{
     }
     
     /**
-     *
+     * Retrieve cart scroll panel
+     * 
      * @return
      */
     public JPanel getCartPanel()

@@ -17,7 +17,7 @@ import supermarketsimulatorgui.MainPanel;
 import supermarketsimulatorgui.User;
 
 /**
- *
+ * ActionListener for item selection
  * @author kyliec
  */
 
@@ -31,7 +31,7 @@ public class ItemSelectListener implements ActionListener{
     private User user;
     
     /**
-     *
+     * Constructor
      * @param mainPanel
      * @param isleManagement
      */
@@ -42,7 +42,7 @@ public class ItemSelectListener implements ActionListener{
     }
     
     /**
-     *
+     * When item button is clicked
      * @param e
      */
     @Override

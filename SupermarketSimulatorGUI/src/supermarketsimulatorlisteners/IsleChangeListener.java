@@ -12,7 +12,7 @@ import supermarketsimulatorgui.IsleMarker;
 import supermarketsimulatorgui.MainPanel;
 
 /**
- *
+ * ActionListener for changing isles
  * @author kyliec
  */
 public class IsleChangeListener implements ActionListener
@@ -23,7 +23,7 @@ public class IsleChangeListener implements ActionListener
     private MainPanel mainPanel;
     
     /**
-     *
+     * Constructor
      * @param mainPanel
      */
     public IsleChangeListener(MainPanel mainPanel)
@@ -32,7 +32,7 @@ public class IsleChangeListener implements ActionListener
     }
     
     /**
-     *
+     * When isle buttons are clicked
      * @param e
      */
     @Override
@@ -75,7 +75,7 @@ public class IsleChangeListener implements ActionListener
     }
     
     /**
-     *
+     * Change visibility of isles
      * @param currentIsle
      */
     public void setIsleVisibility(int currentIsle)

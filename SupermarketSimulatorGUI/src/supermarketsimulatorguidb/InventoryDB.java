@@ -5,18 +5,13 @@
  */
 package supermarketsimulatorguidb;
 
-/**
- *
- * @author poyanpayandeh
- */
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import supermarketsimulatorgui.ItemDatabase;
 
 /**
- *
+ * Inventory database table creator
  * @author kyliec
  */
 public class InventoryDB {
@@ -27,8 +22,8 @@ public class InventoryDB {
      *
      * @throws SQLException
      */
-    public InventoryDB() throws SQLException {
-        dbManager = new DBManager();
+    public InventoryDB(DBManager dbManager) throws SQLException {
+        this.dbManager = dbManager;
         dbManager.establishConnection();
         items = new ArrayList<>();
         items.addAll(Arrays.asList(ItemDatabase.values()));

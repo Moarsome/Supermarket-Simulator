@@ -13,17 +13,17 @@ import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
- *
+ * Creates the final inventory panel
+ * 
  * @author kyliec
  */
 public class InventoryPanel extends StarterPanel {
-    private LoginPanel loginPanel;
-    private InventoryPanel panel;
     private JLabel headerLabel;
     private JLabel descriptorLabel;
     private JScrollPane scrollPane;
@@ -32,13 +32,16 @@ public class InventoryPanel extends StarterPanel {
     private JPanel viewPanel;
     private int itemCount;
     private JButton currentlySelected;
+    private JFrame frame;
     
     /**
-     *
+     * Constructor for the panel
+     * 
+     * @param frame
      */
-    public InventoryPanel()
+    public InventoryPanel(JFrame frame)
     {
-        this.panel = this;
+        this.frame = frame;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setSize(new Dimension(750,750));
         this.setOpaque(false);
@@ -49,7 +52,7 @@ public class InventoryPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Creates JComponents for the panel
      */
     public void createComponents()
     {
@@ -82,7 +85,7 @@ public class InventoryPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Adds created JComponents to panel
      */
     public void addComponents()
     {
@@ -97,7 +100,8 @@ public class InventoryPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Adds ItemDatabase item to the inventory panel
+     * 
      * @param item
      */
     public void addItemToPanel(ItemDatabase item)
@@ -128,7 +132,7 @@ public class InventoryPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Creates a new row of items to display
      */
     public void enablePanel()
     {
@@ -140,7 +144,8 @@ public class InventoryPanel extends StarterPanel {
     }
     
     /**
-     *
+     * Retrieves continue button
+     * 
      * @return
      */
     public JButton getContinueButton()
@@ -149,24 +154,26 @@ public class InventoryPanel extends StarterPanel {
     }
     
     /**
-     *
-     * @param loginPanel
-     */
-    public void setLoginPanel(LoginPanel loginPanel)
-    {
-        this.loginPanel = loginPanel;
-    }
-    
+    * ActionListener for restarting the simulator
+    * 
+    * @author kyliec
+    */
     private class continueListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            panel.setVisible(false);
-            loginPanel.resetPanel();
-            loginPanel.setVisible(true);
+            descriptorLabel.setText("Loading...");
+            
+            SupermarketFrame.removePanels(frame);
+            SupermarketFrame.createPanels(frame);
         }
     }
     
+    /**
+    * ActionListener for selecting items on panel
+    * 
+    * @author kyliec
+    */
     private class selectionListener implements ActionListener
     {
 

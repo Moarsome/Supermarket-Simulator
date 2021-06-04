@@ -18,7 +18,7 @@ import supermarketsimulatorgui.MainPanel;
 import supermarketsimulatorgui.User;
 
 /**
- *
+ * ActionListenor for removing items
  * @author kyliec
  */
 public class CartRemoveItem implements ActionListener {
@@ -30,7 +30,7 @@ public class CartRemoveItem implements ActionListener {
     private User user;
     
     /**
-     *
+     * Constructor
      * @param mainPanel
      */
     public CartRemoveItem(MainPanel mainPanel)
@@ -39,7 +39,7 @@ public class CartRemoveItem implements ActionListener {
     }
     
     /**
-     *
+     * When button is clicked
      * @param e
      */
     @Override

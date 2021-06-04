@@ -14,7 +14,8 @@ import javax.swing.JLabel;
 import supermarketsimulatorlisteners.CancelListener;
 
 /**
- *
+ *This JPanel class displays the middle portion of the main panel; i.e. the shelves
+ * 
  * @author kyliec
  */
 public class BodyPanel extends StarterPanel 
@@ -26,7 +27,8 @@ public class BodyPanel extends StarterPanel
     private Component space;
     
     /**
-     *
+     * Constructor for the body panel
+     * 
      * @param mainPanel
      */
     public BodyPanel(MainPanel mainPanel) 
@@ -43,7 +45,8 @@ public class BodyPanel extends StarterPanel
     }
     
     /**
-     *
+     * Create JComponents for BodyPanel
+     * 
      * @param mainPanel
      */
     public void createComponents(MainPanel mainPanel)
@@ -67,7 +70,7 @@ public class BodyPanel extends StarterPanel
     }
     
     /**
-     *
+     * Add created components to BodyPanel, including spaces
      */
     public void addComponents()
     {
@@ -89,7 +92,8 @@ public class BodyPanel extends StarterPanel
     }
     
     /**
-     *
+     * Set text of isle labels
+     * 
      * @param newText
      */
     public void setIsleLabel(String newText)
@@ -98,7 +102,8 @@ public class BodyPanel extends StarterPanel
     }
     
     /**
-     *
+     * Set text that on indicator label that directly communicates with user
+     * 
      * @param newText
      */
     public void setIndicatorText(String newText)
@@ -107,7 +112,8 @@ public class BodyPanel extends StarterPanel
     }
     
     /**
-     *
+     * Returns button that cancels checkout
+     * 
      * @return
      */
     public JButton getCancelButton()
@@ -116,7 +122,7 @@ public class BodyPanel extends StarterPanel
     }
     
     /**
-     *
+     * Remove space component
      */
     public void removeSpace()
     {

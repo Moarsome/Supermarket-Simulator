@@ -23,7 +23,7 @@ import supermarketsimulatorgui.User;
 import supermarketsimulatorgui.InventoryPanel;
 
 /**
- *
+ * ActionListener for checking out cart
  * @author kyliec
  */
 
@@ -35,7 +35,7 @@ public class CheckoutListener implements ActionListener {
     private User user;
     
     /**
-     *
+     * Constructor
      * @param mainPanel
      */
     public CheckoutListener(MainPanel mainPanel)

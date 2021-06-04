@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Database manager class
  * @author kyliec
  */
 public final class DBManager {
@@ -24,36 +24,36 @@ public final class DBManager {
     Connection conn;
 
     /**
-     *
+     * DBManager constructor
      * @throws SQLException
      */
     public DBManager() throws SQLException {
         establishConnection();
         
         System.out.println("connection: "+getConnection());
-            
-//            System.out.println("Running create tables");
-//            UserDB user = new UserDB();
-//            InventoryDB inventory = new InventoryDB();
-//            UserInventoryDB userInventory = new UserInventoryDB();
+        
+//        System.out.println("Running create tables");
+//            UserDB user = new UserDB(this);
+//            InventoryDB inventory = new InventoryDB(this);
+//            UserInventoryDB userInventory = new UserInventoryDB(this);
 //            user.createUserTable();
 //            inventory.createInventoryTable();
 //            inventory.fillInventoryTable();
 //            userInventory.createInventoryTable();
     }
 
+    
+    
     /**
-     *
+     * Retrieves connection
      * @return
      */
     public Connection getConnection() {
         return this.conn;
     }
 
-    //Establish connection
-
     /**
-     *
+     *Establish connection
      */
     public void establishConnection() {
         try {
@@ -65,7 +65,7 @@ public final class DBManager {
     }
 
     /**
-     *
+     * Close connections
      */
     public void closeConnections() {
         if (conn != null) {

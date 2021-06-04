@@ -4,15 +4,10 @@
  * and open the template in the editor.
  */
 package supermarketsimulatorguidb;
-
-/**
- *
- * @author poyanpayandeh
- */
 import java.sql.SQLException;
 
 /**
- *
+ * User database table creator
  * @author kyliec
  */
 public class UserDB {
@@ -23,8 +18,8 @@ public class UserDB {
      *
      * @throws SQLException
      */
-    public UserDB() throws SQLException {
-        dbManager = new DBManager();
+    public UserDB(DBManager dbManager) throws SQLException {
+        this.dbManager = dbManager;
         dbManager.establishConnection();
     }
 

@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
 import supermarketsimulatorgui.LoginPanel;
 
 /**
- *
+ * ActionListener for loggin in
  * @author kyliec
  */
 public class LoginListener implements ActionListener{
     private final LoginPanel panel;
     
     /**
-     *
+     * Constructor
      * @param panel
      */
     public LoginListener(LoginPanel panel)
@@ -26,7 +26,7 @@ public class LoginListener implements ActionListener{
     }
     
     /**
-     *
+     * When login button or register button is clicked
      * @param e
      */
     @Override

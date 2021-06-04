@@ -6,7 +6,7 @@
 package supermarketsimulatorguidb;
 
 /**
- *
+ * User inventory database creator
  * @author kyliec
  */
 import java.sql.SQLException;
@@ -17,13 +17,12 @@ import java.sql.SQLException;
  */
 public class UserInventoryDB {
     private final DBManager dbManager;
-    
     /**
      *
      * @throws SQLException
      */
-    public UserInventoryDB() throws SQLException {
-        dbManager = new DBManager();
+    public UserInventoryDB(DBManager dbManager) throws SQLException {
+        this.dbManager = dbManager;
         dbManager.establishConnection();
     }
     

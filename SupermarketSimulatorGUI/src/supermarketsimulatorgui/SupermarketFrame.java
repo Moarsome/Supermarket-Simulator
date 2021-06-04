@@ -17,34 +17,57 @@ import supermarketsimulatorguidb.DBManager;
 public class SupermarketFrame extends JFrame{
 
     /**
-     *
+     * Creates JFrame for program
+     * 
      * @param args
      * @throws SQLException
      */
     public static void main(String[] args) throws SQLException 
     {
         DBManager dbManager = new DBManager();
-        
-        User user = new User();
         SupermarketFrame frame = new SupermarketFrame();
-        InventoryPanel inventoryPanel = new InventoryPanel();
-        MainPanel mainPanel = new MainPanel(user, inventoryPanel);
-        LoginPanel loginPanel = new LoginPanel(mainPanel, user);
-        inventoryPanel.setLoginPanel(loginPanel);
         
-        mainPanel.setVisible(false);
-        inventoryPanel.setVisible(false);
+        createPanels(frame);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(false);
         frame.getContentPane().setBackground(Color.getHSBColor(.678f, 0.46f, 1.0f));
-        frame.add(inventoryPanel);
-        frame.add(loginPanel);
-        frame.add(mainPanel);
         frame.pack();
         frame.getContentPane().requestFocusInWindow();
         frame.setSize(750,750);
         frame.setVisible(true);
         frame.setResizable(false);
+    }
+    /**
+     * Creates panels for JFrame
+     * 
+     * @param frame
+     */
+    public static void createPanels(JFrame frame)
+    {
+        User user = new User();
+        
+        InventoryPanel inventoryPanel = new InventoryPanel(frame);
+        MainPanel mainPanel = new MainPanel(user, inventoryPanel);
+        LoginPanel loginPanel = new LoginPanel(mainPanel, user);
+        
+        mainPanel.setVisible(false);
+        inventoryPanel.setVisible(false);
+        
+        frame.add(inventoryPanel);
+        frame.add(loginPanel);
+        frame.add(mainPanel);
+        frame.validate();
+        frame.repaint();
+    }
+    
+    /**
+     * Removes panels from JFrame
+     * 
+     * @param frame
+     */
+    public static void removePanels(JFrame frame)
+    {
+        frame.getContentPane().removeAll();
     }
 }
